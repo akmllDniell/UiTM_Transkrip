@@ -9,6 +9,7 @@ use App\Models\ModelTP;
 use App\Models\ModelTPdanMarkahSukan;
 use Facade\FlareClient\View;
 use App\Models\ModelJawatan;
+use App\Models\ModelJenisAnugerah;
 use App\Models\ModelJenisPersatuan;
 use App\Models\ModelJenisProgram;
 use App\Models\ModelJKebudayaan;
@@ -18,6 +19,7 @@ use App\Models\ModelJwtDMPBSMM;
 use App\Models\ModeljwtPalapes;
 use App\Models\ModelJwtPBSMM;
 use App\Models\ModelKebudayaan;
+use App\Models\ModelTPdanMarkahAnugerah;
 use App\Models\ModelTPdanMPenerbitan;
 use App\Models\ModelTPMarkahPersatuan;
 use App\Models\ModelTPNMprogram;
@@ -872,6 +874,95 @@ class ProcessController extends Controller
      return redirect('/palapes');
     }
 
+    public function Pageanugerah(){
+    
+        
+        // $user = Auth::user();
+        $data = DB::table('anugerah')   
+        ->join('tahap', 'anugerah.tahapid', '=', 'tahap.tahapid') 
+        ->join('markah', 'anugerah.markahid', '=', 'markah.markahid') 
+         ->select('anugerah.*','tahap.*','markah.*')
+
+         //->where('course.Cname','=','STA')  where statement
+         ->get();
+
+         $jenisanugerah = DB::table('jenisanugerah')        
+         ->select('*')
+
+         //->where('course.Cname','=','STA')  where statement
+         ->get();
+
+         $tahappencapaian = DB::table('tahap')        
+         ->select('*')
+         ->get();
+
+         $markah = DB::table('markah')        
+         ->select('*')
+
+         //->where('course.Cname','=','STA')  where statement
+         ->get();
+
+         
+        return view('layout.anugerah')
+        ->with(compact('data'))
+        ->with(compact('jenisanugerah'))
+        ->with(compact('tahappencapaian'))
+        ->with(compact('markah'));
+
+}
+
+public function SimpanJenisAnugerah(Request $req)
+{
+    $JenisAnugerah = $req->jenisanugerah;
+   
+    $validateData = $req->validate([
+        // 'id'=> 'required|unique:table, column, except,id'
+         'jenisanugerah'=> 'required',                       
+
+     ],
+     
+     [
+         // 'id.unique' => 'Number student sudah ada didalam sistem',
+         // 'id.required' => 'Number Student harus diletakkan',         
+         'jenisanugerah.required' => 'Sila masukkan Nama Anugerah',         
+         // 'checkbox2'
+     ]);
+
+ $newJS = new ModelJenisAnugerah();   
+ $newJS->jenisanugerah = $JenisAnugerah;
+ $newJS->save();
+
+ return redirect('/anugerah');
+}
+
+
+public function SimpanTPdanMarkahAnugerah(Request $req)
+{
+    $TP = $req->TPanugerah;
+    $Mark = $req->MarkahAnugerah;
+   
+    $validateData = $req->validate([
+        // 'id'=> 'required|unique:table, column, except,id'
+         'TPanugerah'=> 'required',   
+         'MarkahAnugerah'=> 'required',                       
+
+     ],
+     
+     [
+         // 'id.unique' => 'Number student sudah ada didalam sistem',
+         // 'id.required' => 'Number Student harus diletakkan',         
+         'TPanugerah.required' => 'Sila masukkan Nama Anugerah',  
+         'MarkahAnugerah.required' => 'Sila masukkan Nama Anugerah',        
+         // 'checkbox2'
+     ]);
+
+ $newM = new ModelTPdanMarkahAnugerah();        
+ $newM->tahapid = $TP;
+ $newM->markahid = $Mark;
+ $newM->save();
+
+ return redirect('/anugerah');
+}
 
 
 }

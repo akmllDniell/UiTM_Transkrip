@@ -90,7 +90,14 @@ Route::controller(LoginController::class)->group(function(){
         Route::post('SimpanJenisPenerbitan','SimpanJenisPernebitan');
         
    });
-    //fared
+    
+
+      //FARED
+      Route::controller(ProcessController::class)->group(function(){
+        Route::get('anugerah','Pageanugerah')->middleware('auth');
+        Route::post('Simpananugerah','simpanTPdanMarkahAnugerah');
+        Route::post('SimpanJenisAnugerah','SimpanJenisAnugerah');
+    });
 
 
 
