@@ -13,8 +13,6 @@
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 
   <link rel="stylesheet" href="../../dist/css/popup.css">
-
-  <link rel="stylesheet" href="../../dist/css/popup2.css">
    
   
 </head>
@@ -107,7 +105,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/" class="nav-link">
+                <a href="kebudayaan" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>KEBUDAYAAN</p>
                 </a>
@@ -124,7 +122,7 @@
               </a>
               <ul class="nav nav-treeview">
               <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="pbsmm" class="nav-link">
               <i class="far fa-dot-circle nav-icon"></i>
               <p>PBSMM</p>
               </a>
@@ -160,7 +158,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/" class="nav-link">
+                <a href="penerbitan" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>PENERBITAN</p>
                 </a>
@@ -176,7 +174,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/" class="nav-link">
+                <a href="programtertentu" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>PROGRAM TERTENTU</p>
                 </a>
@@ -231,6 +229,25 @@
     </div>
     <!-- /.sidebar -->
   </aside>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>DataTables</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">DataTables</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

@@ -14,10 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('anugerah', function (Blueprint $table) {
-            $table->integer('anugerahid')->primary();
-            $table->integer('anugerah')->nullable();
+            $table->integer('anugerahid', true);
             $table->integer('markahid')->nullable();
-            $table->integer('jawatanid')->nullable();
+            $table->integer('tahapid')->nullable();
         });
     }
 
