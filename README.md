@@ -7,10 +7,17 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## INSTALLATION
+<br>
+<h1>INSTALLATION</h1>
+<br>
 
 Clone the Repo:
-<li>git clone https://github.com/</li>
+<li>git clone https://github.com/akmllDniell/UiTM_Transkrip.git/</li>
+<li><b>IF YOU USING GITHUB DESKTOP PLEASE CHANGE THE LOCAL PATH TO: C:\laragon\www\</b></li>
+
+<br>
+In Terminal:
+
 <li>cd laragon\www\UiTM_Transkrip</li>
 <li>composer install</li>
 <li>cp .env.example .env</li>
