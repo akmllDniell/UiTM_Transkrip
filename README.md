@@ -11,17 +11,27 @@
 <h1>INSTALLATION</h1>
 <br>
 
-Clone the Repo:
+<h2><b>Clone the Repo:</b></h2>
 <li>git clone https://github.com/akmllDniell/UiTM_Transkrip.git/</li>
 <li><b>IF YOU USING GITHUB DESKTOP PLEASE CHANGE THE LOCAL PATH TO: C:\laragon\www\</b></li>
 
 <br>
-In Terminal:
+<h2><b>In Terminal:</b></h2>
 
 <li>cd laragon\www\UiTM_Transkrip</li>
 <li>composer install</li>
 <li>cp .env.example .env</li>
-<li>Set up .env file</li>
+
+<br>
+<h2><b>Set up .env file</b></h2>
+<li>Go to mysql/heidisql and create new database</li>
+<li>Name the database uitmsystem</li>
+<li>Go to project folder and find .env file</li>
+<li>Change the DB_DATABASE=laravel to DB_DATABASE=uitmsystem</li>
+
+
+<br>
+<h2><b>Back to terminal</b></h2>
 <li>php artisan key:generate</li>
 <li>php artisan storage:link</li>
 <li>php artisan migrate:fresh --seed</li>
