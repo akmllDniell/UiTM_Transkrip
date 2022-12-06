@@ -62,6 +62,7 @@ Route::controller(LoginController::class)->group(function(){
         Route::get('editTPMsukan/{sukanid}','bukapageTPMsukan');
         Route::get('jawatan','PageJawatan')->middleware('auth');
         route::post('SimpanJawatan','simpanjawatan');
+        
 
     });
 
@@ -144,5 +145,30 @@ Route::controller(LoginController::class)->group(function(){
 
     });
 
+    //arif
+    Route::controller(ProcessController::class)->group(function()
+    {
+        Route::get('khas','PageKhas')->middleware('auth');
+        Route::post('SimpanKhas','SimpanTPdanMarkahKhas');
+        Route::post('SimpanJenisKhas','SimpanJKhas');
+    });
 
+    Route::controller(ProcessController::class)->group(function()
+    {
+        Route::get('suksis','Pagesuksis')->middleware('auth');
+        Route::post('SimpanJawatansuksis','SimpanJawatansuksis');
+        Route::post('SimpanJawatandanMarkahsuksis','SimpanJawatandanMarkahsuksis');
 
+    });
+
+    //arif
+
+    Route::controller(ProcessController::class)->group(function()
+    {
+        Route::get('Tahaphep','PageTahaphep')->middleware('auth');
+        Route::post('SimpanTahaphepnama','SimpanTahaphepnama');
+        Route::post('SimpanThdanmarkah','SimpanThdanmarkah');
+
+    });
+
+  

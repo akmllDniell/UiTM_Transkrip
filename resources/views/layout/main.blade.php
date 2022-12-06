@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MINI TRANSKKROPO</title>
+  <title>MINI TRANSKRIP</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 
   <link rel="stylesheet" href="../../dist/css/popup.css">
+  <link rel="stylesheet" href="../../dist/css/popup2.css">
    
   
 </head>
@@ -27,7 +28,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../index3.html" class="nav-link">Home</a>
+        <a href="/" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -140,7 +141,7 @@
               </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="suksis" class="nav-link">
                 <i class="far fa-dot-circle nav-icon"></i>
                 <p>SUKSIS</p>
                 </a>
@@ -166,7 +167,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/" class="nav-link">
+                <a href="khas" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>PROGRAM KHAS HEP</p>
                 </a>
@@ -218,6 +219,15 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="Tahaphep" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Tahap HEP
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
         
 
               </li>
@@ -237,11 +247,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Blank cdecscsdcsdcsdc</h1>
+            <h1>Blank ilyif.9lyvgikugvi7</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
               <li class="breadcrumb-item active">Blank Page</li>
             </ol>
           </div>

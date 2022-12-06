@@ -258,43 +258,50 @@
       </div><!-- /.container-fluid -->
     </section>
 
-    <div class="card">
-    <button id="btnOpenForm">Open Form</button>
-    <div class="form-popup-bg">
-  <div class="form-container">
-    <button id="btnCloseForm" class="close-button">X</button>
-    <form method="POST" action="{{url('/SimpanJawatanPBSMM')}}" >
-            @csrf
-          <div class="card card-info">
-            <div class="card-header">
-              <h3 class="card-title">PBSMM</h3>
-            </div>          
-              <!-- Color Picker -->
-              <div class="form-group">
-                <label>Jawatan PBSMM:</label>
-                <input name="jenisjawatanpbsmm" id="jenisjawatanpbsmm" type="text" class="form-control my-colorpicker1 colorpicker-element" data-colorpicker-id="1" data-original-title="" title="">
-              </div>
-
-                <button type="submit" class="btn btn-block bg-gradient-success">SAVE</button>
-                <!-- /.input group -->              
-              </form>
-            </div>
-
-            </div>
-            </div>
+ 
         <!-- /.card-header -->
         
         <div class="card-body">
           <table id="example1" class="table table-bordered table-striped">
             <thead>
             <tr>
-              <th>Jawatan disadang</th>
+              <th>Jawatan disadang
+
+                <div class="btn"> 
+                    <button id="btnOpenForm" class="btn"><i class="fa fa-plus-square" style="font-size:35px; color:green;"></i></button>
+        <div class="form-popup-bg">
+      <div class="form-container">
+        <button id="btnCloseForm" class="close-button">X</button>
+        <form method="POST" action="{{url('/SimpanJawatansuksis')}}" >
+                @csrf
+              <div class="card card-info">
+                <div class="card-header">
+                  <h3 class="card-title">Jawatan SUKSIS</h3>
+                </div>          
+                  <!-- Color Picker -->
+                  <div class="form-group">
+                    <label>Jawatan SUKSIS:</label>
+                    <input name="jawatansuksis" id="jawatansuksis" type="text" class="form-control my-colorpicker1 colorpicker-element" data-colorpicker-id="1" data-original-title="" title="">
+                  </div>
+                    <button type="submit" class="btn btn-block bg-gradient-success">SAVE</button>
+                    
+  
+                    <!-- /.input group -->              
+                  </form>
+                </div>
+  
+                
+               
+                </div>
+                </div>
+
+              </th>
             </tr>
             </thead>
             <tbody>
-              @foreach($jawatanpbsmm as $d)
+              @foreach($jawatansuksis as $d)
             <tr>
-            <td>{{$d->jawatanpbsmm}}</td>
+            <td>{{$d->jawatansuksis}}</td>
       @endforeach
               {{-- <td>Other browsers</td>
               <td>All others</td>
@@ -303,32 +310,59 @@
             </tbody>
 
           </table>
-          <form method="POST" action="{{url('/SimpanJawatanPBSMM')}}" >
-            @csrf
-          <div class="card card-info">
-            <div class="card-header">
-              <h3 class="card-title">PBSMM</h3>
-            </div>
-            <div class="card-body">
-              <!-- Color Picker -->
-              <div class="form-group">
-                <label>Jawatan PBSMM:</label>
-                <input name="jenisjawatanpbsmm" id="jenisjawatanpbsmm" type="text" class="form-control my-colorpicker1 colorpicker-element" data-colorpicker-id="1" data-original-title="" title="">
-              </div>
-
-                <button type="submit" class="btn btn-block bg-gradient-success">SAVE</button>
-                <!-- /.input group -->
-              </div>
-              </form>
+          
               <!-- /.form group -->
-</div>
-        </div>
-        <!-- /.card-body -->
-      </div>
+
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Jawatan disandang dan Markah</h3>
+                <h3 class="card-title">Jawatan SUKSIS dan Markah
+
+                <div class="btn"> 
+                    <button id="btnOpenForm1" class="btn"><i class="fa fa-plus-square" style="font-size:35px; color:green;"></i></button>
+                    <div class="form-popup-bg1">
+                    <div class="form-container1">
+                <button id="btnCloseForm1" class="close-button1">X</button>
+       
+                    <form method="POST" action="{{url('/SimpanJawatandanMarkahsuksis')}}" >
+                    @csrf
+                    <div class="card card-info">
+                    <div class="card-header">
+                      <h3 class="card-title">JAWATAN DAN MARKAH SUKSIS</h3>
+                    </div>
+                    <div class="card-body">
+                      <!-- Color Picker -->
+                      <div class="form-group">
+                        <label>Jawatan dan Markah SUKSIS:</label>
+                        <select id="TPjawatan" name="TPjawatan">
+                          @foreach($jawatansuksis as $d)
+                                  <option value="{{$d->jawatansuksisid}}">{{$d->jawatansuksis}}</option>            
+                            @endforeach
+                          
+                        </select>
+                        <select id="Markahsuksis" name="Markahsuksis">
+                          @foreach($markah as $d)
+                                  <option value="{{$d->markahid}}">{{$d->markah}}</option>            
+                            @endforeach
+                        </select>
+                      </div>
+        
+                        <button type="submit" class="btn btn-block bg-gradient-success">SAVE</button>
+                        <!-- /.input group -->
+                      </div>
+               
+  
+          
+                        
+                        
+                          </div>
+                          </form>
+                    </div>
+             
+                
+
+
+                </h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -342,7 +376,7 @@
                   <tbody>
                     @foreach($data as $d)
                   <tr>
-                  <td>{{$d->jawatanpbsmm}}</td>
+                  <td>{{$d->jawatansuksis}}</td>
                   <td>{{$d->markah}}</td>
                   
             @endforeach
@@ -365,77 +399,7 @@
 
             
             <!-- /.card -->
-            <form method="POST" action="{{url('/SimpanPBSMM')}}" >
-                @csrf
-                <div class="card card-info">
-                  <div class="card-header">
-                    <h3 class="card-title">TAHAP PENCAPAIAN DAN MARKAH PBSMM</h3>
-                  </div>
-                  <div class="card-body">
-                    <!-- Color Picker -->
-                    <div class="form-group">
-                      <label>Tahap dan Markah PBSMM:</label>
-                      <select id="jwtPBSMM" name="jwtPBSMM">
-                        @foreach($jawatanpbsmm as $d)
-                                <option value="{{$d->jawatanpbsmmid}}">{{$d->jawatanpbsmm}}</option>            
-                          @endforeach
-                        {{-- <option value="2">GRASSY COURT</option>
-                        <option value="3">CAGE COURT</option>
-                        <option value="4">GOLDY COURT</option>
-                        <option value="5">OUTDOOR COURT</option> --}}
-                      </select>
-                      <select id="MarkahPBSMM" name="MarkahPBSMM">
-                        @foreach($markah as $d)
-                                <option value="{{$d->markahid}}">{{$d->markah}}</option>            
-                          @endforeach
-                      </select>
-                    </div>
-      
-                      <button type="submit" class="btn btn-block bg-gradient-success">SAVE</button>
-                      <!-- /.input group -->
-                    </div>
-                {{-- @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif --}}
-
-        
-              <div class="card card-info">
-                      {{-- <div class="card-header">
-                        <h3 class="card-title">SUKAN</h3>
-                      </div>
-                      <div class="card-body">
-                        <!-- Color Picker -->
-                        <div class="form-group">
-                          <label>Jenis Sukan:</label>
-                          <input name="AktivitiCode" id="AktivitiCode" type="text" class="form-control my-colorpicker1 colorpicker-element" data-colorpicker-id="1" data-original-title="" title="">
-                        </div>
-                        <div class="form-group">
-                            <label>Tahap pencapaian:</label>
-                            <input name="AktivitiCode" id="AktivitiCode" type="text" class="form-control my-colorpicker1 colorpicker-element" data-colorpicker-id="1" data-original-title="" title="">
-                          </div>
-                        <!-- /.form group -->
-        
-                        <!-- Color Picker -->                
-                        <div class="form-group">
-                          <label>Markah:</label>
-        
-                          <div class="input-group my-colorpicker2 colorpicker-element" data-colorpicker-id="2">
-                            <input name="NamaAktiviti" id="NamaAktiviti" type="text" class="form-control" >
-        
-                            <div class="input-group-append">
-                              <span class="input-group-text"><i class="fas fa-square"></i></span>
-                            </div>
-                          </div> --}}
-                          {{-- <button type="submit" class="btn btn-block bg-gradient-success">SAVE</button> --}}
-                          <!-- /.input group -->
-                        </div>
-                        </form>
+         
                         <!-- /.form group -->
           </div>
           <!-- /.col -->
@@ -528,6 +492,33 @@ $(document).ready(function($) {
   
   });
 </script>
+
+<script>
+    function closeForm1() {
+    $('.form-popup-bg1').removeClass('is-visible');
+  }
+  
+  $(document).ready(function($) {
+    
+    /* Contact Form Interactions */
+    $('#btnOpenForm1').on('click', function(event) {
+      event.preventDefault();
+  
+      $('.form-popup-bg1').addClass('is-visible');
+    });
+    
+      //close popup when clicking x or off popup
+    $('.form-popup-bg1').on('click', function(event) {
+      if ($(event.target).is('.form-popup-bg1') || $(event.target).is('#btnCloseForm1')) {
+        event.preventDefault();
+        $(this).removeClass('is-visible');
+      }
+    });
+    
+    
+    
+    });
+  </script>
 <!-- END SCRIPT UNTUK POPUP FORM -->
 </body>
 </html>

@@ -9,7 +9,9 @@ use App\Models\ModelTP;
 use App\Models\ModelTPdanMarkahSukan;
 use Facade\FlareClient\View;
 use App\Models\ModelJawatan;
+use App\Models\Modeljawatansuksis;
 use App\Models\ModelJenisAnugerah;
+use App\Models\ModelJenisKhas;
 use App\Models\ModelJenisPersatuan;
 use App\Models\ModelJenisProgram;
 use App\Models\ModelJKebudayaan;
@@ -19,10 +21,13 @@ use App\Models\ModelJwtDMPBSMM;
 use App\Models\ModeljwtPalapes;
 use App\Models\ModelJwtPBSMM;
 use App\Models\ModelKebudayaan;
+use App\Models\Modeltahaphepnama;
+use App\Models\ModelThdanmarkahkhas;
 use App\Models\ModelTPdanMarkahAnugerah;
 use App\Models\ModelTPdanMPenerbitan;
 use App\Models\ModelTPMarkahPersatuan;
 use App\Models\ModelTPNMprogram;
+use App\Models\SimpanJawatandanMarkahsuksis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -964,6 +969,220 @@ public function SimpanTPdanMarkahAnugerah(Request $req)
  return redirect('/anugerah');
 }
 
+
+    //arif
+    public function PageKhas(){
+    
+        
+        // $user = Auth::user();
+        $data = DB::table('khas')   
+        ->join('tahaphep', 'khas.tahaphepid', '=', 'tahaphep.tahaphepid') ////
+        ->join('markah', 'khas.markahid', '=', 'markah.markahid') 
+         ->select('khas.*','tahaphep.*','markah.*')
+
+         //->where('course.Cname','=','STA')  where statement
+         ->get();
+
+         $jeniskhas = DB::table('jeniskhas')        ////////////
+         ->select('*')
+
+         //->where('course.Cname','=','STA')  where statement
+         ->get();
+
+         $tahaphep = DB::table('tahaphep')        
+         ->select('*')
+         ->get();
+
+         $markah = DB::table('markah')        
+         ->select('*')
+
+         //->where('course.Cname','=','STA')  where statement
+         ->get();
+
+         
+        return view('layout.khas')
+        ->with(compact('data'))
+        ->with(compact('jeniskhas'))
+        ->with(compact('tahaphep'))
+        ->with(compact('markah'));
+
+    }
+
+    public function SimpanJKhas(Request $req)
+    {
+        $JenisKhasNama = $req->jeniskhasnama;
+       
+        $validateData = $req->validate([
+            // 'id'=> 'required|unique:table, column, except,id'
+             'jeniskhasnama'=> 'required',                       
+    
+         ],
+         
+         [
+             // 'id.unique' => 'Number student sudah ada didalam sistem',
+             // 'id.required' => 'Number Student harus diletakkan',         
+             'jeniskhasnama.required' => 'Sila masukkan Nama Modul',         
+             // 'checkbox2'
+         ]);
+    
+     $newJS = new ModelJenisKhas();        
+     $newJS->jeniskhasnama = $JenisKhasNama;
+     $newJS->save();
+    
+     return redirect('/khas');
+    }
+
+
+
+    public function PageTahaphep(){
+    
+        $data = DB::table('tahaphep')
+        ->select('*')
+        ->get();
+        return view('layout.tahaphep',compact('data'));
+    }
+    
+    public function SimpanTahaphepnama(Request $req)
+    {
+        $tahaphepnama = $req->tahaphepnama;
+       
+        $validateData = $req->validate([
+            // 'id'=> 'required|unique:table, column, except,id'
+             'tahaphepnama'=> 'required',                       
+    
+         ],
+         
+         [
+             // 'id.unique' => 'Number student sudah ada didalam sistem',
+             // 'id.required' => 'Number Student harus diletakkan',         
+             'tahaphepnama.required' => 'Sila masukkan Tahap HEP',         
+             // 'checkbox2'
+         ]);
+    
+     $newM = new Modeltahaphepnama();        
+     $newM->tahaphepnama = $tahaphepnama;
+     $newM->save();
+    
+     return redirect('/Tahaphep');
+    }
+
+    public function SimpanThdanmarkah(Request $req)
+    {
+        $Th = $req->Thkhas;
+        $Markah = $req->MarkahKhas;
+       
+        $validateData = $req->validate([
+            // 'id'=> 'required|unique:table, column, except,id'
+             'Thkhas'=> 'required',   
+             'MarkahKhas'=> 'required',                       
+    
+         ],
+         
+         [
+             // 'id.unique' => 'Number student sudah ada didalam sistem',
+             // 'id.required' => 'Number Student harus diletakkan',         
+             'Thkhas.required' => 'Sila masukkan Tahap HEP',  
+             'MarkahKhas.required' => 'Sila masukkan Markah khas',        
+             // 'checkbox2'
+         ]);
+    
+     $newM = new ModelThdanmarkahkhas();        
+     $newM->tahaphepid = $Th;
+     $newM->markahid = $Markah;
+     $newM->save();
+    
+     return redirect('/khas');
+    }
+
+    public function Pagesuksis()
+    {
+            
+        
+        // $user = Auth::user();
+        $data = DB::table('suksis')   
+        ->join('jawatansuksis', 'suksis.jawatansuksisid', '=', 'jawatansuksis.jawatansuksisid') 
+        ->join('markah', 'suksis.markahid', '=', 'markah.markahid') 
+         ->select('suksis.*','jawatansuksis.*','markah.*')
+    
+         //->where('course.Cname','=','STA')  where statement
+         ->get();
+    
+         $jawatansuksis = DB::table('jawatansuksis')        
+         ->select('*')
+         ->get();
+    
+         $markah = DB::table('markah')        
+         ->select('*')
+    
+         //->where('course.Cname','=','STA')  where statement
+         ->get();
+    
+         
+        return view('layout.suksis')
+        ->with(compact('data'))
+        ->with(compact('jawatansuksis'))
+        ->with(compact('markah'));
+    }
+
+    
+
+    public function SimpanJawatansuksis(Request $req)
+    {
+        $jawatansuksis = $req->jawatansuksis;
+       
+        $validateData = $req->validate(
+            [
+            // 'id'=> 'required|unique:table, column, except,id'
+             'jawatansuksis'=> 'required',                       
+    
+         ],
+         
+         [
+             // 'id.unique' => 'Number student sudah ada didalam sistem',
+             // 'id.required' => 'Number Student harus diletakkan',         
+             'jawatansuksis.required' => 'Sila masukkan Jawatan SUKSIS',         
+             // 'checkbox2'
+         ]);
+    
+     $newJS = new Modeljawatansuksis();        
+     $newJS->jawatansuksis = $jawatansuksis;
+     $newJS->save();
+    
+     return redirect('/suksis');
+    }
+
+
+    public function SimpanJawatandanMarkahsuksis(Request $req)
+    {
+        $jwtsuksis = $req->TPjawatan;
+        $Markahsuksis = $req->Markahsuksis;
+       
+        $validateData = $req->validate([
+            // 'id'=> 'required|unique:table, column, except,id'
+             'TPjawatan'=> 'required',   
+             'Markahsuksis'=> 'required',                       
+    
+         ],
+         
+         [
+             // 'id.unique' => 'Number student sudah ada didalam sistem',
+             // 'id.required' => 'Number Student harus diletakkan',         
+             'TPjawatan.required' => 'Sila masukkan Jawatan SUKSIS',  
+             'Markahsuksis.required' => 'Sila masukkan Markah SUKSIS',        
+             // 'checkbox2'
+         ]);
+    
+     $newM = new SimpanJawatandanMarkahsuksis();        
+     $newM->jawatansuksisid = $jwtsuksis;
+     $newM->markahid = $Markahsuksis;
+     $newM->save();
+    
+     return redirect('/suksis');
+    }
+
+    
+
+ 
 
 }
 
