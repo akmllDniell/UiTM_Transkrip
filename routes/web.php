@@ -62,6 +62,9 @@ Route::controller(LoginController::class)->group(function(){
         Route::get('editTPMsukan/{sukanid}','bukapageTPMsukan');
         Route::get('jawatan','PageJawatan')->middleware('auth');
         route::post('SimpanJawatan','simpanjawatan');
+
+        //arif cuba
+        
         
 
     });
