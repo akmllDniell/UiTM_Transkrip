@@ -112,6 +112,8 @@ Tahap Hep
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+@endsection
+
 
 @section('script')
 <!-- Page specific script -->
@@ -132,7 +134,5 @@ Tahap Hep
     });
   });
 </script>
-@endsection
-
 @endsection
 

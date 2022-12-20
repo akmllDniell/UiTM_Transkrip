@@ -123,5 +123,4 @@ Jawatan Page
   });
 </script>
 @endsection
-</body>
-</html>
+
