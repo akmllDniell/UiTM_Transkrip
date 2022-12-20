@@ -87,7 +87,7 @@
               </a>
               </li>
               <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="palapes" class="nav-link">
               <i class="far fa-dot-circle nav-icon"></i>
               <p>PALAPES</p>
               </a>
@@ -109,7 +109,7 @@
               </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="profiling/anugerah" class="nav-link">
+                <a href="anugerah" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>ANUGERAH / SIJIL</p>
                 </a>
