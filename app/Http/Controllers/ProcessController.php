@@ -179,7 +179,7 @@ class ProcessController extends Controller
         $data = DB::table('markah')
         ->select('*')
         ->get();
-        return View('profiling.Markah',compact('data'));
+        return View('profiling.markah',compact('data'));
     }
     
     
@@ -716,8 +716,6 @@ class ProcessController extends Controller
 
     public function Pagepbsmm()
     {
-            
-        
         // $user = Auth::user();
         $data = DB::table('pbsmm')   
         ->join('jawatanpbsmm', 'pbsmm.jawatanpbsmmid', '=', 'jawatanpbsmm.jawatanpbsmmid') 
@@ -738,7 +736,7 @@ class ProcessController extends Controller
          ->get();
     
          
-        return view('profiling.pbsmm')
+         return view('profiling.pbsmm')
         ->with(compact('data'))
         ->with(compact('jawatanpbsmm'))
         ->with(compact('markah'));
