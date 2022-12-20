@@ -119,7 +119,7 @@ class ProcessController extends Controller
         $data = DB::table('tahap')
         ->select('*')
         ->get();
-        return View('profiling.TahapPencapaian',compact('data'));
+        return view('parameters.tahappencapaian',compact('data'));
     }
     
     public function saveTP(Request $req){
@@ -179,7 +179,7 @@ class ProcessController extends Controller
         $data = DB::table('markah')
         ->select('*')
         ->get();
-        return View('profiling.Markah',compact('data'));
+        return view('parameters.markah',compact('data'));
     }
     
     
@@ -271,7 +271,7 @@ class ProcessController extends Controller
         $data = DB::table('jawatan')
         ->select('*')
         ->get();
-        return View('profiling.jawatan',compact('data'));
+        return view('parameters.jawatan',compact('data'));
     }
 
     public function Pagepersatuan(){
@@ -1039,7 +1039,7 @@ public function SimpanTPdanMarkahAnugerah(Request $req)
         $data = DB::table('tahaphep')
         ->select('*')
         ->get();
-        return view('profiling.tahaphep',compact('data'));
+        return view('parameters.tahaphep',compact('data'));
     }
     
     public function SimpanTahaphepnama(Request $req)

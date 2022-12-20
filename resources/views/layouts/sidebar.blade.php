@@ -87,13 +87,13 @@
               </a>
               </li>
               <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="palapes" class="nav-link">
               <i class="far fa-dot-circle nav-icon"></i>
               <p>PALAPES</p>
               </a>
               </li>
               <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="APM" class="nav-link">
               <i class="far fa-dot-circle nav-icon"></i>
               <p>PERTAHANAN AWAM</p>
               </a>
