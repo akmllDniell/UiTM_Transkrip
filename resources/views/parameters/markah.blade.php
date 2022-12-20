@@ -1,22 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MINI TRANSKRIP</title>
+@section('title')
+Markah
+@endsection
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 
-  <link rel="stylesheet" href="../../dist/css/popup.css">
-  <link rel="stylesheet" href="../../dist/css/popup2.css">
-   
-  
-</head>
+@section('content')
+    
+@endsection
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
@@ -261,7 +250,7 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Tahap HEP</h3>
+                <h3 class="card-title">Markah</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -269,14 +258,14 @@
                   <thead>
                   <tr>
                     <th>ID</th>
-                    <th>Tahap HEP</th>
+                    <th>Markah</th>
                   </tr>
                   </thead>
                   <tbody>
                     @foreach($data as $d)
                   <tr>
-                  <td>{{$d->tahaphepid}}</td>
-                  <td>{{$d->tahaphepnama}}</td>
+                  <td>{{$d->markahid}}</td>
+                  <td>{{$d->markah}}</td>
             @endforeach
                     {{-- <td>Other browsers</td>
                     <td>All others</td>
@@ -289,7 +278,7 @@
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-            <form method="POST" action="{{url('/SimpanTahaphepnama')}}" >
+            <form method="POST" action="{{url('/SimpanMarkah')}}" >
                 @csrf
                 @if ($errors->any())
             <div class="alert alert-danger">
@@ -302,13 +291,13 @@
         @endif
               <div class="card card-info">
                       <div class="card-header">
-                        <h3 class="card-title">Tahap HEP</h3>
+                        <h3 class="card-title">Markah</h3>
                       </div>
                       <div class="card-body">
                         <!-- Color Picker -->                
                         <div class="form-group">
-                            <label>Tahap HEP:</label>
-                            <input name="tahaphepnama" id="tahaphepnama" type="text" class="form-control my-colorpicker1 colorpicker-element" data-colorpicker-id="1" data-original-title="" title="">
+                            <label>Markah:</label>
+                            <input name="markah" id="markah" type="text" class="form-control my-colorpicker1 colorpicker-element" data-colorpicker-id="1" data-original-title="" title="">
                           </div>
                         <!-- /.form group -->
         

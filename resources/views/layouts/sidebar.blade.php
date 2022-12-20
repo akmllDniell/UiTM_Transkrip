@@ -139,6 +139,14 @@
                 </a>
               </li>
             </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="programtertentu" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>contoh</p>
+                </a>
+              </li>
+            </ul>
             <!-- {{-- @foreach($data as $d)
             <ul class="nav nav-treeview">
               <li class="nav-item">

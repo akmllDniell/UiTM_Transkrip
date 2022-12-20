@@ -19,7 +19,7 @@ class LayoutController extends Controller
         // $useradmin = DB::('users')->
         
         $userCount = User::count();
-        return view('layout.main',compact('userCount'))->with([
+        return view('profiling.main',compact('userCount'))->with([
             'user' => Auth::user(),
         ]);
     }

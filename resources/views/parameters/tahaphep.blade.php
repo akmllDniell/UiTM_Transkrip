@@ -261,7 +261,7 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Markah</h3>
+                <h3 class="card-title">Tahap HEP</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -269,14 +269,14 @@
                   <thead>
                   <tr>
                     <th>ID</th>
-                    <th>Markah</th>
+                    <th>Tahap HEP</th>
                   </tr>
                   </thead>
                   <tbody>
                     @foreach($data as $d)
                   <tr>
-                  <td>{{$d->markahid}}</td>
-                  <td>{{$d->markah}}</td>
+                  <td>{{$d->tahaphepid}}</td>
+                  <td>{{$d->tahaphepnama}}</td>
             @endforeach
                     {{-- <td>Other browsers</td>
                     <td>All others</td>
@@ -289,7 +289,7 @@
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-            <form method="POST" action="{{url('/SimpanMarkah')}}" >
+            <form method="POST" action="{{url('/SimpanTahaphepnama')}}" >
                 @csrf
                 @if ($errors->any())
             <div class="alert alert-danger">
@@ -302,13 +302,13 @@
         @endif
               <div class="card card-info">
                       <div class="card-header">
-                        <h3 class="card-title">Markah</h3>
+                        <h3 class="card-title">Tahap HEP</h3>
                       </div>
                       <div class="card-body">
                         <!-- Color Picker -->                
                         <div class="form-group">
-                            <label>Markah:</label>
-                            <input name="markah" id="markah" type="text" class="form-control my-colorpicker1 colorpicker-element" data-colorpicker-id="1" data-original-title="" title="">
+                            <label>Tahap HEP:</label>
+                            <input name="tahaphepnama" id="tahaphepnama" type="text" class="form-control my-colorpicker1 colorpicker-element" data-colorpicker-id="1" data-original-title="" title="">
                           </div>
                         <!-- /.form group -->
         
@@ -345,27 +345,7 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables  & Plugins -->
-<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="../../plugins/jszip/jszip.min.js"></script>
-<script src="../../plugins/pdfmake/pdfmake.min.js"></script>
-<script src="../../plugins/pdfmake/vfs_fonts.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
+@section('script')
 <!-- Page specific script -->
 <script>
   $(function () {
@@ -384,5 +364,6 @@
     });
   });
 </script>
+@endsection
 </body>
 </html>

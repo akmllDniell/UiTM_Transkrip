@@ -72,7 +72,7 @@ class ProcessController extends Controller
     //     $data = [
     //         'NamaAktiviti' => $NamaAktiviti        
     //     ];
-    //     return View("layout.sukan", $data);
+    //     return View("profiling.sukan", $data);
     
     // }
     
@@ -106,7 +106,7 @@ class ProcessController extends Controller
              ->get();
     
              
-            return view('layout.sukan')
+            return view('profiling.sukan')
             ->with(compact('data'))
             ->with(compact('jenissukan'))
             ->with(compact('tahappencapaian'))
@@ -119,7 +119,7 @@ class ProcessController extends Controller
         $data = DB::table('tahap')
         ->select('*')
         ->get();
-        return View('layout.TahapPencapaian',compact('data'));
+        return View('profiling.TahapPencapaian',compact('data'));
     }
     
     public function saveTP(Request $req){
@@ -179,7 +179,7 @@ class ProcessController extends Controller
         $data = DB::table('markah')
         ->select('*')
         ->get();
-        return View('layout.Markah',compact('data'));
+        return View('profiling.Markah',compact('data'));
     }
     
     
@@ -257,12 +257,12 @@ class ProcessController extends Controller
 
             
                      
-                    return view('layout.editTPMsukan')
+                    return view('profiling.editTPMsukan')
                     ->with(compact('dataTPMsukan'))
                     ->with(compact('data'));
 
 
-        // return View('layout.editTPMsukan',$dataTPMsukan);
+        // return View('profiling.editTPMsukan',$dataTPMsukan);
  
     }
 
@@ -271,7 +271,7 @@ class ProcessController extends Controller
         $data = DB::table('jawatan')
         ->select('*')
         ->get();
-        return View('layout.jawatan',compact('data'));
+        return View('profiling.jawatan',compact('data'));
     }
 
     public function Pagepersatuan(){
@@ -322,7 +322,7 @@ class ProcessController extends Controller
 
  
           
-         return view('layout.persatuan')
+         return view('profiling.persatuan')
          ->with(compact('data'))
          ->with(compact('jenispersatuan'))
          ->with(compact('tahappencapaian'))
@@ -465,7 +465,7 @@ class ProcessController extends Controller
 
  
           
-         return view('layout.penerbitan')
+         return view('profiling.penerbitan')
          ->with(compact('data'))
          ->with(compact('jenispenerbitan'))
          ->with(compact('tahappencapaian'))
@@ -562,7 +562,7 @@ class ProcessController extends Controller
         ->get();
 
         
-       return view('layout.program')
+       return view('profiling.program')
        ->with(compact('data'))
        ->with(compact('jenisprogram'))
        ->with(compact('tahappencapaian'))
@@ -653,7 +653,7 @@ class ProcessController extends Controller
          ->get();
     
          
-        return view('layout.kebudayaan')
+        return view('profiling.kebudayaan')
         ->with(compact('data'))
         ->with(compact('jeniskebudayaan'))
         ->with(compact('tahappencapaian'))
@@ -738,7 +738,7 @@ class ProcessController extends Controller
          ->get();
     
          
-        return view('layout.pbsmm')
+        return view('profiling.pbsmm')
         ->with(compact('data'))
         ->with(compact('jawatanpbsmm'))
         ->with(compact('markah'));
@@ -820,7 +820,7 @@ class ProcessController extends Controller
          ->get();
     
          
-        return view('layout.palapes')
+        return view('profiling.palapes')
         ->with(compact('data'))
         ->with(compact('jawatanpalapes'))
         ->with(compact('markah'));
@@ -908,7 +908,7 @@ class ProcessController extends Controller
          ->get();
 
          
-        return view('layout.anugerah')
+        return view('profiling.anugerah')
         ->with(compact('data'))
         ->with(compact('jenisanugerah'))
         ->with(compact('tahappencapaian'))
@@ -1000,7 +1000,7 @@ public function SimpanTPdanMarkahAnugerah(Request $req)
          ->get();
 
          
-        return view('layout.khas')
+        return view('profiling.khas')
         ->with(compact('data'))
         ->with(compact('jeniskhas'))
         ->with(compact('tahaphep'))
@@ -1039,7 +1039,7 @@ public function SimpanTPdanMarkahAnugerah(Request $req)
         $data = DB::table('tahaphep')
         ->select('*')
         ->get();
-        return view('layout.tahaphep',compact('data'));
+        return view('profiling.tahaphep',compact('data'));
     }
     
     public function SimpanTahaphepnama(Request $req)
@@ -1118,7 +1118,7 @@ public function SimpanTPdanMarkahAnugerah(Request $req)
          ->get();
     
          
-        return view('layout.suksis')
+        return view('profiling.suksis')
         ->with(compact('data'))
         ->with(compact('jawatansuksis'))
         ->with(compact('markah'));
