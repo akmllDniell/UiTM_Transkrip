@@ -45,6 +45,7 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            
             <ul class="nav nav-treeview">
               <li class="nav-item ">
                 <a href="sukan" class="nav-link active ">
@@ -157,49 +158,76 @@
               </li>
             </ul>
             @endforeach --}} -->
-          </li>
-          <li class="nav-item">
-            <a href="TahapPencapaian" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Tahap Pencapaian
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="Markah" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Markah
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="jawatan" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Jawatan
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="Tahaphep" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Tahap HEP
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
-        
 
+          </li>
+
+        
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                PARAMETER
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item ">
+                <a href=" TahapPencapaian" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tahap Pencapaian</p>
+                </a>
               </li>
             </ul>
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item ">
+                <a href="Markah" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Markah</p>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item ">
+                <a href="jawatan" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Jawatan</p>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item ">
+                <a href="Tahaphep" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tahap Hep</p>
+                </a>
+              </li>
+            </ul>
+
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item ">
+                <a href="Badanberuniform" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Badan Beruniform</p>
+                </a>
+              </li>
+            </ul>
+
+         
+
           </li>
-        </ul>
+
+       
+        
+
+              
+    </ul>
+          
+        
       </nav>
       <!-- /.sidebar-menu -->
     </div>
