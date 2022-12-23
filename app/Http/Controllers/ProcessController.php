@@ -9,7 +9,9 @@ use App\Models\ModelTP;
 use App\Models\ModelTPdanMarkahSukan;
 use Facade\FlareClient\View;
 use App\Models\ModelJawatan;
+use App\Models\Modeljawatansuksis;
 use App\Models\ModelJenisAnugerah;
+use App\Models\ModelJenisKhas;
 use App\Models\ModelJenisPersatuan;
 use App\Models\ModelJenisProgram;
 use App\Models\ModelJKebudayaan;
@@ -19,10 +21,13 @@ use App\Models\ModelJwtDMPBSMM;
 use App\Models\ModeljwtPalapes;
 use App\Models\ModelJwtPBSMM;
 use App\Models\ModelKebudayaan;
+use App\Models\Modeltahaphepnama;
+use App\Models\ModelThdanmarkahkhas;
 use App\Models\ModelTPdanMarkahAnugerah;
 use App\Models\ModelTPdanMPenerbitan;
 use App\Models\ModelTPMarkahPersatuan;
 use App\Models\ModelTPNMprogram;
+use App\Models\SimpanJawatandanMarkahsuksis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -67,7 +72,7 @@ class ProcessController extends Controller
     //     $data = [
     //         'NamaAktiviti' => $NamaAktiviti        
     //     ];
-    //     return View("layout.sukan", $data);
+    //     return View("profiling.sukan", $data);
     
     // }
     
@@ -101,7 +106,7 @@ class ProcessController extends Controller
              ->get();
     
              
-            return view('layout.sukan')
+            return view('profiling.sukan')
             ->with(compact('data'))
             ->with(compact('jenissukan'))
             ->with(compact('tahappencapaian'))
@@ -114,7 +119,7 @@ class ProcessController extends Controller
         $data = DB::table('tahap')
         ->select('*')
         ->get();
-        return View('layout.TahapPencapaian',compact('data'));
+        return view('parameters.tahappencapaian',compact('data'));
     }
     
     public function saveTP(Request $req){
@@ -174,7 +179,7 @@ class ProcessController extends Controller
         $data = DB::table('markah')
         ->select('*')
         ->get();
-        return View('layout.Markah',compact('data'));
+        return view('parameters.markah',compact('data'));
     }
     
     
@@ -252,12 +257,12 @@ class ProcessController extends Controller
 
             
                      
-                    return view('layout.editTPMsukan')
+                    return view('profiling.editTPMsukan')
                     ->with(compact('dataTPMsukan'))
                     ->with(compact('data'));
 
 
-        // return View('layout.editTPMsukan',$dataTPMsukan);
+        // return View('profiling.editTPMsukan',$dataTPMsukan);
  
     }
 
@@ -266,7 +271,7 @@ class ProcessController extends Controller
         $data = DB::table('jawatan')
         ->select('*')
         ->get();
-        return View('layout.jawatan',compact('data'));
+        return view('parameters.jawatan',compact('data'));
     }
 
     public function Pagepersatuan(){
@@ -317,7 +322,7 @@ class ProcessController extends Controller
 
  
           
-         return view('layout.persatuan')
+         return view('profiling.persatuan')
          ->with(compact('data'))
          ->with(compact('jenispersatuan'))
          ->with(compact('tahappencapaian'))
@@ -460,7 +465,7 @@ class ProcessController extends Controller
 
  
           
-         return view('layout.penerbitan')
+         return view('profiling.penerbitan')
          ->with(compact('data'))
          ->with(compact('jenispenerbitan'))
          ->with(compact('tahappencapaian'))
@@ -557,7 +562,7 @@ class ProcessController extends Controller
         ->get();
 
         
-       return view('layout.program')
+       return view('profiling.program')
        ->with(compact('data'))
        ->with(compact('jenisprogram'))
        ->with(compact('tahappencapaian'))
@@ -648,7 +653,7 @@ class ProcessController extends Controller
          ->get();
     
          
-        return view('layout.kebudayaan')
+        return view('profiling.kebudayaan')
         ->with(compact('data'))
         ->with(compact('jeniskebudayaan'))
         ->with(compact('tahappencapaian'))
@@ -711,8 +716,6 @@ class ProcessController extends Controller
 
     public function Pagepbsmm()
     {
-            
-        
         // $user = Auth::user();
         $data = DB::table('pbsmm')   
         ->join('jawatanpbsmm', 'pbsmm.jawatanpbsmmid', '=', 'jawatanpbsmm.jawatanpbsmmid') 
@@ -733,7 +736,7 @@ class ProcessController extends Controller
          ->get();
     
          
-        return view('layout.pbsmm')
+         return view('profiling.pbsmm')
         ->with(compact('data'))
         ->with(compact('jawatanpbsmm'))
         ->with(compact('markah'));
@@ -815,7 +818,7 @@ class ProcessController extends Controller
          ->get();
     
          
-        return view('layout.palapes')
+        return view('profiling.palapes')
         ->with(compact('data'))
         ->with(compact('jawatanpalapes'))
         ->with(compact('markah'));
@@ -903,7 +906,7 @@ class ProcessController extends Controller
          ->get();
 
          
-        return view('layout.anugerah')
+        return view('profiling.anugerah')
         ->with(compact('data'))
         ->with(compact('jenisanugerah'))
         ->with(compact('tahappencapaian'))
@@ -964,6 +967,224 @@ public function SimpanTPdanMarkahAnugerah(Request $req)
  return redirect('/anugerah');
 }
 
+
+    //arif
+    public function PageKhas(){
+    
+        
+        // $user = Auth::user();
+        $data = DB::table('khas')   
+        ->join('tahaphep', 'khas.tahaphepid', '=', 'tahaphep.tahaphepid') ////
+        ->join('markah', 'khas.markahid', '=', 'markah.markahid') 
+         ->select('khas.*','tahaphep.*','markah.*')
+
+         //->where('course.Cname','=','STA')  where statement
+         ->get();
+
+         $jeniskhas = DB::table('jeniskhas')        ////////////
+         ->select('*')
+
+         //->where('course.Cname','=','STA')  where statement
+         ->get();
+
+         $tahaphep = DB::table('tahaphep')        
+         ->select('*')
+         ->get();
+
+         $markah = DB::table('markah')        
+         ->select('*')
+
+         //->where('course.Cname','=','STA')  where statement
+         ->get();
+
+         
+        return view('profiling.khas')
+        ->with(compact('data'))
+        ->with(compact('jeniskhas'))
+        ->with(compact('tahaphep'))
+        ->with(compact('markah'));
+
+    }
+
+    public function SimpanJKhas(Request $req)
+    {
+        $JenisKhasNama = $req->jeniskhasnama;
+       
+        $validateData = $req->validate([
+            // 'id'=> 'required|unique:table, column, except,id'
+             'jeniskhasnama'=> 'required',                       
+    
+         ],
+         
+         [
+             // 'id.unique' => 'Number student sudah ada didalam sistem',
+             // 'id.required' => 'Number Student harus diletakkan',         
+             'jeniskhasnama.required' => 'Sila masukkan Nama Modul',         
+             // 'checkbox2'
+         ]);
+    
+     $newJS = new ModelJenisKhas();        
+     $newJS->jeniskhasnama = $JenisKhasNama;
+     $newJS->save();
+    
+     return redirect('/khas');
+    }
+
+
+
+    public function PageTahaphep(){
+    
+        $data = DB::table('tahaphep')
+        ->select('*')
+        ->get();
+        return view('parameters.tahaphep',compact('data'));
+    }
+    
+    public function SimpanTahaphepnama(Request $req)
+    {
+        $tahaphepnama = $req->tahaphepnama;
+       
+        $validateData = $req->validate([
+            // 'id'=> 'required|unique:table, column, except,id'
+             'tahaphepnama'=> 'required',                       
+    
+         ],
+         
+         [
+             // 'id.unique' => 'Number student sudah ada didalam sistem',
+             // 'id.required' => 'Number Student harus diletakkan',         
+             'tahaphepnama.required' => 'Sila masukkan Tahap HEP',         
+             // 'checkbox2'
+         ]);
+    
+     $newM = new Modeltahaphepnama();        
+     $newM->tahaphepnama = $tahaphepnama;
+     $newM->save();
+    
+     return redirect('/Tahaphep');
+    }
+
+    public function SimpanThdanmarkah(Request $req)
+    {
+        $Th = $req->Thkhas;
+        $Markah = $req->MarkahKhas;
+       
+        $validateData = $req->validate([
+            // 'id'=> 'required|unique:table, column, except,id'
+             'Thkhas'=> 'required',   
+             'MarkahKhas'=> 'required',                       
+    
+         ],
+         
+         [
+             // 'id.unique' => 'Number student sudah ada didalam sistem',
+             // 'id.required' => 'Number Student harus diletakkan',         
+             'Thkhas.required' => 'Sila masukkan Tahap HEP',  
+             'MarkahKhas.required' => 'Sila masukkan Markah khas',        
+             // 'checkbox2'
+         ]);
+    
+     $newM = new ModelThdanmarkahkhas();        
+     $newM->tahaphepid = $Th;
+     $newM->markahid = $Markah;
+     $newM->save();
+    
+     return redirect('/khas');
+    }
+
+    public function Pagesuksis()
+    {
+            
+        
+        // $user = Auth::user();
+        $data = DB::table('suksis')   
+        ->join('jawatansuksis', 'suksis.jawatansuksisid', '=', 'jawatansuksis.jawatansuksisid') 
+        ->join('markah', 'suksis.markahid', '=', 'markah.markahid') 
+         ->select('suksis.*','jawatansuksis.*','markah.*')
+    
+         //->where('course.Cname','=','STA')  where statement
+         ->get();
+    
+         $jawatansuksis = DB::table('jawatansuksis')        
+         ->select('*')
+         ->get();
+    
+         $markah = DB::table('markah')        
+         ->select('*')
+    
+         //->where('course.Cname','=','STA')  where statement
+         ->get();
+    
+         
+        return view('profiling.suksis')
+        ->with(compact('data'))
+        ->with(compact('jawatansuksis'))
+        ->with(compact('markah'));
+    }
+
+    
+
+    public function SimpanJawatansuksis(Request $req)
+    {
+        $jawatansuksis = $req->jawatansuksis;
+       
+        $validateData = $req->validate(
+            [
+            // 'id'=> 'required|unique:table, column, except,id'
+             'jawatansuksis'=> 'required',                       
+    
+         ],
+         
+         [
+             // 'id.unique' => 'Number student sudah ada didalam sistem',
+             // 'id.required' => 'Number Student harus diletakkan',         
+             'jawatansuksis.required' => 'Sila masukkan Jawatan SUKSIS',         
+             // 'checkbox2'
+         ]);
+    
+     $newJS = new Modeljawatansuksis();        
+     $newJS->jawatansuksis = $jawatansuksis;
+     $newJS->save();
+    
+     return redirect('/suksis');
+    }
+
+
+    public function SimpanJawatandanMarkahsuksis(Request $req)
+    {
+        $jwtsuksis = $req->TPjawatan;
+        $Markahsuksis = $req->Markahsuksis;
+       
+        $validateData = $req->validate([
+            // 'id'=> 'required|unique:table, column, except,id'
+             'TPjawatan'=> 'required',   
+             'Markahsuksis'=> 'required',                       
+    
+         ],
+         
+         [
+             // 'id.unique' => 'Number student sudah ada didalam sistem',
+             // 'id.required' => 'Number Student harus diletakkan',         
+             'TPjawatan.required' => 'Sila masukkan Jawatan SUKSIS',  
+             'Markahsuksis.required' => 'Sila masukkan Markah SUKSIS',        
+             // 'checkbox2'
+         ]);
+    
+     $newM = new SimpanJawatandanMarkahsuksis();        
+     $newM->jawatansuksisid = $jwtsuksis;
+     $newM->markahid = $Markahsuksis;
+     $newM->save();
+    
+     return redirect('/suksis');
+    }
+
+
+    //arif mencuba
+  
+
+    
+
+ 
 
 }
 
