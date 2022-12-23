@@ -26,13 +26,18 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::get('/',[LayoutController::class, 'index'])->middleware('auth');
-Route::get('/home',[LayoutController::class, 'index'])->middleware('auth');
+Route::get('/jawatan', [App\Http\Controllers\TblProfilJawatanController::class, 'index']);
+Route::resource('jawatan', App\Http\Controllers\TblProfilJawatanController::class);
 
-Route::controller(LoginController::class)->group(function(){
-    Route::get('login','index')->name('login');
+
+
+Route::get('/', [LayoutController::class, 'index'])->middleware('auth');
+Route::get('/home', [LayoutController::class, 'index'])->middleware('auth');
+
+Route::controller(LoginController::class)->group(function () {
+    Route::get('login', 'index')->name('login');
     Route::post('login/loginproses', 'loginproses');
-    Route::get('logout','logout');
+    Route::get('logout', 'logout');
     Route::get('login/login2', 'login2')->name('login2');
     Route::get('student/main', 'studentpage');
 });
@@ -41,7 +46,7 @@ Route::controller(LoginController::class)->group(function(){
 //     Route::group(['middleware'=>['cekUserLogin:1']],function(){
 //         Route::resource('beranda',Beranda::class);
 //         });
-          
+
 //         Route::group(['middleware'=>['cek:2']],function(){
 //             Route::resource('kasir',Kasir::class);
 //             });
@@ -52,126 +57,113 @@ Route::controller(LoginController::class)->group(function(){
 
 // general jangan usik
 
-    Route::controller(ProcessController::class)->group(function(){
-        Route::post('Simpan','save')->middleware('auth');
-        // Route::get('{NamaAktiviti}','buka');
-        Route::get('TahapPencapaian','PageTahapPencapaian')->middleware('auth');
-        Route::post('SimpanTahapPencapaian','saveTP');
-        Route::get('Markah','PageMarkah')->middleware('auth');
-        Route::post('SimpanMarkah','SimpanMarkah');
-        Route::get('editTPMsukan/{sukanid}','bukapageTPMsukan');
-        Route::get('jawatan','PageJawatan')->middleware('auth');
-        route::post('SimpanJawatan','simpanjawatan');
+Route::controller(ProcessController::class)->group(function () {
+    Route::post('Simpan', 'save')->middleware('auth');
+    // Route::get('{NamaAktiviti}','buka');
+    Route::get('TahapPencapaian', 'PageTahapPencapaian')->middleware('auth');
+    Route::post('SimpanTahapPencapaian', 'saveTP');
+    Route::get('Markah', 'PageMarkah')->middleware('auth');
+    Route::post('SimpanMarkah', 'SimpanMarkah');
+    Route::get('editTPMsukan/{sukanid}', 'bukapageTPMsukan');
+    //Route::get('jawatan','PageJawatan')->middleware('auth');
+    route::post('SimpanJawatan', 'simpanjawatan');
 
-        //arif cuba
-        
-        
-
-    });
-
-    //BAHAGIAN DANIEL SUKAN
-    Route::controller(ProcessController::class)->group(function(){
-        Route::get('sukan','PageSukan')->middleware('auth');
-        Route::post('SimpanSukan','SimpanTPdanMarkahSukan');
-        Route::post('SimpanJenisSukan','SimpanJSukan');
-    });
-    //habis BAHAGIAN DANIEL SUKAN
-
-    //BAHAGIAN DANIEL PERSATUAN/KELAB
-    Route::controller(ProcessController::class)->group(function(){
-         Route::get('persatuan','Pagepersatuan')->middleware('auth');
-         Route::post('Simpanjawatan','simpanTPMarkahjawatan');
-         Route::post('SimpanJenisPersatuan','SimpanJenisPersatuan');
-         
-    });
-    //HABIS BAHAGIAN DANIEL PERSATUAN/KELAB
-
-
-    //ARIF
-    Route::controller(ProcessController::class)->group(function(){
-        Route::get('penerbitan','Pagepenerbitan')->middleware('auth');
-        Route::post('SimpanjawatanPenerbitan','simpanTPMarkahjawatanPenerbitan');
-        Route::post('SimpanJenisPenerbitan','SimpanJenisPernebitan');
-        
-   });
-    
-
-      //FARED
-      Route::controller(ProcessController::class)->group(function(){
-        Route::get('anugerah','Pageanugerah')->middleware('auth');
-        Route::post('Simpananugerah','simpanTPdanMarkahAnugerah');
-        Route::post('SimpanJenisAnugerah','SimpanJenisAnugerah');
-    });
+    //arif cuba
 
 
 
-    //DANIEL PROGRAM TERTENTU
-    Route::controller(ProcessController::class)->group(function(){
-        Route::get('programtertentu','Pageprogramtertentu')->middleware('auth');
-        Route::post('Simpanjenisprogram','Simpanjenisprogram');
-        Route::post('SimpanProgram', 'SimpanTPNMprogram');
-    });
-    //END DANIEL PROGRAM TERTENTU
+});
+
+//BAHAGIAN DANIEL SUKAN
+Route::controller(ProcessController::class)->group(function () {
+    Route::get('sukan', 'PageSukan')->middleware('auth');
+    Route::post('SimpanSukan', 'SimpanTPdanMarkahSukan');
+    Route::post('SimpanJenisSukan', 'SimpanJSukan');
+});
+//habis BAHAGIAN DANIEL SUKAN
+
+//BAHAGIAN DANIEL PERSATUAN/KELAB
+Route::controller(ProcessController::class)->group(function () {
+    Route::get('persatuan', 'Pagepersatuan')->middleware('auth');
+    Route::post('Simpanjawatan', 'simpanTPMarkahjawatan');
+    Route::post('SimpanJenisPersatuan', 'SimpanJenisPersatuan');
+});
+//HABIS BAHAGIAN DANIEL PERSATUAN/KELAB
 
 
-    //ismi kebudayaan
-    Route::controller(ProcessController::class)->group(function(){
-        Route::get('kebudayaan','PageKebudayaan')->middleware('auth');
-        Route::post('SimpanKebudayaan','SimpanTPdanMarkahKebudayaan');
-        Route::post('SimpanJenisKebudayaan','SimpanJKebudayaan');
+//ARIF
+Route::controller(ProcessController::class)->group(function () {
+    Route::get('penerbitan', 'Pagepenerbitan')->middleware('auth');
+    Route::post('SimpanjawatanPenerbitan', 'simpanTPMarkahjawatanPenerbitan');
+    Route::post('SimpanJenisPenerbitan', 'SimpanJenisPernebitan');
+});
 
-    });
 
-    //Daniel pbsmm
-    Route::controller(ProcessController::class)->group(function(){
-        Route::get('pbsmm','Pagepbsmm')->middleware('auth');
-        Route::post('SimpanJawatanPBSMM','SimpanJawatanPBSMM');
-        Route::post('SimpanPBSMM','SimpanJawatandanMarkahPBSMM');
+//FARED
+Route::controller(ProcessController::class)->group(function () {
+    Route::get('anugerah', 'Pageanugerah')->middleware('auth');
+    Route::post('Simpananugerah', 'simpanTPdanMarkahAnugerah');
+    Route::post('SimpanJenisAnugerah', 'SimpanJenisAnugerah');
+});
 
-    });
-    
 
-    //DANIEL PALAPES
-    Route::controller(ProcessController::class)->group(function(){
-        Route::get('palapes','PagePalapes')->middleware('auth'); 
-        Route::post('SimpanJawatanpalapes','SimpanJawatanpalapes');
-        Route::post('Simpanpalapes','SimpanJawatandanMarkahPalapes');
 
-    });
-    
+//DANIEL PROGRAM TERTENTU
+Route::controller(ProcessController::class)->group(function () {
+    Route::get('programtertentu', 'Pageprogramtertentu')->middleware('auth');
+    Route::post('Simpanjenisprogram', 'Simpanjenisprogram');
+    Route::post('SimpanProgram', 'SimpanTPNMprogram');
+});
+//END DANIEL PROGRAM TERTENTU
 
-    // DANIEL PERTAHANAN AWAM
-    Route::controller(ProcessController::class)->group(function(){
-        Route::get('APM','PageAPM')->middleware('auth'); 
-        Route::post('SimpanJawatanAPM','SimpanJawatanAPM');
-        Route::post('SimpanAPM','SimpanJawatandanMarkahAPM');
 
-    });
+//ismi kebudayaan
+Route::controller(ProcessController::class)->group(function () {
+    Route::get('kebudayaan', 'PageKebudayaan')->middleware('auth');
+    Route::post('SimpanKebudayaan', 'SimpanTPdanMarkahKebudayaan');
+    Route::post('SimpanJenisKebudayaan', 'SimpanJKebudayaan');
+});
 
-    //arif
-    Route::controller(ProcessController::class)->group(function()
-    {
-        Route::get('khas','PageKhas')->middleware('auth');
-        Route::post('SimpanKhas','SimpanTPdanMarkahKhas');
-        Route::post('SimpanJenisKhas','SimpanJKhas');
-    });
+//Daniel pbsmm
+Route::controller(ProcessController::class)->group(function () {
+    Route::get('pbsmm', 'Pagepbsmm')->middleware('auth');
+    Route::post('SimpanJawatanPBSMM', 'SimpanJawatanPBSMM');
+    Route::post('SimpanPBSMM', 'SimpanJawatandanMarkahPBSMM');
+});
 
-    Route::controller(ProcessController::class)->group(function()
-    {
-        Route::get('suksis','Pagesuksis')->middleware('auth');
-        Route::post('SimpanJawatansuksis','SimpanJawatansuksis');
-        Route::post('SimpanJawatandanMarkahsuksis','SimpanJawatandanMarkahsuksis');
 
-    });
+//DANIEL PALAPES
+Route::controller(ProcessController::class)->group(function () {
+    Route::get('palapes', 'PagePalapes')->middleware('auth');
+    Route::post('SimpanJawatanpalapes', 'SimpanJawatanpalapes');
+    Route::post('Simpanpalapes', 'SimpanJawatandanMarkahPalapes');
+});
 
-    //arif
 
-    Route::controller(ProcessController::class)->group(function()
-    {
-        Route::get('Tahaphep','PageTahaphep')->middleware('auth');
-        Route::post('SimpanTahaphepnama','SimpanTahaphepnama');
-        Route::post('SimpanThdanmarkah','SimpanThdanmarkah');
+// DANIEL PERTAHANAN AWAM
+Route::controller(ProcessController::class)->group(function () {
+    Route::get('APM', 'PageAPM')->middleware('auth');
+    Route::post('SimpanJawatanAPM', 'SimpanJawatanAPM');
+    Route::post('SimpanAPM', 'SimpanJawatandanMarkahAPM');
+});
 
-    });
+//arif
+Route::controller(ProcessController::class)->group(function () {
+    Route::get('khas', 'PageKhas')->middleware('auth');
+    Route::post('SimpanKhas', 'SimpanTPdanMarkahKhas');
+    Route::post('SimpanJenisKhas', 'SimpanJKhas');
+});
 
-  
+Route::controller(ProcessController::class)->group(function () {
+    Route::get('suksis', 'Pagesuksis')->middleware('auth');
+    Route::post('SimpanJawatansuksis', 'SimpanJawatansuksis');
+    Route::post('SimpanJawatandanMarkahsuksis', 'SimpanJawatandanMarkahsuksis');
+});
+
+//arif
+
+Route::controller(ProcessController::class)->group(function () {
+    Route::get('Tahaphep', 'PageTahaphep')->middleware('auth');
+    Route::post('SimpanTahaphepnama', 'SimpanTahaphepnama');
+    Route::post('SimpanThdanmarkah', 'SimpanThdanmarkah');
+});

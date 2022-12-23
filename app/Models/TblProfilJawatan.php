@@ -12,5 +12,5 @@ class TblProfilJawatan extends Model
     protected $fillable = [
         'jawatan',
         'singkatan'
-    ]
+    ];
 }

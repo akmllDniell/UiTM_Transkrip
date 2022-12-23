@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\TblProfilJawatan;
 use Illuminate\Http\Request;
+use DataTables;
+use Carbon\Carbon;
 
 class TblProfilJawatanController extends Controller
 {
@@ -13,8 +15,9 @@ class TblProfilJawatanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {       
+        $data = TblProfilJawatan::all();
+        return view('parameter.jawatan.index', compact('data'));
     }
 
     /**
@@ -24,7 +27,7 @@ class TblProfilJawatanController extends Controller
      */
     public function create()
     {
-        //
+        return view('parameter.jawatan.create');
     }
 
     /**
@@ -35,7 +38,26 @@ class TblProfilJawatanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            //validation rules
+            [
+                'name' => ['required', 'min:3', 'max:100'],
+                'singkatan' => ['required', 'min:3', 'max:10']
+            ],
+            //validation messages
+            [
+                'required' => 'Medan : attribute diperlukan',
+                'code.size' => 'code mestilah 3 aksara',
+                'code.unique' => 'code telah wujud'
+            ]
+        );
+
+        TblProfilJawatan::create([
+            'jawatan' => $request->input('name'),
+            'singkatan' => $request->input('singkatan'),
+        ]);
+        //redirect routes
+        return redirect('/jawatan')->with('success', 'Stock saved.');
     }
 
     /**
@@ -55,9 +77,10 @@ class TblProfilJawatanController extends Controller
      * @param  \App\Models\TblProfilJawatan  $tblProfilJawatan
      * @return \Illuminate\Http\Response
      */
-    public function edit(TblProfilJawatan $tblProfilJawatan)
+    public function edit($id)
     {
-        //
+        $datas = TblProfilJawatan::find($id);
+        return view('parameter.jawatan.edit', compact('datas'));
     }
 
     /**
@@ -67,9 +90,25 @@ class TblProfilJawatanController extends Controller
      * @param  \App\Models\TblProfilJawatan  $tblProfilJawatan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TblProfilJawatan $tblProfilJawatan)
+    public function update(Request $request, $id)
     {
-        //
+        // Validation for required fields (and using some regex to validate our numeric value)
+        $request->validate(
+            //validation rules
+            [
+                'name' => ['required', 'min:3', 'max:100'],
+                'singkatan' => ['required', 'min:3', 'max:10']
+            ],
+            //validation messages
+            [
+                'required' => 'Medan : attribute diperlukan',
+                'singkatan.size' => 'code mestilah 3 aksara',
+                'singkatan.unique' => 'code telah wujud'
+            ]
+        );
+
+        TblProfilJawatan::find($id)->update($request->all());
+        return redirect()->route('jawatan.index')->with('success', 'Jawatan updated.');
     }
 
     /**
@@ -78,8 +117,10 @@ class TblProfilJawatanController extends Controller
      * @param  \App\Models\TblProfilJawatan  $tblProfilJawatan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TblProfilJawatan $tblProfilJawatan)
+    public function destroy($id)
     {
-        //
+        TblProfilJawatan::find($id)->delete();
+        return redirect()->route('jawatan.index')
+            ->with('success', 'User deleted successfully');
     }
 }
