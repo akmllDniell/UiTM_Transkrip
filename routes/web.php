@@ -27,6 +27,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/jawatan', [App\Http\Controllers\TblProfilJawatanController::class, 'index']);
+
+
 Route::resource('jawatan', App\Http\Controllers\TblProfilJawatanController::class);
 
 

@@ -57,7 +57,7 @@ class TblProfilJawatanController extends Controller
             'singkatan' => $request->input('singkatan'),
         ]);
         //redirect routes
-        return redirect('/jawatan')->with('success', 'Stock saved.');
+        return redirect('/jawatan')->with('success', 'Data saved.');
     }
 
     /**
