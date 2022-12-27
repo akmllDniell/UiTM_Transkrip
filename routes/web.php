@@ -47,6 +47,12 @@ Route::resource('tahaphep', App\Http\Controllers\TblProfilTahapHepController::cl
 // tahap hep
 
 
+//markah
+Route::get('/markah', [App\Http\Controllers\TblProfilMarkahController::class, 'index']);
+
+
+Route::resource('markah', App\Http\Controllers\TblProfilMarkahController::class);
+//markah
 
 
 Route::get('/', [LayoutController::class, 'index'])->middleware('auth');

@@ -182,7 +182,7 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item ">
-                <a href="Markah" class="nav-link">
+                <a href="/markah" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Markah</p>
                 </a>
