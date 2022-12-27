@@ -25,11 +25,20 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-
+// Jawatan
 Route::get('/jawatan', [App\Http\Controllers\TblProfilJawatanController::class, 'index']);
 
 
 Route::resource('jawatan', App\Http\Controllers\TblProfilJawatanController::class);
+// Jawatan
+
+// Tahap Pencapaian
+Route::get('/tahappencapaian', [App\Http\Controllers\TblProfilTahapPencapaianController::class, 'index']);
+
+
+Route::resource('tahappencapaian', App\Http\Controllers\TblProfilTahapPencapaianController::class);
+// tahap pencapaian
+
 
 
 
@@ -62,7 +71,7 @@ Route::controller(LoginController::class)->group(function () {
 Route::controller(ProcessController::class)->group(function () {
     Route::post('Simpan', 'save')->middleware('auth');
     // Route::get('{NamaAktiviti}','buka');
-    Route::get('TahapPencapaian', 'PageTahapPencapaian')->middleware('auth');
+    // Route::get('TahapPencapaian', 'PageTahapPencapaian')->middleware('auth');
     Route::post('SimpanTahapPencapaian', 'saveTP');
     Route::get('Markah', 'PageMarkah')->middleware('auth');
     Route::post('SimpanMarkah', 'SimpanMarkah');
