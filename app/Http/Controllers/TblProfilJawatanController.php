@@ -101,13 +101,16 @@ class TblProfilJawatanController extends Controller
             ],
             //validation messages
             [
-                'required' => 'Medan : attribute diperlukan',
+                'required' => 'Medan : attribute diperlukan',                
                 'singkatan.size' => 'code mestilah 3 aksara',
                 'singkatan.unique' => 'code telah wujud'
             ]
         );
 
-        TblProfilJawatan::find($id)->update($request->all());
+        TblProfilJawatan::find($id)->update([
+            'jawatan' => $request->input('name'),
+            'singkatan' => $request->input('singkatan'),
+        ]);
         return redirect()->route('jawatan.index')->with('success', 'Jawatan updated.');
     }
 

@@ -210,7 +210,7 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item ">
-                <a href="Badanberuniform" class="nav-link">
+                <a href="/badanuniform" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Badan Beruniform</p>
                 </a>

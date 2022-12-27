@@ -5,7 +5,9 @@ use App\Http\Controllers\Kasir;
 use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProcessController;
+use App\Http\Controllers\TblProfilBadanBeruniformController;
 use App\Http\Middleware\CekUserLogin;
+use App\Models\TblProfilBadanBeruniform;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,39 +22,62 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 // Jawatan
 Route::get('/jawatan', [App\Http\Controllers\TblProfilJawatanController::class, 'index']);
-
-
 Route::resource('jawatan', App\Http\Controllers\TblProfilJawatanController::class);
-// Jawatan
+// End Jawatan
+
 
 // Tahap Pencapaian
 Route::get('/tahappencapaian', [App\Http\Controllers\TblProfilTahapPencapaianController::class, 'index']);
-
-
 Route::resource('tahappencapaian', App\Http\Controllers\TblProfilTahapPencapaianController::class);
-// tahap pencapaian
+// End tahap pencapaian
+
 
 // Tahap hep
 Route::get('/tahaphep', [App\Http\Controllers\TblProfilTahapHepController::class, 'index']);
-
-
 Route::resource('tahaphep', App\Http\Controllers\TblProfilTahapHepController::class);
-// tahap hep
+// End tahap hep
 
 
 //markah
 Route::get('/markah', [App\Http\Controllers\TblProfilMarkahController::class, 'index']);
-
-
 Route::resource('markah', App\Http\Controllers\TblProfilMarkahController::class);
-//markah
+// End markah
+
+
+//badan beruniform
+Route::get('/badanuniform',[\App\Http\Controllers\TblProfilBadanBeruniformController::class, 'index']);
+Route::resource('badanuniform', App\Http\Controllers\TblProfilBadanBeruniformController::class);
+//Route::resource('badanuniform',[\App\Http\Controllers\TblProfilBadanBeruniformController::class]);
+//End badan beruniform
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Route::get('/', [LayoutController::class, 'index'])->middleware('auth');
