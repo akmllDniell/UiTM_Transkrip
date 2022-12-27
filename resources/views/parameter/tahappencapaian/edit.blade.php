@@ -42,8 +42,8 @@
     @method('PATCH') 
     <div class="form-group">
         <label >Nama Tahap Pencapaian</label>
-        <input type="text" name="name" value="{{$datas->pencapaian}}" class="form-control @error('name') is-invalid  @enderror">
-        @error('name')
+        <input type="text" name="pencapaian" value="{{$datas->pencapaian}}" class="form-control @error('pencapaian') is-invalid  @enderror">
+        @error('pencapaian')
         <span class="invalid-feedback">
             {{$message}}
         </span>

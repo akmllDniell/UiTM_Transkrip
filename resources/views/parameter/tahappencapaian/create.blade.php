@@ -40,8 +40,8 @@
 
     <div class="form-group">
         <label >Nama Tahap Pencapaian</label>
-        <input type="text" name="name" value="{{old('name')}}" class="form-control @error('name') is-invalid  @enderror">
-        @error('name')
+        <input type="text" name="pencapaian" value="{{old('pencapaian')}}" class="form-control @error('pencapaian') is-invalid  @enderror">
+        @error('pencapaian')
         <span class="invalid-feedback">
             {{$message}}
         </span>

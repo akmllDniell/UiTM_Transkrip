@@ -39,7 +39,7 @@ class TblProfilTahapPencapaianController extends Controller
         $request->validate(
             //validation rules
             [
-                'name' => ['required', 'min:3', 'max:100'],
+                'pencapaian' => ['required', 'min:3', 'max:100'],
             ],
             //validation messages
             [
@@ -50,7 +50,7 @@ class TblProfilTahapPencapaianController extends Controller
         );
 
         TblProfilTahapPencapaian::create([
-            'pencapaian' => $request->input('name')
+            'pencapaian' => $request->input('pencapaian')
         ]);
         //redirect routes
         return redirect('/tahappencapaian')->with('success', 'Data saved.');
@@ -92,7 +92,7 @@ class TblProfilTahapPencapaianController extends Controller
         $request->validate(
             //validation rules
             [
-                'name' => ['required', 'min:3', 'max:100']
+                'pencapaian' => ['required', 'min:3', 'max:100']
             ],
             //validation messages
             [
