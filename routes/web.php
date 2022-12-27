@@ -39,6 +39,13 @@ Route::get('/tahappencapaian', [App\Http\Controllers\TblProfilTahapPencapaianCon
 Route::resource('tahappencapaian', App\Http\Controllers\TblProfilTahapPencapaianController::class);
 // tahap pencapaian
 
+// Tahap hep
+Route::get('/tahaphep', [App\Http\Controllers\TblProfilTahapHepController::class, 'index']);
+
+
+Route::resource('tahaphep', App\Http\Controllers\TblProfilTahapHepController::class);
+// tahap hep
+
 
 
 

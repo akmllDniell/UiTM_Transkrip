@@ -200,7 +200,7 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item ">
-                <a href="Tahaphep" class="nav-link">
+                <a href="/tahaphep" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tahap Hep</p>
                 </a>
