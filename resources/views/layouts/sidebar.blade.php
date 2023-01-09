@@ -48,7 +48,7 @@
             
             <ul class="nav nav-treeview">
               <li class="nav-item ">
-                <a href="sukan" class="nav-link active ">
+                <a href="/sukan" class="nav-link active ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>SUKAN</p>
                 </a>
@@ -142,9 +142,9 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="programtertentu" class="nav-link">
+                <a href="/uniform" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>contoh</p>
+                  <p>UNIFORM (TEST)</p>
                 </a>
               </li>
             </ul>
@@ -173,7 +173,11 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item ">
+<<<<<<< Updated upstream
                 <a href=" TahapPencapaian" class="nav-link">
+=======
+                <a href="/tahappencapaian" class="nav-link">
+>>>>>>> Stashed changes
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tahap Pencapaian</p>
                 </a>
@@ -213,6 +217,15 @@
                 <a href="Badanberuniform" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Badan Beruniform</p>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item ">
+                <a href="/badanuniform" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Jawatan Badan Beruniform</p>
                 </a>
               </li>
             </ul>
