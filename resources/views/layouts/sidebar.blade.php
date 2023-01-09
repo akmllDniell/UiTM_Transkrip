@@ -173,11 +173,7 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item ">
-<<<<<<< Updated upstream
-                <a href=" TahapPencapaian" class="nav-link">
-=======
                 <a href="/tahappencapaian" class="nav-link">
->>>>>>> Stashed changes
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tahap Pencapaian</p>
                 </a>
@@ -186,7 +182,7 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item ">
-                <a href="Markah" class="nav-link">
+                <a href="/markah" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Markah</p>
                 </a>
@@ -204,7 +200,7 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item ">
-                <a href="Tahaphep" class="nav-link">
+                <a href="/tahaphep" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tahap Hep</p>
                 </a>
@@ -214,7 +210,7 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item ">
-                <a href="Badanberuniform" class="nav-link">
+                <a href="/badanuniform" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Badan Beruniform</p>
                 </a>

@@ -5,16 +5,17 @@ use App\Http\Controllers\Kasir;
 use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProcessController;
-<<<<<<< Updated upstream
+
 use App\Http\Middleware\CekUserLogin;
-=======
 use App\Http\Controllers\TblJawatanUniformController;
 use App\Http\Controllers\TblProfilBadanBeruniformController;
 use App\Http\Controllers\TblSukanController;
 use App\Http\Middleware\CekUserLogin;
 use App\Models\TblProfilBadanBeruniform;
 use App\Models\TblSukan;
->>>>>>> Stashed changes
+use App\Http\Controllers\TblProfilBadanBeruniformController;
+use App\Http\Middleware\CekUserLogin;
+use App\Models\TblProfilBadanBeruniform;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -29,8 +30,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-<<<<<<< Updated upstream
-=======
+
 // Jawatan
 Route::get('/jawatan', [App\Http\Controllers\TblProfilJawatanController::class, 'index']);
 Route::resource('jawatan', App\Http\Controllers\TblProfilJawatanController::class);
@@ -65,8 +65,12 @@ Route::resource('badanuniform', App\Http\Controllers\TblProfilBadanBeruniformCon
 
 
 
+
 //jawatan uniform
 Route::get('/uniform',[\App\Http\Controllers\TblJawatanUniformController::class,'index']);
+
+
+
 
 
 
@@ -86,17 +90,14 @@ Route::post('Jenissukan',[\App\Http\Controllers\TblSukanController::class, 'stor
 
 
 
->>>>>>> Stashed changes
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 
-Route::get('/jawatan', [App\Http\Controllers\TblProfilJawatanController::class, 'index']);
 
 
-Route::resource('jawatan', App\Http\Controllers\TblProfilJawatanController::class);
+
+
+
+
 
 
 
@@ -129,7 +130,7 @@ Route::controller(LoginController::class)->group(function () {
 Route::controller(ProcessController::class)->group(function () {
     Route::post('Simpan', 'save')->middleware('auth');
     // Route::get('{NamaAktiviti}','buka');
-    Route::get('TahapPencapaian', 'PageTahapPencapaian')->middleware('auth');
+    // Route::get('TahapPencapaian', 'PageTahapPencapaian')->middleware('auth');
     Route::post('SimpanTahapPencapaian', 'saveTP');
     Route::get('Markah', 'PageMarkah')->middleware('auth');
     Route::post('SimpanMarkah', 'SimpanMarkah');

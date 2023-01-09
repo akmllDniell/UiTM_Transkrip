@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TblProfilJawatan;
+use App\Models\TblProfilMarkah;
 use Illuminate\Http\Request;
-use DataTables;
-use Carbon\Carbon;
 
-class TblProfilJawatanController extends Controller
+class TblProfilMarkahController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +13,10 @@ class TblProfilJawatanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {       
-        $data = TblProfilJawatan::all();
-        return view('parameter.jawatan.index', compact('data'));
+    {
+        $data = TblProfilMarkah::all();
+        return view ('parameter.markah.index' , compact('data'));
+
     }
 
     /**
@@ -27,7 +26,7 @@ class TblProfilJawatanController extends Controller
      */
     public function create()
     {
-        return view('parameter.jawatan.create');
+        return view('parameter.markah.create');
     }
 
     /**
@@ -41,32 +40,31 @@ class TblProfilJawatanController extends Controller
         $request->validate(
             //validation rules
             [
-                'name' => ['required', 'min:3', 'max:100'],
-                'singkatan' => ['required', 'min:3', 'max:10']
+                'markah' => ['required','numeric']
             ],
-            //validation messages
-            [
+             //validation messages
+             [
                 'required' => 'Medan : attribute diperlukan',
+                'numeric' => 'Markah mesti dalam bentuk nombor',
                 'code.size' => 'code mestilah 3 aksara',
                 'code.unique' => 'code telah wujud'
             ]
-        );
+      );
 
-        TblProfilJawatan::create([
-            'jawatan' => $request->input('name'),
-            'singkatan' => $request->input('singkatan'),
-        ]);
-        //redirect routes
-        return redirect('/jawatan')->with('success', 'Data saved.');
+      TblProfilMarkah::create([
+        'markah' => $request->input('markah')
+      ]);
+      //redirect routes
+      return redirect('/markah')->with('success', 'Data saved.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TblProfilJawatan  $tblProfilJawatan
+     * @param  \App\Models\TblProfilMarkah  $tblProfilMarkah
      * @return \Illuminate\Http\Response
      */
-    public function show(TblProfilJawatan $tblProfilJawatan)
+    public function show(TblProfilMarkah $tblProfilMarkah)
     {
         //
     }
@@ -74,20 +72,20 @@ class TblProfilJawatanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TblProfilJawatan  $tblProfilJawatan
+     * @param  \App\Models\TblProfilMarkah  $tblProfilMarkah
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $datas = TblProfilJawatan::find($id);
-        return view('parameter.jawatan.edit', compact('datas'));
+        $datas = TblProfilMarkah::find($id);
+        return view('parameter.markah.edit', compact('datas'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TblProfilJawatan  $tblProfilJawatan
+     * @param  \App\Models\TblProfilMarkah  $tblProfilMarkah
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -96,34 +94,34 @@ class TblProfilJawatanController extends Controller
         $request->validate(
             //validation rules
             [
-                'name' => ['required', 'min:3', 'max:100'],
-                'singkatan' => ['required', 'min:3', 'max:10']
+                'markah' => ['required','numeric']
             ],
+
             //validation messages
             [
-                'required' => 'Medan : attribute diperlukan',                
-                'singkatan.size' => 'code mestilah 3 aksara',
-                'singkatan.unique' => 'code telah wujud'
+                'required' => 'Medan : attribute diperlukan',
+                'numeric' => 'Markah mesti dalam bentuk nombor',
+                'code.size' => 'code mestilah 3 aksara',
+                'code.unique' => 'code telah wujud'
             ]
         );
 
-        TblProfilJawatan::find($id)->update([
-            'jawatan' => $request->input('name'),
-            'singkatan' => $request->input('singkatan'),
-        ]);
-        return redirect()->route('jawatan.index')->with('success', 'Jawatan updated.');
+        
+        TblProfilMarkah::find($id)->update($request->all());
+        return redirect()->route('markah.index')->with('success', 'Markah updated.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TblProfilJawatan  $tblProfilJawatan
+     * @param  \App\Models\TblProfilMarkah  $tblProfilMarkah
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        TblProfilJawatan::find($id)->delete();
-        return redirect()->route('jawatan.index')
+        
+        TblProfilMarkah::find($id)->delete();
+        return redirect()->route('markah.index')
             ->with('success', 'User deleted successfully');
     }
 }

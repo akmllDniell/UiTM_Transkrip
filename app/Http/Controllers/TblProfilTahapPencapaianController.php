@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TblProfilJawatan;
+use App\Models\TblProfilTahapPencapaian;
 use Illuminate\Http\Request;
-use DataTables;
-use Carbon\Carbon;
 
-class TblProfilJawatanController extends Controller
+class TblProfilTahapPencapaianController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +13,9 @@ class TblProfilJawatanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {       
-        $data = TblProfilJawatan::all();
-        return view('parameter.jawatan.index', compact('data'));
+    {
+         $data = TblProfilTahapPencapaian::all();
+        return view('parameter.tahappencapaian.index', compact('data'));
     }
 
     /**
@@ -27,7 +25,7 @@ class TblProfilJawatanController extends Controller
      */
     public function create()
     {
-        return view('parameter.jawatan.create');
+        return view('parameter.tahappencapaian.create');
     }
 
     /**
@@ -41,8 +39,7 @@ class TblProfilJawatanController extends Controller
         $request->validate(
             //validation rules
             [
-                'name' => ['required', 'min:3', 'max:100'],
-                'singkatan' => ['required', 'min:3', 'max:10']
+                'pencapaian' => ['required', 'min:3', 'max:100'],
             ],
             //validation messages
             [
@@ -52,21 +49,20 @@ class TblProfilJawatanController extends Controller
             ]
         );
 
-        TblProfilJawatan::create([
-            'jawatan' => $request->input('name'),
-            'singkatan' => $request->input('singkatan'),
+        TblProfilTahapPencapaian::create([
+            'pencapaian' => $request->input('pencapaian')
         ]);
         //redirect routes
-        return redirect('/jawatan')->with('success', 'Data saved.');
+        return redirect('/tahappencapaian')->with('success', 'Data saved.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TblProfilJawatan  $tblProfilJawatan
+     * @param  \App\Models\TblProfilTahapPencapaian  $tblProfilTahapPencapaian
      * @return \Illuminate\Http\Response
      */
-    public function show(TblProfilJawatan $tblProfilJawatan)
+    public function show(TblProfilTahapPencapaian $tblProfilTahapPencapaian)
     {
         //
     }
@@ -74,20 +70,20 @@ class TblProfilJawatanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TblProfilJawatan  $tblProfilJawatan
+     * @param  \App\Models\TblProfilTahapPencapaian  $tblProfilTahapPencapaian
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $datas = TblProfilJawatan::find($id);
-        return view('parameter.jawatan.edit', compact('datas'));
+        $datas = TblProfilTahapPencapaian::find($id);
+        return view('parameter.tahappencapaian.edit', compact('datas'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TblProfilJawatan  $tblProfilJawatan
+     * @param  \App\Models\TblProfilTahapPencapaian  $tblProfilTahapPencapaian
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -96,34 +92,30 @@ class TblProfilJawatanController extends Controller
         $request->validate(
             //validation rules
             [
-                'name' => ['required', 'min:3', 'max:100'],
-                'singkatan' => ['required', 'min:3', 'max:10']
+                'pencapaian' => ['required', 'min:3', 'max:100']
             ],
             //validation messages
             [
-                'required' => 'Medan : attribute diperlukan',                
+                'required' => 'Medan : attribute diperlukan',
                 'singkatan.size' => 'code mestilah 3 aksara',
                 'singkatan.unique' => 'code telah wujud'
             ]
         );
 
-        TblProfilJawatan::find($id)->update([
-            'jawatan' => $request->input('name'),
-            'singkatan' => $request->input('singkatan'),
-        ]);
-        return redirect()->route('jawatan.index')->with('success', 'Jawatan updated.');
+        TblProfilTahapPencapaian::find($id)->update($request->all());
+        return redirect()->route('tahappencapaian.index')->with('success', 'Tahap Pencapaian updated.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TblProfilJawatan  $tblProfilJawatan
+     * @param  \App\Models\TblProfilTahapPencapaian  $tblProfilTahapPencapaian
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        TblProfilJawatan::find($id)->delete();
-        return redirect()->route('jawatan.index')
+        TblProfilTahapPencapaian::find($id)->delete();
+        return redirect()->route('tahappencapaian.index')
             ->with('success', 'User deleted successfully');
     }
 }
