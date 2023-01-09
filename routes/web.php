@@ -10,12 +10,8 @@ use App\Http\Middleware\CekUserLogin;
 use App\Http\Controllers\TblJawatanUniformController;
 use App\Http\Controllers\TblProfilBadanBeruniformController;
 use App\Http\Controllers\TblSukanController;
-use App\Http\Middleware\CekUserLogin;
 use App\Models\TblProfilBadanBeruniform;
 use App\Models\TblSukan;
-use App\Http\Controllers\TblProfilBadanBeruniformController;
-use App\Http\Middleware\CekUserLogin;
-use App\Models\TblProfilBadanBeruniform;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
