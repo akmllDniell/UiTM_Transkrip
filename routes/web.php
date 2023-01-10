@@ -77,7 +77,17 @@ Route::resource('sukan', App\Http\Controllers\TblSukanController::class);
 Route::post('Jenissukan',[\App\Http\Controllers\TblSukanController::class, 'storejenissukan']);
 //end sukan
 
+//sijil
+Route::get('/sijil',[\App\Http\Controllers\TblSijilController::class,'index']);
+Route::resource('sijil', App\Http\Controllers\TblSijilController::class);
+//Route::post('Jenissukan',[\App\Http\Controllers\TblSukanController::class, 'storejenissukan']);
 
+//Jenis sijil
+    Route::get('/jenissijil', [App\Http\Controllers\TblJenisSijilController::class, 'index']);
+    Route::resource('jenissijil', App\Http\Controllers\TblJenisSijilController::class);
+//Jenis sijil
+
+//end sijil
 
 
 
@@ -166,11 +176,11 @@ Route::controller(ProcessController::class)->group(function () {
 
 
 //FARED
-Route::controller(ProcessController::class)->group(function () {
-    Route::get('anugerah', 'Pageanugerah')->middleware('auth');
-    Route::post('Simpananugerah', 'simpanTPdanMarkahAnugerah');
-    Route::post('SimpanJenisAnugerah', 'SimpanJenisAnugerah');
-});
+// Route::controller(ProcessController::class)->group(function () {
+//     Route::get('anugerah', 'Pageanugerah')->middleware('auth');
+//     Route::post('Simpananugerah', 'simpanTPdanMarkahAnugerah');
+//     Route::post('SimpanJenisAnugerah', 'SimpanJenisAnugerah');
+// });
 
 
 
