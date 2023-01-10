@@ -5,9 +5,13 @@ use App\Http\Controllers\Kasir;
 use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProcessController;
-use App\Http\Controllers\TblProfilBadanBeruniformController;
+
 use App\Http\Middleware\CekUserLogin;
+use App\Http\Controllers\TblJawatanUniformController;
+use App\Http\Controllers\TblProfilBadanBeruniformController;
+use App\Http\Controllers\TblSukanController;
 use App\Models\TblProfilBadanBeruniform;
+use App\Models\TblSukan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +26,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 // Jawatan
 Route::get('/jawatan', [App\Http\Controllers\TblProfilJawatanController::class, 'index']);
 Route::resource('jawatan', App\Http\Controllers\TblProfilJawatanController::class);
@@ -57,10 +62,32 @@ Route::resource('badanuniform', App\Http\Controllers\TblProfilBadanBeruniformCon
 
 
 
+//jawatan uniform
+Route::get('/uniform',[\App\Http\Controllers\TblJawatanUniformController::class,'index']);
 
 
 
 
+
+
+
+//sukan
+Route::get('/sukan',[\App\Http\Controllers\TblSukanController::class,'index']);
+Route::resource('sukan', App\Http\Controllers\TblSukanController::class);
+Route::post('Jenissukan',[\App\Http\Controllers\TblSukanController::class, 'storejenissukan']);
+//end sukan
+
+//sijil
+Route::get('/sijil',[\App\Http\Controllers\TblSijilController::class,'index']);
+Route::resource('sijil', App\Http\Controllers\TblSijilController::class);
+//Route::post('Jenissukan',[\App\Http\Controllers\TblSukanController::class, 'storejenissukan']);
+
+//Jenis sijil
+    Route::get('/jenissijil', [App\Http\Controllers\TblJenisSijilController::class, 'index']);
+    Route::resource('jenissijil', App\Http\Controllers\TblJenisSijilController::class);
+//Jenis sijil
+
+//end sijil
 
 
 
@@ -125,7 +152,7 @@ Route::controller(ProcessController::class)->group(function () {
 
 //BAHAGIAN DANIEL SUKAN
 Route::controller(ProcessController::class)->group(function () {
-    Route::get('sukan', 'PageSukan')->middleware('auth');
+    Route::get('sukan2', 'PageSukan')->middleware('auth');
     Route::post('SimpanSukan', 'SimpanTPdanMarkahSukan');
     Route::post('SimpanJenisSukan', 'SimpanJSukan');
 });
@@ -149,11 +176,11 @@ Route::controller(ProcessController::class)->group(function () {
 
 
 //FARED
-Route::controller(ProcessController::class)->group(function () {
-    Route::get('anugerah', 'Pageanugerah')->middleware('auth');
-    Route::post('Simpananugerah', 'simpanTPdanMarkahAnugerah');
-    Route::post('SimpanJenisAnugerah', 'SimpanJenisAnugerah');
-});
+// Route::controller(ProcessController::class)->group(function () {
+//     Route::get('anugerah', 'Pageanugerah')->middleware('auth');
+//     Route::post('Simpananugerah', 'simpanTPdanMarkahAnugerah');
+//     Route::post('SimpanJenisAnugerah', 'SimpanJenisAnugerah');
+// });
 
 
 

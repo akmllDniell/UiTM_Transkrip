@@ -28,6 +28,9 @@ use App\Models\ModelTPdanMPenerbitan;
 use App\Models\ModelTPMarkahPersatuan;
 use App\Models\ModelTPNMprogram;
 use App\Models\SimpanJawatandanMarkahsuksis;
+use App\Models\TblProfilMarkah;
+use App\Models\TblProfilTahapPencapaian;
+use App\Models\TblSukan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -81,32 +84,44 @@ class ProcessController extends Controller
     
         
             // $user = Auth::user();
-            $data = DB::table('sukan')   
-            ->join('tahap', 'sukan.tahapid', '=', 'tahap.tahapid') 
-            ->join('markah', 'sukan.markahid', '=', 'markah.markahid') 
-             ->select('sukan.*','tahap.*','markah.*')
+            // $data = DB::table('tbl_sukans')   
+            // ->join('tbl_profil_tahap_pencapaians', 'tbl_sukans.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
+            // ->join('tbl_profil_markahs', 'tbl_sukans.idmarkah', '=', 'tbl_profil_markahs.id') 
+            //  ->select('tbl_sukans.*','tbl_profil_tahap_pencapaians.*','tbl_profil_markahs.*')
+            //  ->get();
     
-             //->where('course.Cname','=','STA')  where statement
+            //  //->where('course.Cname','=','STA')  where statement            
+    
+            //  $jenissukan = DB::table('tbl_jenis_sukans')        
+            //  ->select('*')             
+            //  ->get();
+    
+            //  $tahappencapaian = DB::table('tahap')        
+            //  ->select('*')
+            //  ->get();
+    
+            //  $markah = DB::table('markah')        
+            //  ->select('*')
+    
+            //  //->where('course.Cname','=','STA')  where statement
+            //  ->get();
+            
+            $data = DB::table('tbl_sukans')   
+            ->join('tbl_profil_tahap_pencapaians', 'tbl_sukans.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
+            ->join('tbl_profil_markahs', 'tbl_sukans.idmarkah', '=', 'tbl_profil_markahs.id') 
+             ->select('tbl_sukans.*','tbl_profil_tahap_pencapaians.*','tbl_profil_markahs.*')
              ->get();
-    
-             $jenissukan = DB::table('jenissukan')        
-             ->select('*')
-    
-             //->where('course.Cname','=','STA')  where statement
+
+             $jenissukan = DB::table('tbl_jenis_sukans')        
+             ->select('*')             
              ->get();
-    
-             $tahappencapaian = DB::table('tahap')        
-             ->select('*')
-             ->get();
-    
-             $markah = DB::table('markah')        
-             ->select('*')
-    
-             //->where('course.Cname','=','STA')  where statement
-             ->get();
+
+            $markah = TblProfilMarkah::all();
+            $tahappencapaian = TblProfilTahapPencapaian::all();
+
     
              
-            return view('profiling.sukan')
+            return view('profiling.sukan2')
             ->with(compact('data'))
             ->with(compact('jenissukan'))
             ->with(compact('tahappencapaian'))
