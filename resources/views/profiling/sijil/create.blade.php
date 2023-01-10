@@ -11,7 +11,7 @@
                   <div class="container-fluid">
                     <div class="row mb-2">
                       <div class="col-sm-6">
-                        <h1>Add Anugerah/Sijil Kecemerlangan</h1>
+                        <h2>Add Anugerah/Sijil Kecemerlangan</h2>
                       </div>
                       <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -34,6 +34,13 @@
     @endforeach
 </div>
 @endif
+
+
+
+
+
+
+
 
 <form action="/sijil" method="post">
     @csrf

@@ -99,7 +99,7 @@ class TblSijilController extends Controller
      */
     public function edit($id)
     {
-        $data= TblSijil::find($id);
+        // $data= TblSijil::find($id);
 
         // $datasukan = DB::table('tbl_sukans')   
         //  ->join('tbl_profil_tahap_pencapaians', 'tbl_sukans.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
@@ -108,13 +108,22 @@ class TblSijilController extends Controller
         //  ->where('tbl_sukans.id','=','$id') 
         //  ->get();
 
+        $data= DB::table('tbl_sijils') 
+        ->join('tbl_profil_tahap_pencapaians', 'tbl_sijils.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
+        ->join('tbl_profil_markahs', 'tbl_sijils.idmarkah', '=', 'tbl_profil_markahs.id') 
+        ->where('tbl_sijils.id','=', $id)
+        ->select('*')        
+        ->first();
+
+        $datas = TblSijil::find($id);
+
          $markah = TblProfilMarkah::all();
          
          $tahappencapaian = TblProfilTahapPencapaian::all();
 
         return view('profiling.sijil.edit')
         -> with(compact('data'))
-        // -> with(compact('datasukan'))
+        -> with(compact('datas'))
         -> with(compact('markah'))
         -> with(compact('tahappencapaian'));
     }
@@ -126,9 +135,27 @@ class TblSijilController extends Controller
      * @param  \App\Models\TblSijil  $tblSijil
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TblSijil $tblSijil)
+    public function update(Request $request, $id)
     {
-        //
+    
+        $request->validate(
+            //validation rules
+            [
+                'idmarkah' => ['required'],
+                'idTP' => ['required'],
+            ],
+            //validation messages
+            [
+                'idmarkah.required' => 'Sila pilih markah',
+                'idTP.required' => 'Sila pilih Tahap pencapaian',
+            ]
+        );
+
+        TblSijil::find($id)->update([
+            'idmarkah' => $request->input('idmarkah'),
+            'idTP' => $request->input('idTP'),
+        ]);
+        return redirect()->route('sijil.index')->with('success', 'Sijil updated.');
     }
 
     /**

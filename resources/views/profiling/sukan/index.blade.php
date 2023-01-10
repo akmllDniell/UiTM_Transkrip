@@ -39,7 +39,7 @@ Sukan Page
                   <div class="form-popup-bg">
                     <div class="form-container">
                       <button id="btnCloseForm" class="close-button">X</button>
-                      <form method="POST" action="Jenissukan" >
+                      <form method="POST" action="{{ route('simpanjenissukan') }}">
                         @csrf
                         <div class="card card-info">
                           <div class="card-header">
@@ -73,10 +73,10 @@ Sukan Page
             <tr>              
             <td>{{$d->jenissukan}}</td>
             <td>
-              <form action="{{ route('sukan.destroy',$d->id) }}" method="post" onsubmit="return confirm('Are sure to delete?')">
+              <form action="{{ route('destroyjenissukan',$d->id) }}" method="post" onsubmit="return confirm('Are sure to delete?')">
                       @csrf
                       @method('delete')
-                      <a href="{{ route('sukan.edit',$d->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                      <a href="{{ route('editjsukan',$d->id) }}" class="btn btn-sm btn-warning">Edit</a>
                       <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                     </form>
             </td>

@@ -89,6 +89,94 @@ class TblSukanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\TblSukan  $tblSukan
+     * @return \Illuminate\Http\Response
+     */
+    public function show(TblSukan $tblSukan)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\TblSukan  $tblSukan
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {        
+        $data= DB::table('tbl_sukans') 
+        ->join('tbl_profil_tahap_pencapaians', 'tbl_sukans.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
+        ->join('tbl_profil_markahs', 'tbl_sukans.idmarkah', '=', 'tbl_profil_markahs.id') 
+        ->select('*')
+        ->where('tbl_sukans.id','=',$id) 
+        ->first();
+
+        // $datasukan = DB::table('tbl_sukans')   
+        //  ->join('tbl_profil_tahap_pencapaians', 'tbl_sukans.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
+        //  ->join('tbl_profil_markahs', 'tbl_sukans.idmarkah', '=', 'tbl_profil_markahs.id') 
+        //  ->select('tbl_sukans.*','tbl_profil_tahap_pencapaians.*','tbl_profil_markahs.*','tbl_sukans.id as sukanid','tbl_profil_markahs.id as markahid','tbl_profil_tahap_pencapaians.id as tpid')
+        //  ->where('tbl_sukans.id','=','$id') 
+        //  ->get();
+
+         $markah = TblProfilMarkah::all();
+         $datas = TblSukan::find($id);
+         $tahappencapaian = TblProfilTahapPencapaian::all();
+
+        return view('profiling.sukan.edit')
+        -> with(compact('data'))
+        -> with(compact('datas'))
+        -> with(compact('markah'))
+        -> with(compact('tahappencapaian'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\TblSukan  $tblSukan
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request,$id)
+    {
+        $request->validate(
+            //validation rules
+            [
+                'idmarkah' => ['required'],
+                'idTP' => ['required'],
+            ],
+            //validation messages
+            [
+                'idmarkah.required' => 'Sila pilih markah',
+                'idTP.required' => 'Sila pilih Tahap pencapaian',
+            ]
+        );
+
+        TblSukan::find($id)->update([
+            'idmarkah' => $request->input('idmarkah'),
+            'idTP' => $request->input('idTP'),
+        ]);
+        return redirect()->route('sukan.index')->with('success', 'Sukan updated.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\TblSukan  $tblSukan
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        TblSukan::find($id)->delete();
+        return redirect('/sukan')
+            ->with('success', 'Data sukan deleted successfully');
+    }
+
     public function storejenissukan(Request $request)
     {
         $JenisSukan = $request->jenissukan;
@@ -112,67 +200,36 @@ class TblSukanController extends Controller
             return redirect('/sukan')->with('successsimpanjenissukan', "succesfully save jenis sukan ($JenisSukan) ");
     }
 
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\TblSukan  $tblSukan
-     * @return \Illuminate\Http\Response
-     */
-    public function show(TblSukan $tblSukan)
+    public function editjenissukan($id)
     {
-        //
+        $datas = TblJenisSukan::find($id);
+
+        return view('profiling.sukan.editjenissukan',compact('datas'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\TblSukan  $tblSukan
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {        
-        $data= TblSukan::find($id);
+    public function updatejenissukan(request $request ,$id) 
+    {
+                // Validation for required fields (and using some regex to validate our numeric value)
+                $request->validate(
+                    //validation rules
+                    [
+                        'jenissukan' => ['required']
+                    ],
+        
+                    //validation messages
+                    [
+                        'required' => 'sila masukkan jenis sukan', 
+                    ]
+                );
+                
 
-        // $datasukan = DB::table('tbl_sukans')   
-        //  ->join('tbl_profil_tahap_pencapaians', 'tbl_sukans.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
-        //  ->join('tbl_profil_markahs', 'tbl_sukans.idmarkah', '=', 'tbl_profil_markahs.id') 
-        //  ->select('tbl_sukans.*','tbl_profil_tahap_pencapaians.*','tbl_profil_markahs.*','tbl_sukans.id as sukanid','tbl_profil_markahs.id as markahid','tbl_profil_tahap_pencapaians.id as tpid')
-        //  ->where('tbl_sukans.id','=','$id') 
-        //  ->get();
-
-         $markah = TblProfilMarkah::all();
-         
-         $tahappencapaian = TblProfilTahapPencapaian::all();
-
-        return view('profiling.sukan.edit')
-        -> with(compact('data'))
-        // -> with(compact('datasukan'))
-        -> with(compact('markah'))
-        -> with(compact('tahappencapaian'));
+                TblJenisSukan::find($id)->update($request->all());
+                return redirect()->route('sukan.index')->with('success', 'Jenis sukan updated.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TblSukan  $tblSukan
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, TblSukan $tblSukan)
+    public function destroyjenissukan($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\TblSukan  $tblSukan
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        TblSukan::find($id)->delete();
+        TblJenisSukan::find($id)->delete();
         return redirect('/sukan')
             ->with('success', 'Data sukan deleted successfully');
     }

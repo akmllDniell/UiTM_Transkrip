@@ -74,26 +74,20 @@ Route::get('/uniform',[\App\Http\Controllers\TblJawatanUniformController::class,
 //sukan
 Route::get('/sukan',[\App\Http\Controllers\TblSukanController::class,'index']);
 Route::resource('sukan', App\Http\Controllers\TblSukanController::class);
-Route::post('Jenissukan',[\App\Http\Controllers\TblSukanController::class, 'storejenissukan']);
+Route::post('Jenissukan',[\App\Http\Controllers\TblSukanController::class, 'storejenissukan'])->name('simpanjenissukan');
+Route::get('editejenissukan/{id}',[\App\Http\Controllers\TblSukanController::class,'editjenissukan'])->name('editjsukan');
+Route::patch('updatejenissukan/{id}',[\App\Http\Controllers\TblSukanController::class,'updatejenissukan'])->name('updatejenissukan');
+Route::delete('destroyjenissukan/{id}',[\App\Http\Controllers\TblSukanController::class,'destroyjenissukan'])->name('destroyjenissukan');
 //end sukan
 
 //sijil
 Route::get('/sijil',[\App\Http\Controllers\TblSijilController::class,'index']);
 Route::resource('sijil', App\Http\Controllers\TblSijilController::class);
-//Route::post('Jenissukan',[\App\Http\Controllers\TblSukanController::class, 'storejenissukan']);
-
 //Jenis sijil
     Route::get('/jenissijil', [App\Http\Controllers\TblJenisSijilController::class, 'index']);
     Route::resource('jenissijil', App\Http\Controllers\TblJenisSijilController::class);
 //Jenis sijil
-
 //end sijil
-
-
-
-
-
-
 
 
 
