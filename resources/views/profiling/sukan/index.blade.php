@@ -29,40 +29,17 @@ Sukan Page
       <div class="card">
         <!-- /.card-header -->
         <div class="card-body">
+          @if ($message = Session::get('success'))
+          <div class="alert alert-success">
+            <p>{{ $message }}</p>
+          </div>
+          @endif
           <table id="example1" class="table table-bordered table-striped">
             <thead>
               <tr>
                 <h4 class="card-header d-flex justify-content-between align-items-center">
-                Jenis Sukan              
-                <div class="btn" style="margin-left:">
-                  <button id="btnOpenForm"  class="btn btn-success waves-effect waves-light"><i class="fa fa-plus-circle"></i></button>
-                  <div class="form-popup-bg">
-                    <div class="form-container">
-                      <button id="btnCloseForm" class="close-button">X</button>
-                      <form method="POST" action="{{ route('simpanjenissukan') }}">
-                        @csrf
-                        <div class="card card-info">
-                          <div class="card-header">
-                            <h3 class="card-title">SUKAN</h3>
-                          </div>
-                          <!-- Color Picker -->
-                          <div class="form-group">
-                            <label>Jenis Sukan:</label>
-                            <input name="jenissukan" id="jenissukan" type="text" class="form-control my-colorpicker1 colorpicker-element" data-colorpicker-id="1" data-original-title="" title="" requiredz>
-                          </div>
-                          <button type="submit" class="btn btn-block bg-gradient-success">SAVE</button>
-                          <!-- /.input group -->              
-                      </form>
-                      </div>
-                    </div>
-                  </div>
-                  </th>
-              </tr>          
-              @if ($message = Session::get('successsimpanjenissukan'))
-              <div class="alert alert-success">
-              <p>{{ $message }}</p>
-              </div>              
-              @endif
+                Jenis Sukan           
+                <a href=" {{ route('jenissukan.create') }}"><button type="submit" class="btn btn-success waves-effect waves-light"><i class="fa fa-plus-circle"></i></button></a>
               <tr>
                 <th>Jenis Sukan</th>
                 <th>Action</th>
@@ -73,10 +50,10 @@ Sukan Page
             <tr>              
             <td>{{$d->jenissukan}}</td>
             <td>
-              <form action="{{ route('destroyjenissukan',$d->id) }}" method="post" onsubmit="return confirm('Are sure to delete?')">
+              <form action="{{ route('jenissukan.destroy',$d->id) }}" method="post" onsubmit="return confirm('Are sure to delete?')">
                       @csrf
                       @method('delete')
-                      <a href="{{ route('editjsukan',$d->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                      <a href="{{ route('jenissukan.edit',$d->id) }}" class="btn btn-sm btn-warning">Edit</a>
                       <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                     </form>
             </td>
@@ -94,15 +71,11 @@ Sukan Page
         <!-- Content Header (Page header) -->
         <div class="card">
           <div class="card-body">
-            <h4 class="card-header d-flex justify-content-between align-items-center">Badan Beruniform 
+            <h4 class="card-header d-flex justify-content-between align-items-center">Sukan
               <a href=" {{ route('sukan.create') }}"><button type="submit" class="btn btn-success waves-effect waves-light"><i class="fa fa-plus-circle"></i></button></a>
             </h4>
             <br>
-            @if ($message = Session::get('success'))
-            <div class="alert alert-success">
-              <p>{{ $message }}</p>
-            </div>
-            @endif
+
             <table id="dtUniform" class="table table-bordered table-striped">
               <thead>
                 <tr>

@@ -36,5 +36,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ProgramTableSeeder::class);
         $this->call(SukanTableSeeder::class);
         $this->call(TahapTableSeeder::class);
+        $this->call(TblProfilTahapPencapaianSeeder::class);
     }
 }

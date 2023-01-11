@@ -7,10 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class TblSukan extends Model
 {
-    use HasFactory;    
-    protected $fillable = [
-        'idmarkah',
-        'idTP'
-    ];
-
+    use HasFactory;
+    protected $fillable = ['jenissukan'];
 }

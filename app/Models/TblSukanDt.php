@@ -5,8 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TblJenisSukan extends Model
+class TblSukanDt extends Model
 {
     use HasFactory;
-    protected $fillable = ['jenissukan'];
+    protected $fillable = [
+        'idmarkah',
+        'idTP'
+    ];
 }

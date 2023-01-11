@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\ModelJenisSukan;
 use App\Models\TblJawatanUniform;
-use App\Models\TblJenisSukan;
 use App\Models\TblProfilBadanBeruniform;
 use App\Models\TblProfilMarkah;
 use App\Models\TblProfilTahapPencapaian;
@@ -23,13 +22,13 @@ class TblSukanController extends Controller
      */
     public function index()
     {
-        $data = DB::table('tbl_sukans')   
-         ->join('tbl_profil_tahap_pencapaians', 'tbl_sukans.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
-         ->join('tbl_profil_markahs', 'tbl_sukans.idmarkah', '=', 'tbl_profil_markahs.id') 
-         ->select('tbl_sukans.*','tbl_profil_tahap_pencapaians.*','tbl_profil_markahs.*','tbl_sukans.id as sukanid','tbl_profil_markahs.id as markahid','tbl_profil_tahap_pencapaians.id as tpid')
+        $data = DB::table('tbl_sukan_dts')   
+         ->join('tbl_profil_tahap_pencapaians', 'tbl_sukan_dts.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
+         ->join('tbl_profil_markahs', 'tbl_sukan_dts.idmarkah', '=', 'tbl_profil_markahs.id') 
+         ->select('tbl_sukan_dts.*','tbl_profil_tahap_pencapaians.*','tbl_profil_markahs.*','tbl_sukan_dts.id as sukanid','tbl_profil_markahs.id as markahid','tbl_profil_tahap_pencapaians.id as tpid')
          ->get();
 
-        $jenissukan = DB::table('tbl_jenis_sukans')->select('*')->get();
+        $jenissukan = TblSukan::all();
         $markah = TblProfilMarkah::all();
         $tahappencapaian = TblProfilTahapPencapaian::all();
 
@@ -48,10 +47,7 @@ class TblSukanController extends Controller
      */
     public function create()
     {
-        $markah = TblProfilMarkah::all();
-        $tahappencapaian = TblProfilTahapPencapaian::all();
-
-        return view('profiling.sukan.create',compact('markah'),compact('tahappencapaian'));
+        return view('profiling.sukan.jenissukan.create');
     }
 
     /**
@@ -62,25 +58,25 @@ class TblSukanController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(
-            //validation rules
-            [
-                'TP' => 'required',
-                'markah'=> 'required',
-            ],
-            //validation messages
-            [
-                'TP.required' => 'SIla pilih Tahap pencapaian anda',
-                'markah.required' => 'SIla pilih markah anda'
-            ]
-        );
+        $JenisSukan = $request->jenissukan;
+       
+        $request->validate([
+            // 'id'=> 'required|unique:table, column, except,id'
+             'jenissukan'=> 'required',                       
+    
+         ],
+         
+         [
+             // 'id.unique' => 'Number student sudah ada didalam sistem',
+             // 'id.required' => 'Number Student harus diletakkan',         
+             'jenissukan.required' => 'Sila masukkan Nama Sukan',         
+             // 'checkbox2'
+         ]);
+    
+         TblSukan::create([
+            'jenissukan' => $request->input('jenissukan')]);
 
-        TblSukan::create([
-            'idTP' => $request->input('TP'),
-            'idmarkah' => $request->input('markah')
-        ]);
-        //redirect routes
-        return redirect('/sukan')->with('success', 'Data saved.');
+            return redirect('/sukan')->with('successsimpanjenissukan', "succesfully save jenis sukan ($JenisSukan) ");
     }
 
     /**
@@ -110,29 +106,9 @@ class TblSukanController extends Controller
      */
     public function edit($id)
     {        
-        $data= DB::table('tbl_sukans') 
-        ->join('tbl_profil_tahap_pencapaians', 'tbl_sukans.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
-        ->join('tbl_profil_markahs', 'tbl_sukans.idmarkah', '=', 'tbl_profil_markahs.id') 
-        ->select('*')
-        ->where('tbl_sukans.id','=',$id) 
-        ->first();
+        $datas = TblSukan::find($id);
 
-        // $datasukan = DB::table('tbl_sukans')   
-        //  ->join('tbl_profil_tahap_pencapaians', 'tbl_sukans.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
-        //  ->join('tbl_profil_markahs', 'tbl_sukans.idmarkah', '=', 'tbl_profil_markahs.id') 
-        //  ->select('tbl_sukans.*','tbl_profil_tahap_pencapaians.*','tbl_profil_markahs.*','tbl_sukans.id as sukanid','tbl_profil_markahs.id as markahid','tbl_profil_tahap_pencapaians.id as tpid')
-        //  ->where('tbl_sukans.id','=','$id') 
-        //  ->get();
-
-         $markah = TblProfilMarkah::all();
-         $datas = TblSukan::find($id);
-         $tahappencapaian = TblProfilTahapPencapaian::all();
-
-        return view('profiling.sukan.edit')
-        -> with(compact('data'))
-        -> with(compact('datas'))
-        -> with(compact('markah'))
-        -> with(compact('tahappencapaian'));
+        return view('profiling.sukan.editjenissukan',compact('datas'));
     }
 
     /**
@@ -144,24 +120,22 @@ class TblSukanController extends Controller
      */
     public function update(Request $request,$id)
     {
+        // Validation for required fields (and using some regex to validate our numeric value)
         $request->validate(
             //validation rules
             [
-                'idmarkah' => ['required'],
-                'idTP' => ['required'],
+                'jenissukan' => ['required']
             ],
+
             //validation messages
             [
-                'idmarkah.required' => 'Sila pilih markah',
-                'idTP.required' => 'Sila pilih Tahap pencapaian',
+                'required' => 'sila masukkan jenis sukan', 
             ]
         );
+        
 
-        TblSukan::find($id)->update([
-            'idmarkah' => $request->input('idmarkah'),
-            'idTP' => $request->input('idTP'),
-        ]);
-        return redirect()->route('sukan.index')->with('success', 'Sukan updated.');
+        TblSukan::find($id)->update($request->all());
+        return redirect()->route('sukan.index')->with('success', 'Jenis sukan updated.');
     }
 
     /**
@@ -177,60 +151,4 @@ class TblSukanController extends Controller
             ->with('success', 'Data sukan deleted successfully');
     }
 
-    public function storejenissukan(Request $request)
-    {
-        $JenisSukan = $request->jenissukan;
-       
-        $request->validate([
-            // 'id'=> 'required|unique:table, column, except,id'
-             'jenissukan'=> 'required',                       
-    
-         ],
-         
-         [
-             // 'id.unique' => 'Number student sudah ada didalam sistem',
-             // 'id.required' => 'Number Student harus diletakkan',         
-             'jenissukan.required' => 'Sila masukkan Nama Sukan',         
-             // 'checkbox2'
-         ]);
-    
-         TblJenisSukan::create([
-            'jenissukan' => $request->input('jenissukan')]);
-
-            return redirect('/sukan')->with('successsimpanjenissukan', "succesfully save jenis sukan ($JenisSukan) ");
-    }
-
-    public function editjenissukan($id)
-    {
-        $datas = TblJenisSukan::find($id);
-
-        return view('profiling.sukan.editjenissukan',compact('datas'));
-    }
-
-    public function updatejenissukan(request $request ,$id) 
-    {
-                // Validation for required fields (and using some regex to validate our numeric value)
-                $request->validate(
-                    //validation rules
-                    [
-                        'jenissukan' => ['required']
-                    ],
-        
-                    //validation messages
-                    [
-                        'required' => 'sila masukkan jenis sukan', 
-                    ]
-                );
-                
-
-                TblJenisSukan::find($id)->update($request->all());
-                return redirect()->route('sukan.index')->with('success', 'Jenis sukan updated.');
-    }
-
-    public function destroyjenissukan($id)
-    {
-        TblJenisSukan::find($id)->delete();
-        return redirect('/sukan')
-            ->with('success', 'Data sukan deleted successfully');
-    }
 }

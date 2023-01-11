@@ -14,13 +14,8 @@ class CreateTblSukansTable extends Migration
     public function up()
     {
         Schema::create('tbl_sukans', function (Blueprint $table) {
-            $table->id();   
-            $table->unsignedBigInteger('idmarkah');
-            $table->unsignedBigInteger('idTP');  
-            // $table->foreign(['idmarkah'], 'FK_sukan_markah')->references(['id'])->on('tbl_profil_markahs')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            // $table->foreign(['idTP'], 'FK_sukan_tahap')->references(['id'])->on('tbl_profil_tahap_pencapaians')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            $table->foreign('idmarkah')->references('id')->on('tbl_profil_markahs')->onDelete('cascade');
-            $table->foreign('idTP')->references('id')->on('tbl_profil_tahap_pencapaians')->onDelete('cascade');
+            $table->id();
+            $table->string('jenissukan',100);
             $table->timestamps();
         });
     }

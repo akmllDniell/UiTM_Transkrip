@@ -10,8 +10,10 @@ use App\Http\Middleware\CekUserLogin;
 use App\Http\Controllers\TblJawatanUniformController;
 use App\Http\Controllers\TblProfilBadanBeruniformController;
 use App\Http\Controllers\TblSukanController;
+use App\Http\Controllers\TblSukanDtController;
 use App\Models\TblProfilBadanBeruniform;
 use App\Models\TblSukan;
+use App\Models\TblSukanDt;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -72,12 +74,14 @@ Route::get('/uniform',[\App\Http\Controllers\TblJawatanUniformController::class,
 
 
 //sukan
-Route::get('/sukan',[\App\Http\Controllers\TblSukanController::class,'index']);
-Route::resource('sukan', App\Http\Controllers\TblSukanController::class);
-Route::post('Jenissukan',[\App\Http\Controllers\TblSukanController::class, 'storejenissukan'])->name('simpanjenissukan');
-Route::get('editejenissukan/{id}',[\App\Http\Controllers\TblSukanController::class,'editjenissukan'])->name('editjsukan');
-Route::patch('updatejenissukan/{id}',[\App\Http\Controllers\TblSukanController::class,'updatejenissukan'])->name('updatejenissukan');
-Route::delete('destroyjenissukan/{id}',[\App\Http\Controllers\TblSukanController::class,'destroyjenissukan'])->name('destroyjenissukan');
+Route::get('/sukan',[\App\Http\Controllers\TblSukanDtController::class,'index']);
+Route::resource('sukan', App\Http\Controllers\TblSukanDtController::class);
+Route::get('/jenissukan',[\App\Http\Controllers\TblSukanController::class,'index']);
+Route::resource('jenissukan', App\Http\Controllers\TblSukanController::class);
+// Route::post('jenissukan',[\App\Http\Controllers\TblSukanController::class, 'storejenissukan'])->name('simpanjenissukan');
+// Route::get('editejenissukan/{id}',[\App\Http\Controllers\TblSukanController::class,'editjenissukan'])->name('editjsukan');
+// Route::patch('updatejenissukan/{id}',[\App\Http\Controllers\TblSukanController::class,'updatejenissukan'])->name('updatejenissukan');
+// Route::delete('destroyjenissukan/{id}',[\App\Http\Controllers\TblSukanController::class,'destroyjenissukan'])->name('destroyjenissukan');
 //end sukan
 
 //sijil
