@@ -47,8 +47,8 @@
             </a>
             
             <ul class="nav nav-treeview">
-              <li class="nav-item ">
-                <a href="/sukan" class="nav-link active ">
+              <li class="nav-item">                
+                <a href="/sukan" class="nav-link {{ request()->is('*sukan*') ? 'active' : '' }}" >
                   <i class="far fa-circle nav-icon"></i>
                   <p>SUKAN</p>
                 </a>
@@ -57,7 +57,7 @@
   
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="persatuan" class="nav-link">
+                <a href="persatuan" class="nav-link {{ request()->is('*persatuan*') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>PERSATUAN/KELAB</p>
                 </a>
@@ -65,7 +65,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="kebudayaan" class="nav-link">
+                <a href="kebudayaan" class="nav-link {{ request()->is('*kebudayaan*') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>KEBUDAYAAN</p>
                 </a>
@@ -110,7 +110,7 @@
               </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/sijil" class="nav-link">
+                <a href="/sijil" class="nav-link {{ request()->is('*sijil*') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>ANUGERAH / SIJIL</p>
                 </a>
@@ -118,7 +118,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="penerbitan" class="nav-link">
+                <a href="penerbitan" class="nav-link {{ request()->is('*penerbitan*') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>PENERBITAN</p>
                 </a>
@@ -126,7 +126,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="khas" class="nav-link">
+                <a href="khas" class="nav-link {{ request()->is('*khas*') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>PROGRAM KHAS HEP</p>
                 </a>
@@ -134,7 +134,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="programtertentu" class="nav-link">
+                <a href="programtertentu" class="nav-link {{ request()->is('*programtertentu*') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>PROGRAM TERTENTU</p>
                 </a>
@@ -142,7 +142,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/uniform" class="nav-link">
+                <a href="/uniform" class="nav-link {{ request()->is('*uniform*') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>UNIFORM (TEST)</p>
                 </a>
@@ -173,7 +173,7 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item ">
-                <a href="/tahappencapaian" class="nav-link">
+                <a href="/tahappencapaian" class="nav-link {{ request()->is('*tahappencapaian*') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tahap Pencapaian</p>
                 </a>
@@ -182,7 +182,7 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item ">
-                <a href="/markah" class="nav-link">
+                <a href="/markah" class="nav-link {{ request()->is('*markah*') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Markah</p>
                 </a>
@@ -191,7 +191,7 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item ">
-                <a href="/jawatan" class="nav-link">
+                <a href="/jawatan" class="nav-link {{ request()->is('*jawatan*') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Jawatan</p>
                 </a>
@@ -200,7 +200,7 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item ">
-                <a href="/tahaphep" class="nav-link">
+                <a href="/tahaphep" class="nav-link {{ request()->is('*tahaphep*') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tahap Hep</p>
                 </a>
@@ -210,7 +210,7 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item ">
-                <a href="/badanuniform" class="nav-link">
+                <a href="/badanuniform" class="nav-link {{ request()->is('*badanuniform*') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Badan Beruniform</p>
                 </a>
@@ -219,7 +219,7 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item ">
-                <a href="/badanuniform" class="nav-link">
+                <a href="/badanuniform" class="nav-link {{ request()->is('*n*') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Jawatan Badan Beruniform</p>
                 </a>
