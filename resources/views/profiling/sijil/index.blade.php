@@ -48,7 +48,7 @@ Sukan Page
             <tbody>
             @foreach($jenissijil as $d)
             <tr>              
-            <td>{{$d->jenissijil}}</td>
+            <td>{{$d->sijil}}</td>
             <td>
               <form action="{{ route('jenissijil.destroy',$d->id) }}" method="post" onsubmit="return confirm('Are sure to delete?')">
                       @csrf
@@ -90,10 +90,10 @@ Sukan Page
                   <td>{{$d->pencapaian}}</td>
                   <td>{{$d->markah}}</td>
                   <td>
-                    <form action="{{ route('sijil.destroy',$d->sijilid) }}" method="post" onsubmit="return confirm('Are sure to delete?')">
+                    <form action="{{ route('sijil.destroy',$d->id) }}" method="post" onsubmit="return confirm('Are sure to delete?')">
                       @csrf
                       @method('delete')
-                      <a href="{{ route('sijil.edit',$d->sijilid) }}" class="btn btn-sm btn-warning">Edit</a>
+                      <a href="{{ route('sijil.edit',$d->id) }}" class="btn btn-sm btn-warning">Edit</a>
                       <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                     </form>
                   </td>

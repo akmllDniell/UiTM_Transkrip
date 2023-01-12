@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TblJenisSijil;
-use App\Models\TblProfilMarkah;
-use App\Models\TblProfilTahapPencapaian;
 use App\Models\TblSijil;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class TblSijilController extends Controller
 {
@@ -18,23 +14,9 @@ class TblSijilController extends Controller
      */
     public function index()
     {
-        $data = DB::table('tbl_sijils')   
-         ->join('tbl_profil_tahap_pencapaians', 'tbl_sijils.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
-         ->join('tbl_profil_markahs', 'tbl_sijils.idmarkah', '=', 'tbl_profil_markahs.id') 
-         ->select('tbl_sijils.*','tbl_profil_tahap_pencapaians.*','tbl_profil_markahs.*','tbl_sijils.id as sijilid','tbl_profil_markahs.id as markahid','tbl_profil_tahap_pencapaians.id as tpid')
-         ->get();
-
-        $jenissijil = TblJenisSijil::all();
-        $markah = TblProfilMarkah::all();
-        $tahappencapaian = TblProfilTahapPencapaian::all();
-
-        return view('profiling.sijil.index')
-        ->with(compact('data'))
-        ->with(compact('jenissijil'))
-        ->with(compact('tahappencapaian'))
-        ->with(compact('markah'));
-
+        //
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -42,10 +24,7 @@ class TblSijilController extends Controller
      */
     public function create()
     {
-        $markah = TblProfilMarkah::all();
-        $tahappencapaian = TblProfilTahapPencapaian::all();
-
-        return view('profiling.sijil.create',compact('markah'),compact('tahappencapaian'));
+        return view('profiling.sijil.jenisSijil.create');
     }
 
     /**
@@ -59,26 +38,22 @@ class TblSijilController extends Controller
         $request->validate(
             //validation rules
             [
-                'TP' => 'required',
-                'markah'=> 'required',
+                'jenissijil' => ['required', 'min:3', 'max:100'],
             ],
             //validation messages
             [
-                'TP.required' => 'SIla pilih Tahap pencapaian anda',
-                'markah.required' => 'SIla pilih markah anda'
+                'required' => 'Medan : attribute diperlukan',
+                'code.size' => 'code mestilah 3 aksara',
+                'code.unique' => 'code telah wujud'
             ]
-            );
+        );
 
-            TblSijil::create([
-                'idTP' => $request->input('TP'),
-                'idmarkah' => $request->input('markah')
-            ]);
-            //redirect routes
-            return redirect('/sijil')->with('success', 'Data saved.');
-        }
-
-
-        
+        TblSijil::create([
+            'sijil' => $request->input('jenissijil')
+        ]);
+        //redirect routes
+        return redirect('/sijil')->with('success', 'Data saved.');
+    }
 
     /**
      * Display the specified resource.
@@ -94,80 +69,52 @@ class TblSijilController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TblSijil  $tblSijil
+     * @param  \App\Models\TblSijil  $tblJenisSijil
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        // $data= TblSijil::find($id);
-
-        // $datasukan = DB::table('tbl_sukans')   
-        //  ->join('tbl_profil_tahap_pencapaians', 'tbl_sukans.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
-        //  ->join('tbl_profil_markahs', 'tbl_sukans.idmarkah', '=', 'tbl_profil_markahs.id') 
-        //  ->select('tbl_sukans.*','tbl_profil_tahap_pencapaians.*','tbl_profil_markahs.*','tbl_sukans.id as sukanid','tbl_profil_markahs.id as markahid','tbl_profil_tahap_pencapaians.id as tpid')
-        //  ->where('tbl_sukans.id','=','$id') 
-        //  ->get();
-
-        $data= DB::table('tbl_sijils') 
-        ->join('tbl_profil_tahap_pencapaians', 'tbl_sijils.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
-        ->join('tbl_profil_markahs', 'tbl_sijils.idmarkah', '=', 'tbl_profil_markahs.id') 
-        ->where('tbl_sijils.id','=', $id)
-        ->select('*')        
-        ->first();
-
         $datas = TblSijil::find($id);
-
-         $markah = TblProfilMarkah::all();
-         
-         $tahappencapaian = TblProfilTahapPencapaian::all();
-
-        return view('profiling.sijil.edit')
-        -> with(compact('data'))
-        -> with(compact('datas'))
-        -> with(compact('markah'))
-        -> with(compact('tahappencapaian'));
+        return view('profiling.sijil.jenissijil.edit', compact('datas'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TblSijil  $tblSijil
+     * @param  \App\Models\TblSijil  $tblJenisSijil
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-    
-        $request->validate(
+         // Validation for required fields (and using some regex to validate our numeric value)
+         $request->validate(
             //validation rules
             [
-                'idmarkah' => ['required'],
-                'idTP' => ['required'],
+                'sijil' => ['required', 'min:3', 'max:100']
             ],
             //validation messages
             [
-                'idmarkah.required' => 'Sila pilih markah',
-                'idTP.required' => 'Sila pilih Tahap pencapaian',
+                'required' => 'Medan : attribute diperlukan',
+                'singkatan.size' => 'code mestilah 3 aksara',
+                'singkatan.unique' => 'code telah wujud'
             ]
         );
 
-        TblSijil::find($id)->update([
-            'idmarkah' => $request->input('idmarkah'),
-            'idTP' => $request->input('idTP'),
-        ]);
-        return redirect()->route('sijil.index')->with('success', 'Sijil updated.');
+        TblSijil::find($id)->update($request->all());
+        return redirect()->route('sijil.index')->with('success', 'Jenis Anugerah/Sijil Kecemerlangan/Pingat updated.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TblSijil  $tblSijil
+     * @param  \App\Models\TblJenisSijil  $tblJenisSijil
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         TblSijil::find($id)->delete();
-        return redirect('/sijil')
-            ->with('success', 'Data sukan deleted successfully');
+        return redirect()->route('sijil.index')
+            ->with('success', 'User deleted successfully');
     }
 }

@@ -85,11 +85,11 @@ Route::resource('jenissukan', App\Http\Controllers\TblSukanController::class);
 //end sukan
 
 //sijil
-Route::get('/sijil',[\App\Http\Controllers\TblSijilController::class,'index']);
-Route::resource('sijil', App\Http\Controllers\TblSijilController::class);
+Route::get('/sijil',[\App\Http\Controllers\TblSijilDtController::class,'index']);
+Route::resource('sijil', App\Http\Controllers\TblSijilDtController::class);
 //Jenis sijil
-    Route::get('/jenissijil', [App\Http\Controllers\TblJenisSijilController::class, 'index']);
-    Route::resource('jenissijil', App\Http\Controllers\TblJenisSijilController::class);
+    Route::get('/jenissijil', [App\Http\Controllers\TblSijilController::class, 'index']);
+    Route::resource('jenissijil', App\Http\Controllers\TblSijilController::class);
 //Jenis sijil
 //end sijil
 

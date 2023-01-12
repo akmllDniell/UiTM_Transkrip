@@ -9,10 +9,7 @@ class TblSijil extends Model
 {
     use HasFactory;
 
-    protected $fillable = [              
-        'idmarkah',
-        'idTP'
-    ];    
-
+    protected $fillable = [
+        'sijil'
+    ];
 }
-

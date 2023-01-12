@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTblSijilsTable extends Migration
+class CreateTblSijilDtsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTblSijilsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_sijils', function (Blueprint $table) {
+        Schema::create('tbl_sijil_dts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('idmarkah');
             $table->unsignedBigInteger('idTP');  
