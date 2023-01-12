@@ -93,7 +93,16 @@ Route::resource('sijil', App\Http\Controllers\TblSijilDtController::class);
 //Jenis sijil
 //end sijil
 
-
+//kebudayaan
+Route::get('/kebudayaan',[\App\Http\Controllers\TblKebudayaanDtController::class,'index']);
+Route::resource('kebudayaan', App\Http\Controllers\TblKebudayaanDtController::class);
+Route::get('/jeniskebudayaan',[\App\Http\Controllers\TblKebudayaanController::class,'index']);
+Route::resource('jeniskebudayaan', App\Http\Controllers\TblKebudayaanController::class);
+// Route::post('jeniskebudayaan',[\App\Http\Controllers\TblKebudayaanController::class, 'storejeniskebudayaan'])->name('simpanjeniskebudayaan');
+// Route::get('editejeniskebudayaan/{id}',[\App\Http\Controllers\TblKebudayaanController::class,'editjeniskebudayaan'])->name('editjkebudayaan');
+// Route::patch('updatejeniskebudayaan/{id}',[\App\Http\Controllers\TblKebudayaanController::class,'updatejenisKebudayaan'])->name('updatejeniskebudayaan');
+// Route::delete('destroyjeniskebudayaan/{id}',[\App\Http\Controllers\TblKebudayaanController::class,'destroyjeniskebudayaan'])->name('destroyjeniskebudayaan');
+//end kebudayaan
 
 
 
@@ -192,11 +201,11 @@ Route::controller(ProcessController::class)->group(function () {
 
 
 //ismi kebudayaan
-Route::controller(ProcessController::class)->group(function () {
-    Route::get('kebudayaan', 'PageKebudayaan')->middleware('auth');
-    Route::post('SimpanKebudayaan', 'SimpanTPdanMarkahKebudayaan');
-    Route::post('SimpanJenisKebudayaan', 'SimpanJKebudayaan');
-});
+//Route::controller(ProcessController::class)->group(function () {
+ //   Route::get('kebudayaan', 'PageKebudayaan')->middleware('auth');
+  //  Route::post('SimpanKebudayaan', 'SimpanTPdanMarkahKebudayaan');
+ //   Route::post('SimpanJenisKebudayaan', 'SimpanJKebudayaan');
+//});
 
 //Daniel pbsmm
 Route::controller(ProcessController::class)->group(function () {
