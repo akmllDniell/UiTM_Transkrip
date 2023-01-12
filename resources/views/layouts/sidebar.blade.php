@@ -126,9 +126,9 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="khas" class="nav-link {{ request()->is('*khas*') ? 'active' : '' }}">
+                <a href="padu" class="nav-link {{ request()->is('*padu*') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>PROGRAM KHAS HEP</p>
+                  <p>PROGRAM PADU</p>
                 </a>
               </li>
             </ul>

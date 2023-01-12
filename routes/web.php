@@ -106,6 +106,15 @@ Route::resource('jeniskebudayaan', App\Http\Controllers\TblKebudayaanController:
 
 
 
+//Program PADU
+Route::get('/padu',[\App\Http\Controllers\TblPaduDtController::class,'index']);
+Route::resource('padu', App\Http\Controllers\TblPaduDtController::class);
+Route::get('/jenispadu',[\App\Http\Controllers\TblPaduController::class,'index']);
+Route::resource('jenispadu', App\Http\Controllers\TblPaduController::class);
+//end program PADU
+
+
+
 
 
 
@@ -231,11 +240,11 @@ Route::controller(ProcessController::class)->group(function () {
 });
 
 //arif
-Route::controller(ProcessController::class)->group(function () {
-    Route::get('khas', 'PageKhas')->middleware('auth');
-    Route::post('SimpanKhas', 'SimpanTPdanMarkahKhas');
-    Route::post('SimpanJenisKhas', 'SimpanJKhas');
-});
+//Route::controller(ProcessController::class)->group(function () {
+//    Route::get('khas', 'PageKhas')->middleware('auth');
+//    Route::post('SimpanKhas', 'SimpanTPdanMarkahKhas');
+//    Route::post('SimpanJenisKhas', 'SimpanJKhas');
+//});
 
 Route::controller(ProcessController::class)->group(function () {
     Route::get('suksis', 'Pagesuksis')->middleware('auth');
