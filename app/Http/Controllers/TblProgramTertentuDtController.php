@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TblJenisPadu;
+use App\Models\TblJenisProgramTertentu;
 use App\Models\TblProfilMarkah;
 use App\Models\TblProfilTahapPencapaian;
-use App\Models\TblPadu;
-use App\Models\TblPaduDt;
+use App\Models\TblProgramTertentu;
+use App\Models\TblProgramTertentuDt;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class TblPaduDtController extends Controller
+class TblProgramTertentuDtController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,19 +19,19 @@ class TblPaduDtController extends Controller
      */
     public function index()
     {
-        $data = DB::table('tbl_padu_dts')   
-         ->join('tbl_profil_tahap_pencapaians', 'tbl_padu_dts.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
-         ->join('tbl_profil_markahs', 'tbl_padu_dts.idmarkah', '=', 'tbl_profil_markahs.id') 
-         ->select('tbl_padu_dts.*','tbl_profil_tahap_pencapaians.*','tbl_profil_markahs.*','tbl_padu_dts.id as padudtid','tbl_profil_markahs.id as markahid','tbl_profil_tahap_pencapaians.id as tpid')
+        $data = DB::table('tbl_program_tertentu_dts')   
+         ->join('tbl_profil_tahap_pencapaians', 'tbl_program_tertentu_dts.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
+         ->join('tbl_profil_markahs', 'tbl_program_tertentu_dts.idmarkah', '=', 'tbl_profil_markahs.id') 
+         ->select('tbl_program_tertentu_dts.*','tbl_profil_tahap_pencapaians.*','tbl_profil_markahs.*','tbl_program_tertentu_dts.id as program_tertentudtid','tbl_profil_markahs.id as markahid','tbl_profil_tahap_pencapaians.id as tpid')
          ->get();
 
-        $jenispadu = TblPadu::all();
+        $jenisprogramtertentu = TblProgramTertentu::all();
         $markah = TblProfilMarkah::all();
         $tahappencapaian = TblProfilTahapPencapaian::all();
 
-        return view('profiling.padu.index')
+        return view('profiling.programtertentu.index')
         ->with(compact('data'))
-        ->with(compact('jenispadu'))
+        ->with(compact('jenisprogramtertentu'))
         ->with(compact('tahappencapaian'))
         ->with(compact('markah'));
 
@@ -46,7 +46,7 @@ class TblPaduDtController extends Controller
         $markah = TblProfilMarkah::all();
         $tahappencapaian = TblProfilTahapPencapaian::all();
 
-        return view('profiling.padu.create',compact('markah'),compact('tahappencapaian'));
+        return view('profiling.programtertentu.create',compact('markah'),compact('tahappencapaian'));
     }
 
     /**
@@ -70,12 +70,12 @@ class TblPaduDtController extends Controller
             ]
             );
 
-            TblPaduDt::create([
+            TblProgramTertentuDt::create([
                 'idTP' => $request->input('TP'),
                 'idmarkah' => $request->input('markah')
             ]);
             //redirect routes
-            return redirect('/padu')->with('success', 'Data saved.');
+            return redirect('/programtertentu')->with('success', 'Data saved.');
         }
 
 
@@ -84,10 +84,10 @@ class TblPaduDtController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TblPadu  $tblPadu
+     * @param  \App\Models\TblProgramTertentu  $tblProgramTertentu
      * @return \Illuminate\Http\Response
      */
-    public function show(TblPadu $tblPadu)
+    public function show(TblProgramTertentu $tblProgramTertentu)
     {
         //
     }
@@ -95,12 +95,12 @@ class TblPaduDtController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TblPadu  $tblPadu
+     * @param  \App\Models\TblProgramTertentu  $tblProgramTertentu
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        // $data= TblPadu::find($id);
+        // $data= TblProgramTertentu::find($id);
 
         // $datasukan = DB::table('tbl_sukans')   
         //  ->join('tbl_profil_tahap_pencapaians', 'tbl_sukans.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
@@ -109,20 +109,20 @@ class TblPaduDtController extends Controller
         //  ->where('tbl_sukans.id','=','$id') 
         //  ->get();
 
-        $data= DB::table('tbl_padu_dts') 
-        ->join('tbl_profil_tahap_pencapaians', 'tbl_padu_dts.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
-        ->join('tbl_profil_markahs', 'tbl_padu_dts.idmarkah', '=', 'tbl_profil_markahs.id') 
-        ->where('tbl_padu_dts.id','=', $id)
+        $data= DB::table('tbl_program_tertentu_dts') 
+        ->join('tbl_profil_tahap_pencapaians', 'tbl_program_tertentu_dts.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
+        ->join('tbl_profil_markahs', 'tbl_program_tertentu_dts.idmarkah', '=', 'tbl_profil_markahs.id') 
+        ->where('tbl_program_tertentu_dts.id','=', $id)
         ->select('*')        
         ->first();
 
-        $datas = TblPaduDt::find($id);
+        $datas = TblProgramTertentuDt::find($id);
 
          $markah = TblProfilMarkah::all();
          
          $tahappencapaian = TblProfilTahapPencapaian::all();
 
-        return view('profiling.padu.edit')
+        return view('profiling.programtertentu.edit')
         -> with(compact('data'))
         -> with(compact('datas'))
         -> with(compact('markah'))
@@ -133,7 +133,7 @@ class TblPaduDtController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TblPadu  $tblPadu
+     * @param  \App\Models\TblProgramTertentu  $tblProgramTertentu
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -152,23 +152,23 @@ class TblPaduDtController extends Controller
             ]
         );
 
-        TblPaduDt::find($id)->update([
+        TblProgramTertentuDt::find($id)->update([
             'idmarkah' => $request->input('idmarkah'),
             'idTP' => $request->input('idTP'),
         ]);
-        return redirect()->route('padu.index')->with('success', 'Program Padu updated.');
+        return redirect()->route('programtertentu.index')->with('success', 'Program Tertentu updated.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TblPadu  $tblPadu
+     * @param  \App\Models\TblProgramTertentu  $tblProgramTertentu
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        TblPaduDt::find($id)->delete();
-        return redirect('/padu')
+        TblProgramTertentuDt::find($id)->delete();
+        return redirect('/programtertentu')
             ->with('success', 'Data sukan deleted successfully');
     }
 }

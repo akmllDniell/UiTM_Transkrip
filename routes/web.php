@@ -113,6 +113,13 @@ Route::get('/jenispadu',[\App\Http\Controllers\TblPaduController::class,'index']
 Route::resource('jenispadu', App\Http\Controllers\TblPaduController::class);
 //end program PADU
 
+//Program Tertentu
+Route::get('/programtertentu',[\App\Http\Controllers\TblProgramTertentuDtController::class,'index']);
+Route::resource('programtertentu', App\Http\Controllers\TblProgramTertentuDtController::class);
+Route::get('/jenisprogramtertentu',[\App\Http\Controllers\TblProgramTertentuController::class,'index']);
+Route::resource('jenisprogramtertentu', App\Http\Controllers\TblProgramTertentuController::class);
+//end program tertentu
+
 
 
 
@@ -213,11 +220,11 @@ Route::resource('penerbitan', App\Http\Controllers\TblPenerbitanDtController::cl
 
 
 //DANIEL PROGRAM TERTENTU
-Route::controller(ProcessController::class)->group(function () {
-    Route::get('programtertentu', 'Pageprogramtertentu')->middleware('auth');
-    Route::post('Simpanjenisprogram', 'Simpanjenisprogram');
-    Route::post('SimpanProgram', 'SimpanTPNMprogram');
-});
+//Route::controller(ProcessController::class)->group(function () {
+//    Route::get('programtertentu', 'Pageprogramtertentu')->middleware('auth');
+//    Route::post('Simpanjenisprogram', 'Simpanjenisprogram');
+//    Route::post('SimpanProgram', 'SimpanTPNMprogram');
+//});
 //END DANIEL PROGRAM TERTENTU
 
 
