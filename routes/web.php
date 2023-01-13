@@ -184,11 +184,23 @@ Route::controller(ProcessController::class)->group(function () {
 
 
 //ARIF
-Route::controller(ProcessController::class)->group(function () {
-    Route::get('penerbitan', 'Pagepenerbitan')->middleware('auth');
-    Route::post('SimpanjawatanPenerbitan', 'simpanTPMarkahjawatanPenerbitan');
-    Route::post('SimpanJenisPenerbitan', 'SimpanJenisPernebitan');
-});
+// Route::controller(ProcessController::class)->group(function () {
+//     Route::get('penerbitan', 'Pagepenerbitan')->middleware('auth');
+//     Route::post('SimpanjawatanPenerbitan', 'simpanTPMarkahjawatanPenerbitan');
+//     Route::post('SimpanJenisPenerbitan', 'SimpanJenisPernebitan');
+// });
+
+
+//penerbitan
+Route::get('/penerbitan',[\App\Http\Controllers\TblPenerbitanDtController::class,'index']);
+Route::resource('penerbitan', App\Http\Controllers\TblPenerbitanDtController::class);
+//Jenis penerbitan
+    Route::get('/jenispenerbitan', [App\Http\Controllers\TblPenerbitanController::class, 'index']);
+    Route::resource('jenispenerbitan', App\Http\Controllers\TblPenerbitanController::class);
+//Jenis penerbitan
+//end penerbitan
+
+
 
 
 //FARED
