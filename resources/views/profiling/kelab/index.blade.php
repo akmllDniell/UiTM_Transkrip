@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-PENERBITAN/MAJALAH
+PERSATUAN/KELAB
 @endsection
 
 @section('content')
@@ -38,22 +38,22 @@ PENERBITAN/MAJALAH
             <thead>
               <tr>
                 <h4 class="card-header d-flex justify-content-between align-items-center">
-                Jenis Penerbitan
-                <a href=" {{ route('jenispenerbitan.create') }}"><button type="submit" class="btn btn-success waves-effect waves-light"><i class="fa fa-plus-circle"></i></button></a>
+                Jenis Kelab
+                <a href=" {{ route('jeniskelab.create') }}"><button type="submit" class="btn btn-success waves-effect waves-light"><i class="fa fa-plus-circle"></i></button></a>
               <tr>
-                <th>Jenis Penerbitan</th>
+                <th>Jenis Kelab</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-            @foreach($jenispenerbitan as $d)
+            @foreach($jeniskelab as $d)
             <tr>              
-            <td>{{$d->jenispenerbitan}}</td>
+            <td>{{$d->jeniskelab}}</td>
             <td>
-              <form action="{{ route('jenispenerbitan.destroy',$d->id) }}" method="post" onsubmit="return confirm('Are sure to delete?')">
+              <form action="{{ route('jeniskelab.destroy',$d->id) }}" method="post" onsubmit="return confirm('Are sure to delete?')">
                       @csrf
                       @method('delete')
-                      <a href="{{ route('jenispenerbitan.edit',$d->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                      <a href="{{ route('jeniskelab.edit',$d->id) }}" class="btn btn-sm btn-warning">Edit</a>
                       <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                     </form>
             </td>
@@ -71,12 +71,12 @@ PENERBITAN/MAJALAH
         <!-- Content Header (Page header) -->
         <div class="card">
           <div class="card-body">
-            <h4 class="card-header d-flex justify-content-between align-items-center">Penerbitan
-              <a href=" {{ route('penerbitan.create') }}"><button type="submit" class="btn btn-success waves-effect waves-light"><i class="fa fa-plus-circle"></i></button></a>
+            <h4 class="card-header d-flex justify-content-between align-items-center">Kelab
+              <a href=" {{ route('kelab.create') }}"><button type="submit" class="btn btn-success waves-effect waves-light"><i class="fa fa-plus-circle"></i></button></a>
             </h4>
             <br>
 
-            <table id="dtpenerbitan" class="table table-bordered table-striped">
+            <table id="dtkelab" class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th>Tahap Pencapaian</th>
@@ -92,10 +92,10 @@ PENERBITAN/MAJALAH
                   <td>{{$d->markah}}</td>
                   <td>{{$d->jawatan}}</td>
                   <td>
-                    <form action="{{ route('penerbitan.destroy',$d->penerbitandtid) }}" method="post" onsubmit="return confirm('Are sure to delete?')">
+                    <form action="{{ route('kelab.destroy',$d->kelabid) }}" method="post" onsubmit="return confirm('Are sure to delete?')">
                       @csrf
                       @method('delete')
-                      <a href="{{ route('penerbitan.edit',$d->penerbitandtid) }}" class="btn btn-sm btn-warning">Edit</a>
+                      <a href="{{ route('kelab.edit',$d->kelabid) }}" class="btn btn-sm btn-warning">Edit</a>
                       <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                     </form>
                   </td>

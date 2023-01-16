@@ -121,7 +121,14 @@ Route::resource('jenisprogramtertentu', App\Http\Controllers\TblProgramTertentuC
 //end program tertentu
 
 
-
+//kelab
+Route::get('/kelab',[\App\Http\Controllers\TblKelabDtController::class,'index']);
+Route::resource('kelab', App\Http\Controllers\TblKelabDtController::class);
+//Jenis kelab
+    Route::get('/jeniskelab', [App\Http\Controllers\TblKelabController::class, 'index']);
+    Route::resource('jeniskelab', App\Http\Controllers\TblKelabController::class);
+//Jenis kelab
+//end kelab
 
 
 
@@ -182,11 +189,11 @@ Route::controller(ProcessController::class)->group(function () {
 //habis BAHAGIAN DANIEL SUKAN
 
 //BAHAGIAN DANIEL PERSATUAN/KELAB
-Route::controller(ProcessController::class)->group(function () {
-    Route::get('persatuan', 'Pagepersatuan')->middleware('auth');
-    Route::post('Simpanjawatan', 'simpanTPMarkahjawatan');
-    Route::post('SimpanJenisPersatuan', 'SimpanJenisPersatuan');
-});
+//Route::controller(ProcessController::class)->group(function () {
+ //   Route::get('persatuan', 'Pagepersatuan')->middleware('auth');
+ //   Route::post('Simpanjawatan', 'simpanTPMarkahjawatan');
+  //  Route::post('SimpanJenisPersatuan', 'SimpanJenisPersatuan');
+//});
 //HABIS BAHAGIAN DANIEL PERSATUAN/KELAB
 
 

@@ -57,7 +57,7 @@
   
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="persatuan" class="nav-link {{ request()->is('*persatuan*') ? 'active' : '' }}">
+                <a href="/kelab" class="nav-link {{ request()->is('*persatuan*') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>PERSATUAN/KELAB</p>
                 </a>
@@ -65,7 +65,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="kebudayaan" class="nav-link {{ request()->is('*kebudayaan*') ? 'active' : '' }}">
+                <a href="/kebudayaan" class="nav-link {{ request()->is('*kebudayaan*') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>KEBUDAYAAN</p>
                 </a>

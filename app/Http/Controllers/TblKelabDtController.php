@@ -2,46 +2,46 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TblPenerbitan;
-use App\Models\TblPenerbitanDt;
+use App\Models\TblKelab;
+use App\Models\TblKelabDt;
 use App\Models\TblProfilJawatan;
 use App\Models\TblProfilMarkah;
 use App\Models\TblProfilTahapPencapaian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class TblPenerbitanDtController extends Controller
+class TblKelabDtController extends Controller
 {
-    /**
+   /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $data= DB::table ('tbl_penerbitan_dts')   
-        ->join('tbl_profil_tahap_pencapaians', 'tbl_penerbitan_dts.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
-        ->join('tbl_profil_markahs', 'tbl_penerbitan_dts.idmarkah', '=', 'tbl_profil_markahs.id') 
-        ->join('tbl_profil_jawatans', 'tbl_penerbitan_dts.jawatanid', '=', 'tbl_profil_jawatans.id') 
-        ->select('*','tbl_penerbitan_dts.id as penerbitandtid','tbl_profil_markahs.id as markahid','tbl_profil_tahap_pencapaians.id as tpid')
+        $data= DB::table ('tbl_kelab_dts')   
+        ->join('tbl_profil_tahap_pencapaians', 'tbl_kelab_dts.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
+        ->join('tbl_profil_markahs', 'tbl_kelab_dts.idmarkah', '=', 'tbl_profil_markahs.id') 
+        ->join('tbl_profil_jawatans', 'tbl_kelab_dts.jawatanid', '=', 'tbl_profil_jawatans.id') 
+        ->select('*','tbl_kelab_dts.id as kelabid','tbl_profil_markahs.id as markahid','tbl_profil_tahap_pencapaians.id as tpid','tbl_profil_jawatans.id as jawatanid')
 
      
 
      //->where('course.Cname','=','STA')  where statement
      ->get();
 
-     $datacolumn1 = DB::table('tbl_penerbitan_dts')   
-     ->join('tbl_profil_tahap_pencapaians', 'tbl_penerbitan_dts.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
-     ->join('tbl_profil_markahs', 'tbl_penerbitan_dts.idmarkah', '=', 'tbl_profil_markahs.id') 
-     ->join('tbl_profil_jawatans', 'tbl_penerbitan_dts.jawatanid', '=', 'tbl_profil_jawatans.id')
-     ->where ('tbl_penerbitan_dts.idTP', '=', '1')
+     $datacolumn1 = DB::table('tbl_kelab_dts')   
+     ->join('tbl_profil_tahap_pencapaians', 'tbl_kelab_dts.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
+     ->join('tbl_profil_markahs', 'tbl_kelab_dts.idmarkah', '=', 'tbl_profil_markahs.id') 
+     ->join('tbl_profil_jawatans', 'tbl_kelab_dts.jawatanid', '=', 'tbl_profil_jawatans.id')
+     ->where ('tbl_kelab_dts.idTP', '=', '1')
       ->select('*')
 
       ->get();
 
       
 
-     $jenispenerbitan = TblPenerbitan::all();      
+     $jeniskelab = TblKelab::all();      
      
      $tahappencapaian = TblProfilTahapPencapaian::all();
 
@@ -53,9 +53,9 @@ class TblPenerbitanDtController extends Controller
 
 
      
-        return view('profiling.penerbitan.index')
+        return view('profiling.kelab.index')
         ->with(compact('data'))
-        ->with(compact('jenispenerbitan'))
+        ->with(compact('jeniskelab'))
         ->with(compact('tahappencapaian'))
         ->with(compact('jawatan'))
         ->with(compact('markah'))
@@ -73,7 +73,7 @@ class TblPenerbitanDtController extends Controller
         $tahappencapaian = TblProfilTahapPencapaian::all();
         $jawatan = TblProfilJawatan::all();
 
-        return view('profiling.penerbitan.create')
+        return view('profiling.kelab.create')
         ->with(compact('tahappencapaian'))
         ->with(compact('jawatan'))
         ->with(compact('markah'));
@@ -102,22 +102,22 @@ class TblPenerbitanDtController extends Controller
             ]
             );
 
-            TblPenerbitanDt::create([
+            TblKelabDt::create([
                 'idTP' => $request->input('TP'),
                 'idmarkah' => $request->input('markah'),
                 'jawatanid' => $request->input('jawatan')
             ]);
             //redirect routes
-            return redirect('/penerbitan')->with('success', 'Data saved.');
+            return redirect('/kelab')->with('success', 'Data saved.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TblPenerbitanDt  $tblPenerbitanDt
+     * @param  \App\Models\TblKelabDt  $tblKelabDt
      * @return \Illuminate\Http\Response
      */
-    public function show(TblPenerbitanDt $tblPenerbitanDt)
+    public function show(TblKelabDt $tblKelabDt)
     {
         //
     }
@@ -125,26 +125,26 @@ class TblPenerbitanDtController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TblPenerbitanDt  $tblPenerbitanDt
+     * @param  \App\Models\TblKelabDt  $tblKelabDt
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
 
-        $data= DB::table('tbl_penerbitan_dts') 
-        ->join('tbl_profil_tahap_pencapaians', 'tbl_penerbitan_dts.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
-        ->join('tbl_profil_markahs', 'tbl_penerbitan_dts.idmarkah', '=', 'tbl_profil_markahs.id')
-        ->join('tbl_profil_jawatans', 'tbl_penerbitan_dts.jawatanid', '=', 'tbl_profil_jawatans.id')
+        $data= DB::table('tbl_kelab_dts') 
+        ->join('tbl_profil_tahap_pencapaians', 'tbl_kelab_dts.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
+        ->join('tbl_profil_markahs', 'tbl_kelab_dts.idmarkah', '=', 'tbl_profil_markahs.id')
+        ->join('tbl_profil_jawatans', 'tbl_kelab_dts.jawatanid', '=', 'tbl_profil_jawatans.id','tbl_sukan_dts.id as sukanid','tbl_profil_markahs.id as markahid','tbl_profil_tahap_pencapaians.id as tpid') 
         ->select('*')
-        ->where('tbl_penerbitan_dts.id','=',$id) 
+        ->where('tbl_kelab_dts.id','=',$id) 
         ->first();
 
          $markah = TblProfilMarkah::all();
-         $datas = TblPenerbitanDt::find($id);
+         $datas = TblKelabDt::find($id);
          $tahappencapaian = TblProfilTahapPencapaian::all();
          $jawatan = TblProfilJawatan::all();
 
-        return view('profiling.penerbitan.edit')
+        return view('profiling.kelab.edit')
         -> with(compact('data'))
         -> with(compact('datas'))
         -> with(compact('markah'))
@@ -156,7 +156,7 @@ class TblPenerbitanDtController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TblPenerbitanDt  $tblPenerbitanDt
+     * @param  \App\Models\TblKelabDt  $tblKelabDt
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request,$id)
@@ -176,24 +176,24 @@ class TblPenerbitanDtController extends Controller
             ]
         );
 
-        TblPenerbitanDt::find($id)->update([
+        TblKelabDt::find($id)->update([
             'idmarkah' => $request->input('idmarkah'),
             'idTP' => $request->input('idTP'),
             'jawatanid' => $request->input('jawatanid'),
         ]);
-        return redirect()->route('penerbitan.index')->with('success', 'penerbitan updated.');
+        return redirect()->route('kelab.index')->with('success', 'kelabupdated.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TblPenerbitanDt  $tblPenerbitanDt
+     * @param  \App\Models\TblKelabDt  $tblKelabDt
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        TblPenerbitanDt::find($id)->delete();
-        return redirect('/penerbitan')
-            ->with('success', 'Data penerbitan deleted successfully');
+        TblKelabDt::find($id)->delete();
+        return redirect('/kelab')
+            ->with('success', 'Data kelab deleted successfully');
     }
 }
