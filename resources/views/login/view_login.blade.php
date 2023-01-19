@@ -1,112 +1,151 @@
 
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login System</title>
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset('/') }}plugins/fontawesome-free/css/all.min.css">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="{{ asset('/') }}plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('/') }}dist/css/adminlte.min.css">
+  <meta charset="UTF-8">
+  <title>Login Form</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: url(https://korporat.uitm.edu.my/images/about/canseleri.jpg);
+  background-size: cover;
+  font-family: sans-serif;
+}
+
+.loginBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: 420px;
+  padding: 70px 40px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.user {
+    width: 200px;
+    height: 100px;
+    overflow: hidden;
+    position: absolute;
+    top: calc(-100px/2);
+    left: calc(50% - 80px);
+}
+
+h2 {
+  margin: 0;
+  padding: 0 0 26px;
+  color: #ff8c00;
+  text-align: center;
+}
+
+.loginBox p {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  color: #fff;
+}
+
+.loginBox input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.loginBox input[type="text"],
+.loginBox input[type="password"] {
+  border: none;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+  outline: none;
+  height: 40px;
+  color: #fff;
+  font-size: 16px;
+}
+
+::placeholder
+{
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.loginBox input[type="submit"] {
+  border: none;
+  outline: none;
+  height: 40px;
+  color: #eee;
+  font-size: 16px;
+  background-color: #FF8C00;
+  cursor: pointer;
+  border-radius: 20px;
+  margin: 12px 0 18px;
+}
+
+.loginBox input[type="submit"]:hover {
+  background-color: #ff9719;
+  color: #fff;
+}
+
+.loginBox a {
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
-  <!-- /.login-logo -->
-  <div class="card card-outline card-primary">
-    <div class="card-header text-center">
-      <a href="../../index2.html" class="h1"><b>Login </b></a>
-    </div>
-    <div class="card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
 
-      <form action="{{ url('login/loginproses') }}" method="post">
-        @csrf
-        <div class="input-group mb-3">
-          <input autofocus type="text" class="form-control
-          @error('username')         
-                is-invalid
-          @enderror"
-          name="username" id="username" placeholder="Username" value="{{old('username')}}">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-user"></span>
-            </div>
-          </div>
-          @error('username')         
-          <div class="invalid-feedback">
+<body translate="no" >
+  <div class="loginBox">
+  <img class="user" src="https://korporat.uitm.edu.my/images/download/2019/LogoUiTM.png">
+  <h2>Log In Here</h2>
+  <form action="{{ url('login/loginproses') }}" method="post">
+    @csrf
+    <p>Username</p>
+    <input type="text" id="username" name="username" placeholder="Enter Username" value="{{old('username')}}" required>
+    <p>Password</p>
+    <input type="password" id="password" name="password" placeholder="Enter Password" required>
+    {{-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" --}}
+    <input type="submit" name="sign-in" value="Sign In">
+    <a href="#">Forget Password</a>
+  </form>
+  @error('username')         
+          <div style="color: #ff0000">
         {{$message}}
       </div>
           @enderror
-        </div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control 
           @error('password')         
-                is-invalid
-          @enderror"
-          name="password" id="password" 
-          placeholder="Password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-          @error('password')         
-          <div class="invalid-feedback">
+          <div style="color: #ff0000">
         {{$message}}
       </div>
+      
           @enderror
-        </div>
-        <div class="row">
-          <!-- <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Remember Me
-              </label>
-            </div>
-          </div> -->
-          <!-- /.col -->
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-          </div>
-          <!-- /.col -->
-        <!-- </div>
-      </form>
-
-      <div class="social-auth-links text-center mt-2 mb-3">
-        <a href="#" class="btn btn-block btn-primary">
-          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-        </a>
-        <a href="#" class="btn btn-block btn-danger">
-          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-        </a>
-      </div> -->
-      <!-- /.social-auth-links -->
-
-      <!-- <p class="mb-1">
-        <a href="forgot-password.html">I forgot my password</a>
-      </p>
-      <p class="mb-0">
-        <a href="register.html" class="text-center">Register a new membership</a>
-      </p>
-    </div> -->
-    <!-- /.card-body -->
-  </div>
-  <!-- /.card -->
 </div>
-<!-- /.login-box -->
+  
+  
+  
+  
 
-<!-- jQuery -->
-<script src="{{ asset('/') }}plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('/') }}plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('/') }}dist/js/adminlte.min.js"></script>
 </body>
+
 </html>
+ 
