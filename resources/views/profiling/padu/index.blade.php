@@ -46,9 +46,9 @@ Program PADU Page
               </tr>
             </thead>
             <tbody>
-            @foreach($jenispadu as $d)
+            @foreach($padu as $d)
             <tr>              
-            <td>{{$d->jenispadu}}</td>
+            <td>{{$d->padu}}</td>
             <td>
               <form action="{{ route('jenispadu.destroy',$d->id) }}" method="post" onsubmit="return confirm('Are sure to delete?')">
                       @csrf
@@ -90,10 +90,10 @@ Program PADU Page
                   <td>{{$d->pencapaian}}</td>
                   <td>{{$d->markah}}</td>
                   <td>
-                    <form action="{{ route('padu.destroy',$d->id) }}" method="post" onsubmit="return confirm('Are sure to delete?')">
+                    <form action="{{ route('padu.destroy',$d->padudtid) }}" method="post" onsubmit="return confirm('Are sure to delete?')">
                       @csrf
                       @method('delete')
-                      <a href="{{ route('padu.edit',$d->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                      <a href="{{ route('padu.edit',$d->padudtid) }}" class="btn btn-sm btn-warning">Edit</a>
                       <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                     </form>
                   </td>

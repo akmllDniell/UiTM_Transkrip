@@ -46,9 +46,9 @@ Program Tertentu Page
               </tr>
             </thead>
             <tbody>
-            @foreach($jenisprogramtertentu as $d)
+            @foreach($programtertentu as $d)
             <tr>              
-            <td>{{$d->jenisprogramtertentu}}</td>
+            <td>{{$d->programtertentu}}</td>
             <td>
               <form action="{{ route('jenisprogramtertentu.destroy',$d->id) }}" method="post" onsubmit="return confirm('Are sure to delete?')">
                       @csrf
@@ -90,10 +90,10 @@ Program Tertentu Page
                   <td>{{$d->pencapaian}}</td>
                   <td>{{$d->markah}}</td>
                   <td>
-                    <form action="{{ route('programtertentu.destroy',$d->id) }}" method="post" onsubmit="return confirm('Are sure to delete?')">
+                    <form action="{{ route('programtertentu.destroy',$d->program_tertentudtid) }}" method="post" onsubmit="return confirm('Are sure to delete?')">
                       @csrf
                       @method('delete')
-                      <a href="{{ route('programtertentu.edit',$d->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                      <a href="{{ route('programtertentu.edit',$d->program_tertentudtid) }}" class="btn btn-sm btn-warning">Edit</a>
                       <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                     </form>
                   </td>

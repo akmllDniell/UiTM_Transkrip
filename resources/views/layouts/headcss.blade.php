@@ -7,6 +7,7 @@
 
   <link rel="stylesheet" href="../../dist/css/popup.css">
   <link rel="stylesheet" href="../../dist/css/popup2.css">
+  <link rel="stylesheet" href="../../dist/css/try.css">
 
   <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
 

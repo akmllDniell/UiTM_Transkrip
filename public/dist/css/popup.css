@@ -70,5 +70,11 @@
         right: 0;
         bottom: 0;
       }
+
+
+      .line {
+        border-left: 30px solid green;
+        height: 500px;
+      }
       
       

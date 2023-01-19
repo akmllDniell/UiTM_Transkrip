@@ -15,7 +15,7 @@ class CreateTblProgramTertentusTable extends Migration
     {
         Schema::create('tbl_program_tertentus', function (Blueprint $table) {
             $table->id();
-            $table->string('jenisprogramtertentu',100);
+            $table->string('programtertentu',100);
             $table->timestamps();
         });
     }

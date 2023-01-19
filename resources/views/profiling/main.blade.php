@@ -28,8 +28,41 @@ Main Page
 
     <!-- Main content -->
     <section class="content">
-      <center><img src="https://logos-download.com/wp-content/uploads/2017/11/UiTM_Universiti_Teknologi_MARA_logo-700x295.png" alt="UiTM logo"></center>
+      <table>
+        <tr>
+          <td>
+              <left><img src="https://logos-download.com/wp-content/uploads/2017/11/UiTM_Universiti_Teknologi_MARA_logo-700x295.png" alt="UiTM logo" width="337" height="160" ></left>
+          </td>
 
+          <td>&nbsp;</td>
+
+          <td>
+              <div class="line"></div>
+          </td>
+          
+          <td >
+            {{-- <table>
+              <tr> --}} 
+                
+                 <td >
+                  
+                  <div class="typewriter-container">
+                    <h1 class="typewriter" style="--n:57"><span>SELAMAT DATANG KE WEBSITE</span> <br>
+                      UiTM MINI TRANSKRIP</span></h1></div>
+                 
+                </td>
+        
+                
+             {{-- </tr>
+           </table> --}}
+          </td>
+       
+         
+        </tr>
+      </table>
+      
+<br>
+<br>
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
@@ -219,5 +252,35 @@ Main Page
 
 
 
+
 @endsection
 
+@section('css')
+
+<style>
+
+.typewriter {
+  
+  display: inline;
+  color:#0000;
+  font-size: 60px;
+  background:
+    linear-gradient(-90deg,#080909 5px,#0000 0) 10px 0,
+    linear-gradient(#0c0c0c 0 0) 0 0;
+  background-size:calc(var(--n)*1ch) 200%;
+  -webkit-background-clip:padding-box,text;
+  background-clip:padding-box,text;
+  background-repeat:no-repeat;
+  animation: 
+ 
+   writetext calc(var(--n)*.1s) steps(var(--n)) forwards;
+}
+
+@keyframes writetext {
+  from {background-size:0 200%}
+}
+
+
+</style>
+    
+@endsection

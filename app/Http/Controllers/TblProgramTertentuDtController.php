@@ -25,13 +25,13 @@ class TblProgramTertentuDtController extends Controller
          ->select('tbl_program_tertentu_dts.*','tbl_profil_tahap_pencapaians.*','tbl_profil_markahs.*','tbl_program_tertentu_dts.id as program_tertentudtid','tbl_profil_markahs.id as markahid','tbl_profil_tahap_pencapaians.id as tpid')
          ->get();
 
-        $jenisprogramtertentu = TblProgramTertentu::all();
+        $programtertentu = TblProgramTertentu::all();
         $markah = TblProfilMarkah::all();
         $tahappencapaian = TblProfilTahapPencapaian::all();
 
         return view('profiling.programtertentu.index')
         ->with(compact('data'))
-        ->with(compact('jenisprogramtertentu'))
+        ->with(compact('programtertentu'))
         ->with(compact('tahappencapaian'))
         ->with(compact('markah'));
 
@@ -113,7 +113,7 @@ class TblProgramTertentuDtController extends Controller
         ->join('tbl_profil_tahap_pencapaians', 'tbl_program_tertentu_dts.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
         ->join('tbl_profil_markahs', 'tbl_program_tertentu_dts.idmarkah', '=', 'tbl_profil_markahs.id') 
         ->where('tbl_program_tertentu_dts.id','=', $id)
-        ->select('*')        
+        ->select('tbl_program_tertentu_dts.*','tbl_profil_tahap_pencapaians.*','tbl_profil_markahs.*','tbl_program_tertentu_dts.id as program_tertentudtid','tbl_profil_markahs.id as markahid','tbl_profil_tahap_pencapaians.id as tpid')       
         ->first();
 
         $datas = TblProgramTertentuDt::find($id);

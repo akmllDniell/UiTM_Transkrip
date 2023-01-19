@@ -25,13 +25,13 @@ class TblPaduDtController extends Controller
          ->select('tbl_padu_dts.*','tbl_profil_tahap_pencapaians.*','tbl_profil_markahs.*','tbl_padu_dts.id as padudtid','tbl_profil_markahs.id as markahid','tbl_profil_tahap_pencapaians.id as tpid')
          ->get();
 
-        $jenispadu = TblPadu::all();
+        $padu = TblPadu::all();
         $markah = TblProfilMarkah::all();
         $tahappencapaian = TblProfilTahapPencapaian::all();
 
         return view('profiling.padu.index')
         ->with(compact('data'))
-        ->with(compact('jenispadu'))
+        ->with(compact('padu'))
         ->with(compact('tahappencapaian'))
         ->with(compact('markah'));
 
@@ -113,7 +113,7 @@ class TblPaduDtController extends Controller
         ->join('tbl_profil_tahap_pencapaians', 'tbl_padu_dts.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
         ->join('tbl_profil_markahs', 'tbl_padu_dts.idmarkah', '=', 'tbl_profil_markahs.id') 
         ->where('tbl_padu_dts.id','=', $id)
-        ->select('*')        
+        ->select('tbl_padu_dts.*','tbl_profil_tahap_pencapaians.*','tbl_profil_markahs.*','tbl_padu_dts.id as padudtid','tbl_profil_markahs.id as markahid','tbl_profil_tahap_pencapaians.id as tpid')        
         ->first();
 
         $datas = TblPaduDt::find($id);

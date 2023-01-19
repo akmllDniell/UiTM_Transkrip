@@ -15,7 +15,7 @@ class CreateTblPadusTable extends Migration
     {
         Schema::create('tbl_padus', function (Blueprint $table) {
             $table->id();
-            $table->string('jenispadu',100);
+            $table->string('padu',100);
             $table->timestamps();
         });
     }
