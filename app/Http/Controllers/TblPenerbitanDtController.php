@@ -39,6 +39,14 @@ class TblPenerbitanDtController extends Controller
 
       ->get();
 
+      //arif (buang duplicate)
+      $dataduplicate= DB::table('tbl_penerbitan_dts')   
+     ->join('tbl_profil_jawatans','tbl_penerbitan_dts.jawatanid', '=', 'tbl_profil_jawatans.id')
+     ->where ('tbl_penerbitan_dts.jawatanid', '=', 'tbl_profil_jawatans.id' )
+     ->select('tbl_profil_jawatans.jawatan')
+     
+      ->get();
+      //arif (buang duplicate)
       
 
      $jenispenerbitan = TblPenerbitan::all();      
@@ -48,7 +56,8 @@ class TblPenerbitanDtController extends Controller
      $markah = TblProfilMarkah::all();
 
      $jawatan = TblProfilJawatan::all();
-    
+
+  
 
 
 
@@ -59,7 +68,8 @@ class TblPenerbitanDtController extends Controller
         ->with(compact('tahappencapaian'))
         ->with(compact('jawatan'))
         ->with(compact('markah'))
-        ->with(compact('datacolumn1'));
+        ->with(compact('datacolumn1'))
+        ->with(compact('dataduplicate'));
     }
 
     /**

@@ -4,6 +4,49 @@
 PENERBITAN/MAJALAH
 @endsection
 
+@section('css')
+<style>
+  body {font-family: Arial;}
+  
+  /* Style the tab */
+  .tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+  </style>
+@endsection
+
 @section('content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -76,8 +119,8 @@ PENERBITAN/MAJALAH
             </h4>
             <br>
 
-            <table id="dtpenerbitan" class="table table-bordered table-striped">
-              <thead>
+            
+              {{-- <thead>
                 <tr>
                   <th>Tahap Pencapaian</th>
                   <th>Markah</th>
@@ -100,9 +143,55 @@ PENERBITAN/MAJALAH
                     </form>
                   </td>
                 </tr>
-                @endforeach
-              </tbody>
-            </table>
+                @endforeach --}}
+
+                <br>
+                <br>
+                <h2>Tabs</h2>
+                  <p>Click on the buttons inside the tabbed menu:</p>
+
+                  <div class="tab">
+
+                    {{-- @foreach ($data as $d)
+                    <button class="tablinks" onclick="openjawatan(event,'{{$d->jawatan}}')">{{$d->jawatan}}</button>
+                    @endforeach  --}}
+                    {{-- <button class="tablinks" onclick="openjawatan(event,'LEBIHAN ERROR')">ERROR</button> --}}
+
+                    <button class="tablinks" onclick="openjawatan(event,'KETUA EDITOR')">KETUA EDITOR</button>
+                    <button class="tablinks" onclick="openjawatan(event,'EDITOR')">EDITOR</button>
+                    <button class="tablinks" onclick="openjawatan(event,'SETIAUSAHA')">SETIAUSAHA</button>
+                    <button class="tablinks" onclick="openjawatan(event,'PENULIS ARTIKEL')">PENULIS ARTIKEL</button>
+                    <button class="tablinks" onclick="openjawatan(event,'AHLI JAWATANKUASA')">AHLI JAWATANKUASA</button>
+
+                  </div>
+
+                  
+
+                    <div id="KETUA EDITOR" class="tabcontent">
+                      @include('profiling.penerbitan.info',['name' => 'KETUA EDITOR'])
+                    </div>
+
+                  <div id="EDITOR" class="tabcontent">
+                    @include('profiling.penerbitan.info',['name' => 'EDITOR'])
+                  </div>
+
+                  <div id="SETIAUSAHA" class="tabcontent">
+                    @include('profiling.penerbitan.info',['name' => 'SETIAUSAHA'])
+                  </div>
+
+                  <div id="PENULIS ARTIKEL" class="tabcontent">
+                    @include('profiling.penerbitan.info',['name' => 'PENULIS ARTIKEL'])
+                  </div>
+
+                  <div id="AHLI JAWATANKUASA" class="tabcontent">
+                    @include('profiling.penerbitan.info',['name' => 'AHLI JAWATANKUASA'])
+                  </div>
+
+                  <div id="LEBIHAN ERROR" class="tabcontent">
+                    @include('layouts.infoerror')
+                  </div>
+              
+            
           </div>
         </div>
       </div>
@@ -114,3 +203,25 @@ PENERBITAN/MAJALAH
   <!-- /.card-footer-->
 </div>
 @endsection
+
+
+@section('script')
+<script>
+  function openjawatan(evt, jawatan) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(jawatan).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+</script>
+@endsection
+
+
+
