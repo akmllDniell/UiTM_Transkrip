@@ -11,12 +11,12 @@
                   <div class="container-fluid">
                     <div class="row mb-2">
                       <div class="col-sm-6">
-                        <h2>Add Anugerah/Sijil Kecemerlangan</h2>
+                        <h2>Add Kebudayaan</h2>
                       </div>
                       <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                          <li class="breadcrumb-item"><a href="/sijil">Anugerah/Sijil Kecemerlangan</a></li>
-                          <li class="breadcrumb-item active">Add Anugerah/Sijil Kecemerlangan</li>
+                          <li class="breadcrumb-item"><a href="/kebudayaan">Kebudayaan</a></li>
+                          <li class="breadcrumb-item active">Add Kebudayaan</li>
                         </ol>
                       </div>
                     </div>
@@ -47,7 +47,7 @@
     <center>
     <div class="form-group" style="width:50%; float: left; padding: 20px;  ">
        
-        <label>PILIH ANUGERAH/SIJIL KECEMRLANGAN/PINGAT ANDA</label>
+        <label>PILIH TAHAP PENCAPAIAN ANDA</label>
         <select id="TP" name="TP" class="select2 select2-hidden-accessible" style="width: 100%;" placeholder="Pilccih Uniform">
             @foreach($tahappencapaian as $d)
             <option value="{{$d->id}}">{{$d->pencapaian}}</option>            

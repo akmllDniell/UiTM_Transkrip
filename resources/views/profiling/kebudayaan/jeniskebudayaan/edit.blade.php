@@ -12,12 +12,12 @@
                   <div class="container-fluid">
                     <div class="row mb-2">
                       <div class="col-sm-6">
-                        <h1>Edit Jenis Anugerah/Sijil/Pingat</h1>
+                        <h1>Edit Jenis Kebudayaan</h1>
                       </div>
                       <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                          <li class="breadcrumb-item"><a href="/kebudayaan">Jenis Anugerah/Sijil/Pingat</a></li>
-                          <li class="breadcrumb-item active">Edit Jenis Anugerah/Sijil/Pingat</li>
+                          <li class="breadcrumb-item"><a href="/kebudayaan">Kebudayaan</a></li>
+                          <li class="breadcrumb-item active">Edit Jenis Kebudayaan</li>
                         </ol>
                       </div>
                     </div>
@@ -41,7 +41,7 @@
     @csrf
     @method('PATCH') 
     <div class="form-group">
-        <label >Jenis Anugerah/Sijil/Pingat</label>
+        <label >Jenis Kebudayaan</label>
         <input type="text" name="jeniskebudayaan" value="{{$datas->jeniskebudayaan}}" class="form-control @error('jeniskebudayaan') is-invalid  @enderror">
         @error('jeniskebudayaan')
         <span class="invalid-feedback">

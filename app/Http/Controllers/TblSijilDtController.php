@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TblJenisSijil;
 use App\Models\TblProfilMarkah;
 use App\Models\TblProfilTahapPencapaian;
 use App\Models\TblSijil;
@@ -99,15 +98,7 @@ class TblSijilDtController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        // $data= TblSijil::find($id);
-
-        // $datasukan = DB::table('tbl_sukans')   
-        //  ->join('tbl_profil_tahap_pencapaians', 'tbl_sukans.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
-        //  ->join('tbl_profil_markahs', 'tbl_sukans.idmarkah', '=', 'tbl_profil_markahs.id') 
-        //  ->select('tbl_sukans.*','tbl_profil_tahap_pencapaians.*','tbl_profil_markahs.*','tbl_sukans.id as sukanid','tbl_profil_markahs.id as markahid','tbl_profil_tahap_pencapaians.id as tpid')
-        //  ->where('tbl_sukans.id','=','$id') 
-        //  ->get();
+    {        
 
         $data= DB::table('tbl_sijil_dts') 
         ->join('tbl_profil_tahap_pencapaians', 'tbl_sijil_dts.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 

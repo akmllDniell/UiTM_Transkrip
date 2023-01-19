@@ -28,6 +28,9 @@ use App\Models\ModelTPdanMPenerbitan;
 use App\Models\ModelTPMarkahPersatuan;
 use App\Models\ModelTPNMprogram;
 use App\Models\SimpanJawatandanMarkahsuksis;
+use App\Models\TblProfilBadanBeruniform;
+use App\Models\TblProfilJawatan;
+use App\Models\TblProfilJawatanUniform;
 use App\Models\TblProfilMarkah;
 use App\Models\TblProfilTahapPencapaian;
 use App\Models\TblSukan;
@@ -312,7 +315,7 @@ class ProcessController extends Controller
 
            ->get();
 
-           
+           $count = TblProfilJawatan::count();
  
           $jenispersatuan = DB::table('jenispersatuan')        
           ->select('*')
@@ -343,7 +346,8 @@ class ProcessController extends Controller
          ->with(compact('tahappencapaian'))
          ->with(compact('jawatan'))
          ->with(compact('markah'))
-         ->with(compact('datacolumn1'));
+         ->with(compact('datacolumn1'))
+         ->with(compact('count')); 
 
     }
 
@@ -1196,7 +1200,10 @@ public function SimpanTPdanMarkahAnugerah(Request $req)
 
     //arif mencuba
   
-
+    public function bukapageuniform(){
+    
+        
+    }
     
 
  

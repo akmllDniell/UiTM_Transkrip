@@ -1,4 +1,3 @@
-
 @extends('layouts.master')
 
 @section('content')
@@ -11,12 +10,12 @@
                   <div class="container-fluid">
                     <div class="row mb-2">
                       <div class="col-sm-6">
-                        <h1>Add Sukan</h1>
+                        <h1>Edit {{ $data->badanuniform }} </h1>
                       </div>
                       <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                          <li class="breadcrumb-item"><a href="/sukan">sukan</a></li>
-                          <li class="breadcrumb-item active">Add sukan</li>
+                          <li class="breadcrumb-item"><a href="/uniform">uniform</a></li>
+                          <li class="breadcrumb-item active">Edit {{ $data->badanuniform }}</li>
                         </ol>
                       </div>
                     </div>
@@ -38,46 +37,42 @@
   <label>DATA ASAL ANDA</label>
 </center>
 <div style="margin-top: 2%" >
-  <center>    
-    <div class="form-group" style="width:50%; float: left; padding: 10px;  ">
-      <input class="form-control" type="text" value="{{ $data->pencapaian }}" readonly>    
-    </div>
+  <center>       
     <div class="form-group" style="width:50%; float: left; padding: 10px;  "> 
       <input class="form-control" type="text" value="{{ $data->markah }}" readonly>
+    </div>
+    <div class="form-group" style="width:50%; float: left; padding: 10px;  "> 
+      <input class="form-control" type="text" value="{{ $data->jawatanuniform }}" readonly>
     </div>
   </center>
 </div>
 
-<form action="/sukan/{{$datas->id}}" method="post" >
+<form action="/uniform/{{$datas->id}}" method="post" >
   @csrf
   @method('PATCH') 
-    <center>
-    <div class="form-group" style="width:50%; float: left; padding: 20px; margin-top:5%" >
-       
-        <label>PILIH TAHAP PENCAIPAIAN ANDA</label>
-        <select id="idTP" name="idTP" class="select2 select2-hidden-accessible" style="width: 100%;" placeholder="Pilccih Uniform">        
-          <option value="{{ $data->idtp }}" selected>{{ $data->pencapaian }}</option>       
-            @foreach($tahappencapaian as $d)
-            @if ($d->pencapaian != $data->pencapaian )
-            <option value="{{$d->id}}">{{$d->pencapaian}}</option>            
-            @endif      
-            @endforeach            
-        </select>
-    
-    </div>
+    <center>    
     <div class="form-group" style="width:50%; float: left; padding: 20px; margin-top:5% ">
-        
+        <input type="text" id="uni" name="uni" value="{{ $data->idbadanberuniform }}" hidden>
         <label>PILIH MARKAH ANDA</label>
         <select id="idmarkah" name="idmarkah" class="select2 select2-hidden-accessible" style="width: 100%;" placeholder="Pilccih Uniform">            
-          <option value="{{ $data->idm }}" selected>{{ $data->markah }}</option>   
             @foreach($markah as $m)
-            @if ($m->markah != $data->markah )
-            <option value="{{$m->id}}">{{$m->markah}}</option>   
-            @endif         
+            <option value="{{$m->id}}">{{$m->markah}}</option>            
             @endforeach
         </select>        
     
     </div>
+    <div class="form-group" style="width:50%; float: left; padding: 20px; margin-top:5% ">
+        
+      <label>PILIH JAWATAN UNIFORM ANDA</label>
+      <select id="jawatanid" name="jawatanid" class="select2 select2-hidden-accessible" style="width: 100%;" placeholder="Pilccih Uniform">            
+          @foreach($jawatanuniform as $j)
+          @if ($j->idBadanUniform == $data->idbadanberuniform )                        
+          <option value="{{$j->id}}">{{$j->jawatanuniform}}</option>   
+          @endif         
+          @endforeach
+      </select>        
+  
+  </div>
     <button type="submit" class="btn btn-primary my-3">Update</button>
 </center>
 </form>

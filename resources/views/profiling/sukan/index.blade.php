@@ -12,12 +12,12 @@ Sukan Page
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>DataTables</h1>
+          <h1>Data Sukan</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">DataTables</li>
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active">Sukan</li>
           </ol>
         </div>
       </div>
@@ -29,8 +29,13 @@ Sukan Page
       <div class="card">
         <!-- /.card-header -->
         <div class="card-body">
-          @if ($message = Session::get('success'))
+          @if ($message = Session::get('successjenissukan'))
           <div class="alert alert-success">
+            <p>{{ $message }}</p>
+          </div>
+          @endif
+          @if ($message = Session::get('deletejenisukan'))
+          <div class="alert alert-danger">
             <p>{{ $message }}</p>
           </div>
           @endif
@@ -75,7 +80,16 @@ Sukan Page
               <a href=" {{ route('sukan.create') }}"><button type="submit" class="btn btn-success waves-effect waves-light"><i class="fa fa-plus-circle"></i></button></a>
             </h4>
             <br>
-
+          @if ($message = Session::get('success'))
+          <div class="alert alert-success">
+            <p>{{ $message }}</p>
+          </div>
+          @endif
+          @if ($message = Session::get('delete'))
+          <div class="alert alert-danger">
+            <p>{{ $message }}</p>
+          </div>
+          @endif
             <table id="dtUniform" class="table table-bordered table-striped">
               <thead>
                 <tr>

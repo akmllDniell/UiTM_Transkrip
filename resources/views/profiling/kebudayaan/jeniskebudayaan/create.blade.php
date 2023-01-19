@@ -11,12 +11,12 @@
                   <div class="container-fluid">
                     <div class="row mb-2">
                       <div class="col-sm-6">
-                        <h1>Add Jenis Anugerah/Sijil Kecemerlangan/Pingat</h1>
+                        <h1>Add Jenis Kebudayaan</h1>
                       </div>
                       <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                          <li class="breadcrumb-item"><a href="/sijil">Jenis Anugerah/Sijil/Pingat</a></li>
-                          <li class="breadcrumb-item active">Jenis Anugerah/Sijil/Pingat</li>
+                          <li class="breadcrumb-item"><a href="/kebudayaan">Kebudayaan</a></li>
+                          <li class="breadcrumb-item active">Jenis Kebudayaan</li>
                         </ol>
                       </div>
                     </div>

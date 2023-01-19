@@ -10,12 +10,12 @@
                   <div class="container-fluid">
                     <div class="row mb-2">
                       <div class="col-sm-6">
-                        <h1>Add PERSATUAN/KELAB</h1>
+                        <h1>Edit PERSATUAN/KELAB</h1>
                       </div>
                       <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                           <li class="breadcrumb-item"><a href="/kelab">PERSATUAN/KELAB</a></li>
-                          <li class="breadcrumb-item active">Add PERSATUAN/KELAB</li>
+                          <li class="breadcrumb-item active">Edit PERSATUAN/KELAB</li>
                         </ol>
                       </div>
                     </div>

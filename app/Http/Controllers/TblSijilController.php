@@ -91,18 +91,18 @@ class TblSijilController extends Controller
          $request->validate(
             //validation rules
             [
-                'sijil' => ['required', 'min:3', 'max:100']
+                'jenissijil' => 'required'
             ],
             //validation messages
             [
-                'required' => 'Medan : attribute diperlukan',
-                'singkatan.size' => 'code mestilah 3 aksara',
-                'singkatan.unique' => 'code telah wujud'
+                'required' => 'Medan : attribute diperlukan',                
             ]
         );
 
-        TblSijil::find($id)->update($request->all());
-        return redirect()->route('sijil.index')->with('success', 'Jenis Anugerah/Sijil Kecemerlangan/Pingat updated.');
+        TblSijil::find($id)->update([
+            'sijil' => $request->input('jenissijil'),
+        ]);
+        return redirect()->route('sijil.index')->with('successjenissukan', "Jenis sukan succesfully updated");
     }
 
     /**

@@ -42,7 +42,7 @@
     @method('PATCH') 
     <div class="form-group">
         <label >Jenis Anugerah/Sijil/Pingat</label>
-        <input type="text" name="jenissijil" value="{{$datas->jenissijil}}" class="form-control @error('jenissijil') is-invalid  @enderror">
+        <input type="text" name="jenissijil" value="{{$datas->sijil}}" class="form-control @error('jenissijil') is-invalid  @enderror">
         @error('jenissijil')
         <span class="invalid-feedback">
             {{$message}}

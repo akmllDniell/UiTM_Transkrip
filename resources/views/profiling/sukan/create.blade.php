@@ -45,7 +45,7 @@
             @foreach($tahappencapaian as $d)
             <option value="{{$d->id}}">{{$d->pencapaian}}</option>            
             @endforeach
-            <option value="/markah">Don't have your mark? <a href="/markah">click here</a> </option>          
+            <option value="opendivtp">  Tiada Tahap Pencapaian?</option>          
         </select>
     
     </div>
@@ -56,14 +56,38 @@
             @foreach($markah as $m)
             <option value="{{$m->id}}">{{$m->markah}}</option>            
             @endforeach
+            <option value="opendivmark">Don't have your Mark? Click Button Below </option>          
         </select>        
     
     </div>
     <button type="submit" class="btn btn-primary my-3">Simpan</button>
 </center>
 </form>
-</div></div>
 </div>
+</div>
+<div id="opendivTP" style="display: none">
+  <center>
+  <div class="col-sm-6" >
+    <div class="form-group">       
+        <label>Tekan Sini Untuk Tambah Tahap Pencapaian</label>       
+        <div><button type="submit" style="margin-top: 5%" class="btn btn-primary my-3" onclick="location.href='/tahappencapaian'"><span>Tekan Sini</span></button></div>
+    </div>
+    </div>
+  </center>
+</div>
+<div id="opendivMark" style="display: none">
+  <center>
+  <div class="col-sm-6" >
+    <div class="form-group">       
+        <label>Tekan Sini Untuk Tambah Markah</label>       
+        <div><button type="submit" style="margin-top: 5%" class="btn btn-primary my-3" onclick="location.href='/markah'"><span>Tekan Sini</span></button></div>
+    </div>
+    </div>
+  </center>
+</div>
+</div>
+</div>
+
 @endsection
 
 
@@ -80,4 +104,38 @@
       $('.select2').select2()
     });
 </script>
+
+<script>
+$(document).ready(function(){
+    $('#TP').on('change', function() {
+      if ( this.value != "opendivtp")
+      //.....................^.......
+      {
+        $("#opendivTP").hide();
+      }
+      else
+      {
+        $("#opendivTP").show();
+      }
+    });
+});
+
+$(document).ready(function(){
+    $('#markah').on('change', function() {
+      if ( this.value != "opendivmark")
+      //.....................^.......
+      {
+        $("#opendivMark").hide();
+      }
+      else
+      {
+        $("#opendivMark").show();
+      }
+    });
+});
+
+</script>
 @endsection
+
+
+

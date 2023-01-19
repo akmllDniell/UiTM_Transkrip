@@ -61,12 +61,13 @@ class TblSukanDtController extends Controller
         $request->validate(
             //validation rules
             [
-                'TP' => 'required',
+                'TP' => ['required','numeric'],
                 'markah'=> 'required',
             ],
             //validation messages
             [
                 'TP.required' => 'SIla pilih Tahap pencapaian anda',
+                'TP.numeric' => 'Masukkan Data dengan betul!',
                 'markah.required' => 'SIla pilih markah anda'
             ]
         );
@@ -76,27 +77,8 @@ class TblSukanDtController extends Controller
             'idmarkah' => $request->input('markah')
         ]);
         //redirect routes
-        return redirect('/sukan')->with('success', 'Data saved.');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\TblSukanDt  $TblSukanDt
-     * @return \Illuminate\Http\Response
-     */
-    public function show(TblSukanDt $TblSukanDt)
-    {
-        //
-    }
+        return redirect('/sukan')->with('success', 'Data succesfully saved.');
+    }      
 
     /**
      * Show the form for editing the specified resource.
@@ -109,17 +91,10 @@ class TblSukanDtController extends Controller
         $data= DB::table('tbl_sukan_dts') 
         ->join('tbl_profil_tahap_pencapaians', 'tbl_sukan_dts.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
         ->join('tbl_profil_markahs', 'tbl_sukan_dts.idmarkah', '=', 'tbl_profil_markahs.id') 
-        ->select('*')
+        ->select('*' , 'tbl_profil_markahs.id as idm', 'tbl_sukan_dts.id as ids', 'tbl_profil_tahap_pencapaians.id as idtp')
         ->where('tbl_sukan_dts.id','=',$id) 
         ->first();
-
-        // $datasukan = DB::table('tbl_sukan_dts')   
-        //  ->join('tbl_profil_tahap_pencapaians', 'tbl_sukan_dts.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
-        //  ->join('tbl_profil_markahs', 'tbl_sukan_dts.idmarkah', '=', 'tbl_profil_markahs.id') 
-        //  ->select('tbl_sukan_dts.*','tbl_profil_tahap_pencapaians.*','tbl_profil_markahs.*','tbl_sukan_dts.id as sukanid','tbl_profil_markahs.id as markahid','tbl_profil_tahap_pencapaians.id as tpid')
-        //  ->where('tbl_sukan_dts.id','=','$id') 
-        //  ->get();
-
+     
          $markah = TblProfilMarkah::all();
          $datas = TblSukanDt::find($id);
          $tahappencapaian = TblProfilTahapPencapaian::all();
@@ -157,7 +132,7 @@ class TblSukanDtController extends Controller
             'idmarkah' => $request->input('idmarkah'),
             'idTP' => $request->input('idTP'),
         ]);
-        return redirect()->route('sukan.index')->with('success', 'Sukan updated.');
+        return redirect()->route('sukan.index')->with('success', "Sukan updated");
     }
 
     /**
@@ -170,6 +145,6 @@ class TblSukanDtController extends Controller
     {
         TblSukanDt::find($id)->delete();
         return redirect('/sukan')
-            ->with('success', 'Data sukan deleted successfully');
+            ->with('delete', 'Data sukan deleted successfully');
     }
 }

@@ -16,7 +16,7 @@
                       </div>
                       <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                          <li class="breadcrumb-item"><a href="/markah">Sukan</a></li>
+                          <li class="breadcrumb-item"><a href="/sukan">Sukan</a></li>
                           <li class="breadcrumb-item active">Edit Jenis sukan</li>
                         </ol>
                       </div>
@@ -36,14 +36,14 @@
 @endif
 <div class="card">
     <div class="card-body">
-<form action="/updatejenissukan/{{$datas->id}}" 
+<form action="/jenissukan/{{$datas->id}}" 
     method="post" >    
     @csrf
     @method('PATCH') 
     <div class="form-group">
         <label >Jenis sukan</label>
-        <input type="text" name="jenissukan" value="{{$datas->jenissukan}}" class="form-control @error('markah') is-invalid  @enderror">
-        @error('markah')
+        <input type="text" name="jenissukan" value="{{$datas->jenissukan}}" class="form-control @error('updatejenissukan') is-invalid  @enderror">
+        @error('updatejenissukan')
         <span class="invalid-feedback">
             {{$message}}
         </span>

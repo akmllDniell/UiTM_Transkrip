@@ -12,13 +12,17 @@
     <div class="sidebar">
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <!-- <div class="image">
-          <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div> -->
-        <div class="info">
-          <a href="#" class="d-block"></a>
+        <div class="image">
+        <img src="https://cdn-icons-png.flaticon.com/512/560/560277.png" class="" alt="User Image">
         </div>
-      </div>
+        <div class="info">
+         <a class="d-block">
+          @if(Auth::check())
+          {{ Auth::user()->name }}
+          @endif
+        </a>
+        </div>
+        </div>
 
       <!-- SidebarSearch Form -->
       <div class="form-inline">
@@ -71,43 +75,6 @@
                 </a>
               </li>
             </ul>
-            <ul class="nav nav-treeview" style="display: none;">
-              <li class="nav-item">
-              <a href="#" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>
-              BERUNIFORM
-              <i class="right fas fa-angle-left"></i>
-              </p>
-              </a>
-              <ul class="nav nav-treeview">
-              <li class="nav-item">
-              <a href="pbsmm" class="nav-link">
-              <i class="far fa-dot-circle nav-icon"></i>
-              <p>PBSMM</p>
-              </a>
-              </li>
-              <li class="nav-item">
-              <a href="palapes" class="nav-link">
-              <i class="far fa-dot-circle nav-icon"></i>
-              <p>PALAPES</p>
-              </a>
-              </li>
-              <li class="nav-item">
-              <a href="APM" class="nav-link">
-              <i class="far fa-dot-circle nav-icon"></i>
-              <p>PERTAHANAN AWAM</p>
-              </a>
-              </li>
-              <li class="nav-item">
-                <a href="suksis" class="nav-link">
-                <i class="far fa-dot-circle nav-icon"></i>
-                <p>SUKSIS</p>
-                </a>
-                </li>
-              </ul>
-            </li>
-              </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="/sijil" class="nav-link {{ request()->is('*sijil*') ? 'active' : '' }}">
@@ -118,7 +85,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="penerbitan" class="nav-link {{ request()->is('*penerbitan*') ? 'active' : '' }}">
+                <a href="/penerbitan" class="nav-link {{ request()->is('*penerbitan*') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>PENERBITAN</p>
                 </a>
@@ -126,7 +93,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="padu" class="nav-link {{ request()->is('*padu*') ? 'active' : '' }}">
+                <a href="/padu" class="nav-link {{ request()->is('*padu*') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>PROGRAM PADU</p>
                 </a>
@@ -134,7 +101,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="programtertentu" class="nav-link {{ request()->is('*programtertentu*') ? 'active' : '' }}">
+                <a href="/programtertentu" class="nav-link {{ request()->is('*programtertentu*') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>PROGRAM TERTENTU</p>
                 </a>
@@ -191,7 +158,7 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item ">
-                <a href="/jawatan" class="nav-link {{ request()->is('*jawatan*') ? 'active' : '' }}">
+                <a href="/jawatan" class="nav-link {{ request()->is('*/jawatan*') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Jawatan</p>
                 </a>
@@ -219,7 +186,7 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item ">
-                <a href="/badanuniform" class="nav-link {{ request()->is('*n*') ? 'active' : '' }}">
+                <a href="/jawatanuniform" class="nav-link {{ request()->is('*jawatanuniform*') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Jawatan Badan Beruniform</p>
                 </a>

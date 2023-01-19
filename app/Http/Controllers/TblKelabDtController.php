@@ -134,8 +134,8 @@ class TblKelabDtController extends Controller
         $data= DB::table('tbl_kelab_dts') 
         ->join('tbl_profil_tahap_pencapaians', 'tbl_kelab_dts.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
         ->join('tbl_profil_markahs', 'tbl_kelab_dts.idmarkah', '=', 'tbl_profil_markahs.id')
-        ->join('tbl_profil_jawatans', 'tbl_kelab_dts.jawatanid', '=', 'tbl_profil_jawatans.id','tbl_sukan_dts.id as sukanid','tbl_profil_markahs.id as markahid','tbl_profil_tahap_pencapaians.id as tpid') 
-        ->select('*')
+        ->join('tbl_profil_jawatans', 'tbl_kelab_dts.jawatanid', '=', 'tbl_profil_jawatans.id') 
+        ->select('*','tbl_kelab_dts.id as kelabid','tbl_profil_markahs.id as markahid','tbl_profil_tahap_pencapaians.id as tpid','tbl_profil_jawatans.id as jawatanid')
         ->where('tbl_kelab_dts.id','=',$id) 
         ->first();
 

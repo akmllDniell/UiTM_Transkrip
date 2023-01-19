@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TblJenisKebudayaan;
 use App\Models\TblProfilMarkah;
 use App\Models\TblProfilTahapPencapaian;
 use App\Models\TblKebudayaan;
@@ -100,20 +99,12 @@ class TblKebudayaanDtController extends Controller
      */
     public function edit($id)
     {
-        // $data= TblKebudayaan::find($id);
-
-        // $datakebudayaan = DB::table('tbl_kebudayaan')   
-        //  ->join('tbl_profil_tahap_pencapaians', 'tbl_kebudayaan.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
-        //  ->join('tbl_profil_markahs', 'tbl_kebudayaan.idmarkah', '=', 'tbl_profil_markahs.id') 
-        //  ->select('tbl_kebudayaan.*','tbl_profil_tahap_pencapaians.*','tbl_profil_markahs.*','tbl_kebudayaan.id as kebudayaanid','tbl_profil_markahs.id as markahid','tbl_profil_tahap_pencapaians.id as tpid')
-        //  ->where('tbl_kebudayaan.id','=','$id') 
-        //  ->get();
 
         $data= DB::table('tbl_kebudayaan_dts') 
         ->join('tbl_profil_tahap_pencapaians', 'tbl_kebudayaan_dts.idTP', '=', 'tbl_profil_tahap_pencapaians.id') 
         ->join('tbl_profil_markahs', 'tbl_kebudayaan_dts.idmarkah', '=', 'tbl_profil_markahs.id') 
         ->where('tbl_kebudayaan_dts.id','=', $id)
-        ->select('*')        
+        ->select('*','tbl_profil_markahs.id as idm', 'tbl_kebudayaan_dts.id as idkebudayaan', 'tbl_profil_tahap_pencapaians.id as idtp')        
         ->first();
 
         $datas = TblKebudayaanDt::find($id);
