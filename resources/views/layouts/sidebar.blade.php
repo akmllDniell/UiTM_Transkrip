@@ -115,17 +115,6 @@
                 </a>
               </li>
             </ul>
-            <!-- {{-- @foreach($data as $d)
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/{{$d->NamaAktiviti}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>{{$d->NamaAktiviti}}</p>
-                </a>
-              </li>
-            </ul>
-            @endforeach --}} -->
-
           </li>
 
         
@@ -193,14 +182,16 @@
               </li>
             </ul>
 
-         
-
-          </li>
-
-       
-        
-
-              
+            <ul class="nav nav-treeview">
+              <li class="nav-item ">
+                <a href="/try" class="nav-link {{ request()->is('*try*') ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>try</p>
+                </a>
+              </li>
+            </ul>
+            
+       </li>            
     </ul>
           
         

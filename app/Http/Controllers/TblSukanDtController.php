@@ -94,6 +94,10 @@ class TblSukanDtController extends Controller
         ->select('*' , 'tbl_profil_markahs.id as idm', 'tbl_sukan_dts.id as ids', 'tbl_profil_tahap_pencapaians.id as idtp')
         ->where('tbl_sukan_dts.id','=',$id) 
         ->first();
+
+        // $users = DB::table('users')
+        //     ->leftJoin('posts', 'users.id', '=', 'posts.user_id')
+        //     ->get();
      
          $markah = TblProfilMarkah::all();
          $datas = TblSukanDt::find($id);

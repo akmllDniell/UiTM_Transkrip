@@ -127,5 +127,20 @@ Route::resource('penerbitan', App\Http\Controllers\TblPenerbitanDtController::cl
 Route::get('/jenispenerbitan', [App\Http\Controllers\TblPenerbitanController::class, 'index']);
 Route::resource('jenispenerbitan', App\Http\Controllers\TblPenerbitanController::class);
 
+//try and error (mostly error)
+// Route::get
+// (
+//     '/try', 
+//     function () 
+//     {
+//         return view('student.try.try');
+//     }
+// );
+Route::get('/try', [App\Http\Controllers\TblTrysController::class, 'index']);
+Route::resource('try', App\Http\Controllers\TblTrysController::class);
 
-
+// Route::get('/finduniform', function () 
+//     {
+//         return view('student.try.try');
+//     }
+// );

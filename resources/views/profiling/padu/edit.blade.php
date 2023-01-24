@@ -40,7 +40,7 @@
 <div style="margin-top: 2%" >
   <center>    
     <div class="form-group" style="width:50%; float: left; padding: 10px;  ">
-      <input class="form-control" type="text" value="{{ $data->pencapaian }}" readonly>    
+      <input class="form-control" type="text" value="{{ $data->hep }}" readonly>    
     </div>
     <div class="form-group" style="width:50%; float: left; padding: 10px;  "> 
       <input class="form-control" type="text" value="{{ $data->markah }}" readonly>
@@ -55,9 +55,9 @@
     <div class="form-group" style="width:50%; float: left; padding: 20px; margin-top:5%" >
        
         <label>PILIH PORGRAM PADU ANDA</label>
-        <select id="idTP" name="idTP" class="select2 select2-hidden-accessible" style="width: 100%;" placeholder="Pilccih Uniform">        
-            @foreach($tahappencapaian as $d)
-            <option value="{{$d->id}}">{{$d->pencapaian}}</option>            
+        <select id="idTH" name="idTH" class="select2 select2-hidden-accessible" style="width: 100%;" placeholder="Pilccih Uniform">        
+            @foreach($tahaphep as $d)
+            <option value="{{$d->id}}">{{$d->hep}}</option>            
             @endforeach            
         </select>
     

@@ -79,7 +79,7 @@ Program PADU Page
             <table id="dtUniform" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th>Tahap Pencapaian</th>
+                  <th>Tahap Hep</th>
                   <th>Markah</th>
                   <th>Action</th>
                 </tr>
@@ -87,7 +87,7 @@ Program PADU Page
               <tbody>
                 @foreach($data as $d)
                 <tr>
-                  <td>{{$d->pencapaian}}</td>
+                  <td>{{$d->hep}}</td>
                   <td>{{$d->markah}}</td>
                   <td>
                     <form action="{{ route('padu.destroy',$d->padudtid) }}" method="post" onsubmit="return confirm('Are sure to delete?')">
