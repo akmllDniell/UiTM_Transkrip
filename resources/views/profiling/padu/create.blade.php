@@ -48,9 +48,9 @@
     <div class="form-group" style="width:50%; float: left; padding: 20px;  ">
        
         <label>PILIH PROGRAM PADU ANDA</label>
-        <select id="TP" name="TP" class="select2 select2-hidden-accessible" style="width: 100%;" placeholder="Pilccih Uniform">
-            @foreach($tahappencapaian as $d)
-            <option value="{{$d->id}}">{{$d->pencapaian}}</option>            
+        <select id="TH" name="TH" class="select2 select2-hidden-accessible" style="width: 100%;" placeholder="Pilccih Uniform">
+            @foreach($tahaphep as $d)
+            <option value="{{$d->id}}">{{$d->hep}}</option>            
             @endforeach
         </select>
     

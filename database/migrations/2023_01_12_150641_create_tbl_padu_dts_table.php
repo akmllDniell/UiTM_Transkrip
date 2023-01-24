@@ -16,11 +16,11 @@ class CreateTblPaduDtsTable extends Migration
         Schema::create('tbl_padu_dts', function (Blueprint $table) {
             $table->id();   
             $table->unsignedBigInteger('idmarkah');
-            $table->unsignedBigInteger('idTP');  
+            $table->unsignedBigInteger('idTH');  
             // $table->foreign(['idmarkah'], 'FK_kebudayaan_markah')->references(['id'])->on('tbl_profil_markahs')->onUpdate('NO ACTION')->onDelete('NO ACTION');
             // $table->foreign(['idTP'], 'FK_kebudayaan_tahap')->references(['id'])->on('tbl_profil_tahap_pencapaians')->onUpdate('NO ACTION')->onDelete('NO ACTION');
             $table->foreign('idmarkah')->references('id')->on('tbl_profil_markahs')->onDelete('cascade');
-            $table->foreign('idTP')->references('id')->on('tbl_profil_tahap_pencapaians')->onDelete('cascade');
+            $table->foreign('idTH')->references('id')->on('tbl_profil_tahap_heps')->onDelete('cascade');
             $table->timestamps();
         });
     }

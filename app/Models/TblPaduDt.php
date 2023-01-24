@@ -11,7 +11,7 @@ class TblPaduDt extends Model
 
     protected $fillable = [              
         'idmarkah',
-        'idTP'
+        'idTH'
     ];    
 
 }
