@@ -84,6 +84,7 @@ class TblTrysController extends Controller
         $idpenerbitandt = DB::table('tbl_penerbitan_dts')
         ->leftJoin('tbl_profil_tahap_pencapaians', 'tbl_penerbitan_dts.idTP', '=', 'tbl_profil_tahap_pencapaians.id')
         ->leftJoin('tbl_profil_jawatans', 'tbl_penerbitan_dts.jawatanid', '=', 'tbl_profil_jawatans.id')
+        ->select('*','tbl_penerbitan_dts.id as penerbitanid')
         ->get();   
         $idpenerbitan =TblPenerbitan::all();
         //penerbitan
@@ -92,6 +93,7 @@ class TblTrysController extends Controller
         $idpadudt = DB::table('tbl_padu_dts')
         ->leftJoin('tbl_profil_tahap_heps', 'tbl_padu_dts.idTH', '=', 'tbl_profil_tahap_heps.id')
         ->leftJoin('tbl_profil_markahs', 'tbl_padu_dts.idmarkah', '=', 'tbl_profil_markahs.id')
+        ->select('*','tbl_padu_dts.id as paduid')
         ->get();      
         $idpadu = TblPadu::all();
         //padu
@@ -101,6 +103,7 @@ class TblTrysController extends Controller
         $idprogramtertentudt = DB::table('tbl_program_tertentu_dts')
         ->leftJoin('tbl_profil_tahap_pencapaians', 'tbl_program_tertentu_dts.idTP', '=', 'tbl_profil_tahap_pencapaians.id')
         ->leftJoin('tbl_profil_markahs', 'tbl_program_tertentu_dts.idmarkah', '=', 'tbl_profil_markahs.id')
+        ->select('*','tbl_program_tertentu_dts.id as tertentuid')
         ->get();   
         $idprogramtertentu =TblProgramTertentu::all();       
         //program tertentu
@@ -154,16 +157,16 @@ class TblTrysController extends Controller
            'idkelabdt' => $request->input('idkelabdt'), 
            'idkebudayaan' => $request->input('idkebudayaan'),
            'idkebudayaandt' => $request->input('idkebudayaandt'),
-            'iduniform' => $request->input('idberuniform'),
+            // 'iduniform' => $request->input('idberuniform'),
         //    'idjenisuniform' => $request->input('idjenisuniform'),
            'idsijildt' => $request->input('idsijildt'),
            'idsijil' => $request->input('idsijil'),
            'idpenerbitandt' => $request->input('idpenerbitandt'),
            'idpenerbitan' => $request->input('idpenerbitan'),
            'idpadudt' => $request->input('idpadudt'),
-           'idpadu' => $request->input('idpadu')
-        //    'idprogramtertentudt' => $request->input('idprogramtertentdt'),
-        //    'idprogramtertentu' => $request->input('idprogramtertent')
+           'idpadu' => $request->input('idpadu'),
+           'idprogramtertentudt' => $request->input('idprogramtertentudt'),
+           'idprogramtertentu' => $request->input('idprogramtertentu')
         ]);
         //redirect routes
         return redirect('/try')->with('success', 'Data saved.');

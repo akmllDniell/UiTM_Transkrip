@@ -15,7 +15,7 @@ class CreateTblTrysTable extends Migration
     {
         Schema::create('tbl_trys', function (Blueprint $table) 
         {
-            $table->id('idstudent');
+            $table->id();
 
             //1.sukan
             $table->unsignedBigInteger('idsukandt');             

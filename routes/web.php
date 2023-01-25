@@ -9,6 +9,7 @@ use App\Http\Controllers\ProcessController;
 use App\Http\Middleware\CekUserLogin;
 use App\Http\Controllers\TblJawatanUniformController;
 use App\Http\Controllers\TblProfilBadanBeruniformController;
+use App\Http\Controllers\TblStudentController;
 use App\Http\Controllers\TblSukanController;
 use App\Http\Controllers\TblSukanDtController;
 use App\Http\Controllers\TblUniformController;
@@ -40,12 +41,13 @@ Route::controller(LoginController::class)->group(function () {
     Route::get('logout', 'logout');
     Route::get('login/login2', 'login2')->name('login2');
     Route::get('student/main', 'studentpage');
+    Route::get('/signup', 'signup');
 });
 //END LOGIN PROCESS
 
 
 
-
+Route::group(['middleware'=> ['auth','CheckUser:admin']],function(){
 //PARAMETERS
 // Jawatan
 Route::get('/jawatan', [App\Http\Controllers\TblProfilJawatanController::class, 'index']);
@@ -126,7 +128,7 @@ Route::get('/penerbitan',[\App\Http\Controllers\TblPenerbitanDtController::class
 Route::resource('penerbitan', App\Http\Controllers\TblPenerbitanDtController::class);
 Route::get('/jenispenerbitan', [App\Http\Controllers\TblPenerbitanController::class, 'index']);
 Route::resource('jenispenerbitan', App\Http\Controllers\TblPenerbitanController::class);
-
+});
 //try and error (mostly error)
 // Route::get
 // (
@@ -139,8 +141,10 @@ Route::resource('jenispenerbitan', App\Http\Controllers\TblPenerbitanController:
 Route::get('/try', [App\Http\Controllers\TblTrysController::class, 'index']);
 Route::resource('try', App\Http\Controllers\TblTrysController::class);
 
-// Route::get('/finduniform', function () 
-//     {
-//         return view('student.try.try');
-//     }
-// );
+Route::get('/finduniform', function () 
+    {
+        return view('student.try.try');
+    }
+);
+
+Route::get('/student',[\App\Http\Controllers\TblStudentController::class,'index']);

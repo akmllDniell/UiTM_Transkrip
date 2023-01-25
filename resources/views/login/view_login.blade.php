@@ -39,7 +39,7 @@ body {
     left: calc(50% - 80px);
 }
 
-h2 {
+.titlee {
   margin: 0;
   padding: 0 0 26px;
   color: #ff8c00;
@@ -50,6 +50,12 @@ h2 {
   margin: 0;
   padding: 0;
   font-weight: bold;
+  color: #fff;
+}
+
+.signup {
+  margin: 0;
+  padding: 0;  
   color: #fff;
 }
 
@@ -117,7 +123,7 @@ h2 {
 <body translate="no" >
   <div class="loginBox">
   <img class="user" src="https://korporat.uitm.edu.my/images/download/2019/LogoUiTM.png">
-  <h2>Log In Here</h2>
+  <h2 class="titlee">Log In Here</h2>
   <form action="{{ url('login/loginproses') }}" method="post">
     @csrf
     <p>Username</p>
@@ -126,7 +132,9 @@ h2 {
     <input type="password" id="password" name="password" placeholder="Enter Password" required>
     {{-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" --}}
     <input type="submit" name="sign-in" value="Sign In">
-    <a href="#">Forget Password</a>
+    <label style="signup" class="signup">Already have an account? Sign in
+      <a href="/signup"><font  color="#ff8c00">here</font></a>
+    </label>
   </form>
   @error('username')         
           <div style="color: #ff0000">

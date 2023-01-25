@@ -12,24 +12,17 @@ class TblTrys extends Model
     [
         'idsukandt',        
         'idsukan',
-
         'idkelabdt',        
         'idkelab',
-
         'idkebudayaandt',        
         'idkebudayaan',
-
-   
-
         'idsijildt',        
         'idsijil',
-
         'idpenerbitandt',        
         'idpenerbitan',
-
-        'idpadudt',        
-        'idpadu',
-
-        
+        'idprogramtertentudt',
+        'idprogramtertentu',
+        'idpadudt',
+        'idpadu'         
     ];
 }

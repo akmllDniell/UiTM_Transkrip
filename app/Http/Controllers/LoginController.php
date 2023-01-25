@@ -90,4 +90,8 @@ public function studentpage(){
     return View('student.main');
 }
 
+public function signup(){
+    return view('login.signup');
+}
+
 }
