@@ -121,7 +121,7 @@ body {
 </head>
 
 <body translate="no" >
-  <div class="loginBox">
+  <div class="loginBox">    
   <img class="user" src="https://korporat.uitm.edu.my/images/download/2019/LogoUiTM.png">
   <h2 class="titlee">Log In Here</h2>
   <form action="{{ url('login/loginproses') }}" method="post">
@@ -132,8 +132,8 @@ body {
     <input type="password" id="password" name="password" placeholder="Enter Password" required>
     {{-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" --}}
     <input type="submit" name="sign-in" value="Sign In">
-    <label style="signup" class="signup">Already have an account? Sign in
-      <a href="/signup"><font  color="#ff8c00">here</font></a>
+    <label style="signup" class="signup">Don't have an account? <a href="/signup"><font  color="#ff8c00">Sign in</font></a>
+      
     </label>
   </form>
   @error('username')         

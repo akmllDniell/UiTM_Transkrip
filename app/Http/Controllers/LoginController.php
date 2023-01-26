@@ -56,7 +56,7 @@ class LoginController extends Controller
         }
         else if($user->username=="seller")
         {
-            return redirect()->intended('student/main');
+            return redirect()->intended('/student');
         }
         else{
             return redirect()->intended('/'); 

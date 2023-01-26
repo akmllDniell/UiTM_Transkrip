@@ -17,6 +17,11 @@ class CreateTblTrysTable extends Migration
         {
             $table->id();
 
+            //student
+            $table->unsignedBigInteger('userid');             
+            $table->foreign('userid')->references('id')->on('users')->onDelete('cascade');  
+            //end student
+            
             //1.sukan
             $table->unsignedBigInteger('idsukandt');             
             $table->foreign('idsukandt')->references('id')->on('tbl_sukan_dts')->onDelete('cascade');            

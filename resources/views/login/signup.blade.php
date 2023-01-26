@@ -101,15 +101,15 @@
                   <form role="form" method="POST" action="/session">
                     <label>Name</label>
                     <div class="mb-3">
-                      <input  type="text" class="form-control" name="password" id="password" placeholder="Password" value="secret" aria-label="Password" aria-describedby="password-addon">
+                      <input  type="text" class="form-control" name="name" id="name" placeholder="Full Name" aria-label="name" >
                     </div>
-                    <input type="hidden" name="_token" value="pwNHRFBLhJOGyqAlY009ivvEnny98O4h4AUrL2up">                    <label>Email</label>
+                    <label>Email</label>
                     <div class="mb-3">
-                      <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="admin@softui.com" aria-label="Email" aria-describedby="email-addon">
+                      <input type="email" class="form-control" name="email" id="email" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
                     </div>                    
                     <label>Password</label>
                     <div class="mb-3">
-                      <input type="password" class="form-control" name="password" id="password" placeholder="Password" value="secret" aria-label="Password" aria-describedby="password-addon">
+                      <input type="password" class="form-control" name="password" id="password" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
                     </div>                   
                     <div class="text-center">
                       <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Sign in</button>
