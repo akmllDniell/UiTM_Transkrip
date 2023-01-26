@@ -23,6 +23,7 @@ class TblTrys extends Model
         'idprogramtertentudt',
         'idprogramtertentu',
         'idpadudt',
-        'idpadu'         
+        'idpadu',
+        'userid'         
     ];
 }

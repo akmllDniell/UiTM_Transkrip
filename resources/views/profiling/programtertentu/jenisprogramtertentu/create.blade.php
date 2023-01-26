@@ -40,7 +40,7 @@
 
     <div class="form-group">
         <label >Jenis Program tertentu </label>
-        <input type="text" name="jenisprogramtertentu" value="{{old('jenisprogramtertentu')}}" class="form-control @error('jenisprogramtertentu') is-invalid  @enderror">
+        <input style="text-transform: uppercase" type="text" name="jenisprogramtertentu" value="{{old('jenisprogramtertentu')}}" class="form-control @error('jenisprogramtertentu') is-invalid  @enderror">
         @error('jenisprogramtertentu')
         <span class="invalid-feedback">
             {{$message}}

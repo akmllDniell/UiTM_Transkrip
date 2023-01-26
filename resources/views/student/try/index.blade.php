@@ -111,7 +111,13 @@ Kebudayaan Page
                @csrf
                <!-- One "tab" for each step in the form: -->
                {{-- SUKAN --}}
-               <div class="tab">
+               {{-- <div class="tab">
+
+
+                  <input id="userid" name="userid" type="text" hidden value="{{ Auth::user()->id }}"> 
+
+
+
                   <h1>SUKAN :</h1>
                   <label>JENIS SUKAN ANDA:</label><br>
                   <select id="idsukan" name="idsukan"  style="width: 100%;" oninput="this.className = ''" >
@@ -130,10 +136,10 @@ Kebudayaan Page
                      @endforeach
                      </option> 
                   </select>
-               </div>
+               </div> --}}
                {{-- SUKAN --}}
                {{-- KELAB --}}
-               <div class="tab">
+               {{-- <div class="tab">
                   <h1>PERSATUAN/KELAB :</h1>
                   <label>JENIS PERSATUAN/KELAB ANDA:</label><br>
                   <select id="idkelab" name="idkelab"  style="width: 100%;" oninput="this.className = ''" >
@@ -152,10 +158,10 @@ Kebudayaan Page
                      @endforeach
                      </option> 
                   </select>
-               </div>
+               </div> --}}
                {{-- KELAB --}}
                {{-- KEBUDAYAAN --}}
-               <div class="tab">
+               {{-- <div class="tab">
                   <h1>KEBUDAYAAN/KEROHANIAN :</h1>
                   <label>JENIS KEBUDAYAAN/KEROHANIAN ANDA:</label><br>
                   <select id="idkebudayaan" name="idkebudayaan"  style="width: 100%;" oninput="this.className = ''" >
@@ -174,10 +180,10 @@ Kebudayaan Page
                      @endforeach
                      </option> 
                   </select>
-               </div>
+               </div> --}}
                {{-- KEBUDAYAAN --}}
                {{-- BERUNIFORM --}}
-               {{-- 
+               
                <div class="tab">
                   <h1>BERUNIFORM :</h1>
                   <label>JENIS BERUNIFORM:</label><br>
@@ -188,7 +194,7 @@ Kebudayaan Page
                      @endforeach
                   </select>
                </div>
-               --}}
+              
                {{-- 
                <p id="demo"></p>
                --}}
@@ -308,6 +314,15 @@ Kebudayaan Page
                      @endforeach
                      </option> 
                   </select>
+
+                  {{-- //id PELAJAR --}}
+                  {{-- @if(Auth::check())
+                  $p ={{ Auth::user()->name }};
+                  @endif --}}
+
+                     {{-- $userid = p --}}
+                  {{-- //id pelajar --}}
+
                </div>
               
                {{-- PROGRAM TERTENTU --}}

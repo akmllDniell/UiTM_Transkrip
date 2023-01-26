@@ -39,7 +39,7 @@
 
     <div class="form-group">
         <label >Jenis Penerbitan/Majalah</label>
-        <input type="text" name="jenispenerbitan" value="{{old('jenispenerbitan')}}" class="form-control @error('jenispenerbitan') is-invalid  @enderror">
+        <input type="text" style="text-transform: uppercase" name="jenispenerbitan" value="{{old('jenispenerbitan')}}" class="form-control @error('jenispenerbitan') is-invalid  @enderror">
         @error('jenispenerbitan')
         <span class="invalid-feedback">
             {{$message}}

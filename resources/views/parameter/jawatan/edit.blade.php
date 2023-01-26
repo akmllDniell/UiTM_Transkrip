@@ -42,14 +42,14 @@
     @method('PATCH') 
     <div class="form-group">
         <label >Nama Jawatan</label>
-        <input type="text" name="name" value="{{$datas->jawatan}}" class="form-control @error('name') is-invalid  @enderror">
+        <input style="text-transform: uppercase" type="text" name="name" value="{{$datas->jawatan}}" class="form-control @error('name') is-invalid  @enderror">
         @error('name')
         <span class="invalid-feedback">
             {{$message}}
         </span>
         @enderror
         <label >Singkatan</label>
-        <input type="text" name="singkatan" value="{{$datas->singkatan}}" class="form-control @error('singkatan') is-invalid  @enderror">
+        <input style="text-transform: uppercase" type="text" name="singkatan" value="{{$datas->singkatan}}" class="form-control @error('singkatan') is-invalid  @enderror">
         @error('singkatan')
         <span class="invalid-feedback">
             {{$message}}

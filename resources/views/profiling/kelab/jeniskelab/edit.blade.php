@@ -41,7 +41,7 @@
     @method('PATCH') 
     <div class="form-group">
         <label >Jenis PERSATUAN/KELAB</label>
-        <input type="text" name="jeniskelab" value="{{$datas->jeniskelab}}" class="form-control @error('jeniskelab') is-invalid  @enderror">
+        <input style="text-transform: uppercase" type="text" name="jeniskelab" value="{{$datas->jeniskelab}}" class="form-control @error('jeniskelab') is-invalid  @enderror">
         @error('jeniskelab')
         <span class="invalid-feedback">
             {{$message}}

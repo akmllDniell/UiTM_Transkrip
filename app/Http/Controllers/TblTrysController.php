@@ -19,6 +19,7 @@ use App\Models\TblSukan;
 use App\Models\TblSukanDt;
 use App\Models\TblTrys;
 use App\Models\TblUniform;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -108,6 +109,10 @@ class TblTrysController extends Controller
         $idprogramtertentu =TblProgramTertentu::all();       
         //program tertentu
 
+        //user
+        $userid =User::all();
+        //user
+
 
         return view('student.try.index')
         ->with(compact('idsukandt'))
@@ -126,6 +131,7 @@ class TblTrysController extends Controller
         ->with(compact('idpadu'))
         ->with(compact('idprogramtertentudt'))
         ->with(compact('idprogramtertentu'))
+        ->with(compact('userid'))
         ;
 
     
@@ -166,7 +172,8 @@ class TblTrysController extends Controller
            'idpadudt' => $request->input('idpadudt'),
            'idpadu' => $request->input('idpadu'),
            'idprogramtertentudt' => $request->input('idprogramtertentudt'),
-           'idprogramtertentu' => $request->input('idprogramtertentu')
+           'idprogramtertentu' => $request->input('idprogramtertentu'),
+           'userid' => $request->input('userid')
         ]);
         //redirect routes
         return redirect('/try')->with('success', 'Data saved.');

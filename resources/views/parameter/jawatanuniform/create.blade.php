@@ -40,7 +40,7 @@
 
     <div class="form-group">
         <label >NAMA JAWATAN BADAN BERUNIFORM</label>
-        <input type="text" name="jawatanuniform" value="{{old('name')}}" class="form-control @error('name') is-invalid  @enderror">
+        <input type="text" style="text-transform: uppercase" name="jawatanuniform" value="{{old('name')}}" class="form-control @error('name') is-invalid  @enderror">
         @error('name')
         <span class="invalid-feedback">
             {{$message}}

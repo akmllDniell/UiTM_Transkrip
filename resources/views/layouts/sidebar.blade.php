@@ -190,8 +190,34 @@
                 </a>
               </li>
             </ul>
+        
             
-       </li>            
+      
+       </li> 
+
+       {{-- //Pelajar --}}
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              PELAJAR
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+
+          <ul class="nav nav-treeview">
+            <li class="nav-item ">
+              <a href="/senaraipelajar" class="nav-link {{ request()->is('*senaraipelajar*') ? 'active' : '' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>SENARAI PELAJAR</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        {{-- //pelajar --}}
+       
+
+
     </ul>
           
         

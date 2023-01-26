@@ -158,6 +158,7 @@ PENERBITAN/MAJALAH
                     {{-- <button class="tablinks" onclick="openjawatan(event,'LEBIHAN ERROR')">ERROR</button> --}}
 
                     <button class="tablinks" onclick="openjawatan(event,'KETUA EDITOR')">KETUA EDITOR</button>
+                    
                     <button class="tablinks" onclick="openjawatan(event,'EDITOR')">EDITOR</button>
                     <button class="tablinks" onclick="openjawatan(event,'SETIAUSAHA')">SETIAUSAHA</button>
                     <button class="tablinks" onclick="openjawatan(event,'PENULIS ARTIKEL')">PENULIS ARTIKEL</button>

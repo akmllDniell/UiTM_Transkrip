@@ -5,7 +5,7 @@ use App\Http\Controllers\Kasir;
 use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProcessController;
-
+use App\Http\Controllers\SenaraiPelajarController;
 use App\Http\Middleware\CekUserLogin;
 use App\Http\Controllers\TblJawatanUniformController;
 use App\Http\Controllers\TblProfilBadanBeruniformController;
@@ -141,10 +141,17 @@ Route::resource('jenispenerbitan', App\Http\Controllers\TblPenerbitanController:
 Route::get('/try', [App\Http\Controllers\TblTrysController::class, 'index']);
 Route::resource('try', App\Http\Controllers\TblTrysController::class);
 
-Route::get('/finduniform', function () 
-    {
-        return view('student.try.try');
-    }
-);
+// Route::get('/finduniform', function () 
+//     {
+//         return view('student.try.try');
+//     }
+// );
 
 Route::get('/student',[\App\Http\Controllers\TblStudentController::class,'index']);
+
+//SENARAI PELAJAR
+
+Route::get('/senaraipelajar',[\App\Http\Controllers\SenaraiPelajarController::class,'index']);
+
+
+//SENARAI PELAJAR
