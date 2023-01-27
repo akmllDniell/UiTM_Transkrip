@@ -79,7 +79,7 @@ class TblProfilJawatanController extends Controller
      */
     public function edit($id)
     {
-        $datas = TblProfilJawatan::find($id);
+        $datas = TblProfilJawatan::find($id);        
         return view('parameter.jawatan.edit', compact('datas'));
     }
 

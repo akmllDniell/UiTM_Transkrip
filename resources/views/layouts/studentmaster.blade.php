@@ -7,12 +7,13 @@
     <title>@yield('title')</title>
     @include('layouts.studentheadcss')
 </head>
-<body class="hold-transition sidebar-mini">
-    <!-- Site wrapper -->
-    <div class="wrapper">
-    @yield('content')
-    </div>
-
-    @include('layouts.studentscript')
-</body>
+    <body class="g-sidenav-show  bg-gray-100">    
+        @include('layouts.studentsidebar')
+        <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+            @include('layouts.studenttopsidebar')
+            @yield('content')
+        </main>
+        @yield('configuration')
+        @include('layouts.studentscript')
+    </body>
 </html>

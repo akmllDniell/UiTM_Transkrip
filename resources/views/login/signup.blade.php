@@ -60,13 +60,13 @@
     <div class="collapse navbar-collapse" id="navigation">
       <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-          <a class="nav-link me-2" href="http://soft-ui-dashboard-laravel.test/register">
+          <a class="nav-link me-2" href="/signup">
             <i class="fas fa-user-circle opacity-6 me-1 text-dark"></i>
             Sign Up
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link me-2" href="http://soft-ui-dashboard-laravel.test/login">
+          <a class="nav-link me-2" href="/login">
             <i class="fas fa-key opacity-6 me-1 text-dark"></i>
             Sign In
           </a>
@@ -74,7 +74,7 @@
       </ul>
       <ul class="navbar-nav d-lg-block d-none">
         <li class="nav-item">
-          <a href="https://www.creative-tim.com/product/soft-ui-dashboard-laravel" target="_blank" class="btn btn-sm btn-round mb-0 me-1 bg-gradient-dark">Free download</a>
+          <a href="mailto:itraub@uitm.edu.my?subject=Problem with Mini Transkrip system!" target="_blank" class="btn btn-sm btn-round mb-0 me-1 bg-gradient-dark">Need Help?</a>
         </li>
       </ul>
     </div>

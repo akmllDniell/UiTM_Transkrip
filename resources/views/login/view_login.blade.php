@@ -132,7 +132,7 @@ body {
     <input type="password" id="password" name="password" placeholder="Enter Password" required>
     {{-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" --}}
     <input type="submit" name="sign-in" value="Sign In">
-    <label style="signup" class="signup">Don't have an account? <a href="/signup"><font  color="#ff8c00">Sign in</font></a>
+    <label style="signup" class="signup">Don't have an account? <a href="/signup"><font  color="#ff8c00">Sign up</font></a>
       
     </label>
   </form>

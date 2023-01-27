@@ -32,8 +32,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //LOGIN PROCESS
-Route::get('/', [LayoutController::class, 'index'])->middleware('auth');
-Route::get('/home', [LayoutController::class, 'index'])->middleware('auth');
+
 
 Route::controller(LoginController::class)->group(function () {
     Route::get('login', 'index')->name('login');
@@ -49,6 +48,8 @@ Route::controller(LoginController::class)->group(function () {
 
 Route::group(['middleware'=> ['auth','CheckUser:admin']],function(){
 //PARAMETERS
+Route::get('/', [LayoutController::class, 'index'])->middleware('auth');
+Route::get('/home', [LayoutController::class, 'index'])->middleware('auth');
 // Jawatan
 Route::get('/jawatan', [App\Http\Controllers\TblProfilJawatanController::class, 'index']);
 Route::resource('jawatan', App\Http\Controllers\TblProfilJawatanController::class);
@@ -152,6 +153,9 @@ Route::get('/student',[\App\Http\Controllers\TblStudentController::class,'index'
 //SENARAI PELAJAR
 
 Route::get('/senaraipelajar',[\App\Http\Controllers\SenaraiPelajarController::class,'index']);
-
-
 //SENARAI PELAJAR
+
+Route::get('/transkrip',[\App\Http\Controllers\TblStudentController::class,'transkrip']);
+Route::get('/studentform',[\App\Http\Controllers\TblStudentController::class,'multiform']);
+Route::resource('simpan',App\Http\Controllers\TblStudentController::class);
+Route::get('/minitranskrip',[\App\Http\Controllers\TblStudentController::class,'output'])->name('output');
