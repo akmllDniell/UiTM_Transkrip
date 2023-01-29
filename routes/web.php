@@ -153,6 +153,7 @@ Route::get('/student',[\App\Http\Controllers\TblStudentController::class,'index'
 //SENARAI PELAJAR
 
 Route::get('/senaraipelajar',[\App\Http\Controllers\SenaraiPelajarController::class,'index']);
+Route::get('/show/{id}',[\App\Http\Controllers\SenaraiPelajarController::class,'show'])->name('showstudent');
 //SENARAI PELAJAR
 
 Route::get('/transkrip',[\App\Http\Controllers\TblStudentController::class,'transkrip']);

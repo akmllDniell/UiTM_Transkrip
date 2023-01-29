@@ -111,7 +111,7 @@ Kebudayaan Page
                @csrf
                <!-- One "tab" for each step in the form: -->
                {{-- SUKAN --}}
-               {{-- <div class="tab">
+               <div class="tab">
 
 
                   <input id="userid" name="userid" type="text" hidden value="{{ Auth::user()->id }}"> 
@@ -136,10 +136,10 @@ Kebudayaan Page
                      @endforeach
                      </option> 
                   </select>
-               </div> --}}
+               </div>
                {{-- SUKAN --}}
                {{-- KELAB --}}
-               {{-- <div class="tab">
+               <div class="tab">
                   <h1>PERSATUAN/KELAB :</h1>
                   <label>JENIS PERSATUAN/KELAB ANDA:</label><br>
                   <select id="idkelab" name="idkelab"  style="width: 100%;" oninput="this.className = ''" >
@@ -158,10 +158,10 @@ Kebudayaan Page
                      @endforeach
                      </option> 
                   </select>
-               </div> --}}
+               </div>
                {{-- KELAB --}}
                {{-- KEBUDAYAAN --}}
-               {{-- <div class="tab">
+               <div class="tab">
                   <h1>KEBUDAYAAN/KEROHANIAN :</h1>
                   <label>JENIS KEBUDAYAAN/KEROHANIAN ANDA:</label><br>
                   <select id="idkebudayaan" name="idkebudayaan"  style="width: 100%;" oninput="this.className = ''" >
@@ -180,11 +180,11 @@ Kebudayaan Page
                      @endforeach
                      </option> 
                   </select>
-               </div> --}}
+               </div>
                {{-- KEBUDAYAAN --}}
                {{-- BERUNIFORM --}}
                
-               <div class="tab">
+               {{-- <div class="tab">
                   <h1>BERUNIFORM :</h1>
                   <label>JENIS BERUNIFORM:</label><br>
                   <select id="iduniform" name="iduniform"  style="width: 100%;" oninput="this.className = ''" onchange="change()">
@@ -193,7 +193,7 @@ Kebudayaan Page
                      <option value="{{$g->id}}" >{{$g->id}}</option>
                      @endforeach
                   </select>
-               </div>
+               </div> --}}
               
                {{-- 
                <p id="demo"></p>

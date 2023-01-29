@@ -103,8 +103,8 @@ tr:nth-child(even) {
                     <tr>
                     <td><center>{{$d->name}}</center></td>
                     <td><center>{{$d->userid}}</center></td>
-                    <td><center><button class="button-88" role="button">SHOW DATA</button></center></td>
-                    {{-- <td>{{$d->badanuniform}}</td>
+                    <td><center><a href="{{ route('showstudent',$d->userid) }}" class="button-88" role="button">SHOW DATA</a></center></td>
+                    {{-- <td>{{$d->badanuniform}}</td>showstudent
                     <td>{{$d->singkatan}}</td> --}}
                     </tr>
                     @endforeach
