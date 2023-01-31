@@ -38,7 +38,7 @@ class SenaraiPelajarController extends Controller
         //user
         $user = DB::table('tbl_trys')
         ->join('users','tbl_trys.userid', '=', 'users.id')
-        ->where('tbl_trys.id','=',$id) 
+        ->where('tbl_trys.userid','=',$id) 
         ->first();
         //user
 
@@ -52,7 +52,7 @@ class SenaraiPelajarController extends Controller
         (
             '*','tbl_trys.id as tryid'
         )
-        ->where('tbl_trys.id','=',$id) 
+        ->where('tbl_trys.userid','=',$id) 
         ->first();
         //sukan
 
@@ -67,7 +67,7 @@ class SenaraiPelajarController extends Controller
         (
             '*','tbl_trys.id as tryid'
         )
-        ->where('tbl_trys.id','=',$id) 
+        ->where('tbl_trys.userid','=',$id) 
         ->first();
         //kelab
 
@@ -81,7 +81,7 @@ class SenaraiPelajarController extends Controller
         (
             '*','tbl_trys.id as tryid'
         )
-        ->where('tbl_trys.id','=',$id) 
+        ->where('tbl_trys.userid','=',$id) 
         ->first();
         //kebudayaan
 
@@ -95,7 +95,7 @@ class SenaraiPelajarController extends Controller
         (
             '*','tbl_trys.id as tryid'
         )
-        ->where('tbl_trys.id','=',$id) 
+        ->where('tbl_trys.userid','=',$id) 
         ->first();
         //beruniform
 
@@ -109,7 +109,7 @@ class SenaraiPelajarController extends Controller
         (
             '*','tbl_trys.id as tryid'
         )
-        ->where('tbl_trys.id','=',$id) 
+        ->where('tbl_trys.userid','=',$id) 
         ->first();
         //sijil
 
@@ -124,7 +124,7 @@ class SenaraiPelajarController extends Controller
         (
             '*','tbl_trys.id as tryid'
         )
-        ->where('tbl_trys.id','=',$id) 
+        ->where('tbl_trys.userid','=',$id) 
         ->first();
         //penerbitan
 
@@ -138,7 +138,7 @@ class SenaraiPelajarController extends Controller
         (
             '*','tbl_trys.id as tryid'
         )
-        ->where('tbl_trys.id','=',$id) 
+        ->where('tbl_trys.userid','=',$id) 
         ->first();
         //padu
 
@@ -152,7 +152,7 @@ class SenaraiPelajarController extends Controller
         (
             '*','tbl_trys.id as tryid'
         )
-        ->where('tbl_trys.id','=',$id) 
+        ->where('tbl_trys.userid','=',$id) 
         ->first();
         //program tertentu
 
