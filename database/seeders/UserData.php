@@ -19,7 +19,7 @@ class UserData extends Seeder
                 'name' => 'Administrator',
                 'username'=>'admin',
                 'password'=>bcrypt('123456'),
-                'level' => '1',
+                'role' => '1', //1 for admin 2 for student
                 'email' => 'admin@gmail.com'
 
             ],
@@ -27,7 +27,7 @@ class UserData extends Seeder
                 'name' => 'penjual',
                 'username'=>'seller',
                 'password'=>bcrypt('246810'),
-                'level' => '2',
+                'role' => '2',
                 'email' => 'seller@gmail.com'
 
             ],
@@ -35,10 +35,18 @@ class UserData extends Seeder
                 'name' => 'Pembeli',
                 'username'=>'user',
                 'password'=>bcrypt('112233'),
-                'level' => '3',
+                'role' => '2',
                 'email' => 'user@gmail.com'
 
             ],
+            [                
+                'name' => 'Akmal Daniel',
+                'username'=>'2020478518',
+                'password'=>bcrypt('222333'),
+                'role' => '2',
+                'email' => 'daniel@gmail.com'
+
+            ],           
             ];
 
             foreach($user as $key => $value)

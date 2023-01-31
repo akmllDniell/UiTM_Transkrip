@@ -21,8 +21,10 @@ use App\Models\TblSukanDt;
 use App\Models\TblTrys;
 use App\Models\TblUniform;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;use Illuminate\Routing\ViewController;
+use Illuminate\Support\Facades\Auth;
 
 class TblStudentController extends Controller
 {
@@ -238,5 +240,74 @@ class TblStudentController extends Controller
         return view('student.minitranskrip');
     }
 
+    public function profilstudent()
+    {
+        if(Auth::user()->BOD == null)
+        {
+            $years = "";
+        }
+        else{
+        $dateOfBirth = Auth::user()->BOD;
+        $years = Carbon::parse($dateOfBirth)->age;
+    }
 
+        return view('student.profilstudent')->with(compact('years'));
+    }
+
+    public function editprofil()
+    {
+        if(Auth::user()->BOD == null)
+        {
+            $years = "";
+        }
+        else{
+        $dateOfBirth = Auth::user()->BOD;
+        $years = Carbon::parse($dateOfBirth)->age;
+    }
+
+        return view('student.editprofilstudent')->with(compact('years'));
+    }
+
+    public function updateprofil(Request $req)
+    {     
+           
+        $id = Auth::user()->id;
+
+        $req->validate(
+            //validation rules
+            [
+                'name' => [''],
+                'course' => [''],
+                'faculty' => [''],
+                'phone' => [''],
+                'address' => [''],
+                'email' => [''],                
+            ],
+        );
+
+
+        User::find($id)->update([
+            'name' => $req->input('name'),
+            'course' => $req->input('course'),
+            'faculty' => $req->input('faculty'),
+            'phone' => $req->input('phone'),
+            'address' => $req->input('address'),
+            'email' => $req->input('email'),
+        ]);
+        
+        return redirect('/profil')->with('message','student succesfully updated');
+    }
+
+    public function semakantranskrip()
+    {        
+        $id = Auth::user()->id;
+        // $date = TblTrys::find($id)->userid;
+        $data= DB::table('tbl_trys')         
+        ->select('*')
+        ->where('tbl_trys.userid','=',$id) 
+        ->first();
+
+        
+        return view('student.semaktranskrip')->with(compact('data'));
+    }
 }

@@ -127,7 +127,7 @@ body {
   <form action="{{ url('login/loginproses') }}" method="post">
     @csrf
     <p>Username</p>
-    <input type="text" id="username" name="username" placeholder="Enter Username" value="{{old('username')}}" required>
+    <input type="text" id="username" name="username" placeholder="Enter Username (STUDENT ID)" value="{{old('username')}}" required>
     <p>Password</p>
     <input type="password" id="password" name="password" placeholder="Enter Password" required>
     {{-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" --}}
@@ -136,6 +136,10 @@ body {
       
     </label>
   </form>
+  @if ($message = Session::get('success'))
+          <div  style="color: #ff0000">
+            {{ $message }}
+  @endif
   @error('username')         
           <div style="color: #ff0000">
         {{$message}}

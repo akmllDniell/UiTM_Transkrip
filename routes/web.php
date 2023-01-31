@@ -6,6 +6,7 @@ use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProcessController;
 use App\Http\Controllers\SenaraiPelajarController;
+use App\Http\Controllers\SignupController;
 use App\Http\Middleware\CekUserLogin;
 use App\Http\Controllers\TblJawatanUniformController;
 use App\Http\Controllers\TblProfilBadanBeruniformController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\TblSukanController;
 use App\Http\Controllers\TblSukanDtController;
 use App\Http\Controllers\TblUniformController;
 use App\Models\TblProfilBadanBeruniform;
+use App\Models\TblStudent;
 use App\Models\TblSukan;
 use App\Models\TblSukanDt;
 use Illuminate\Support\Facades\Auth;
@@ -39,17 +41,22 @@ Route::controller(LoginController::class)->group(function () {
     Route::post('login/loginproses', 'loginproses');
     Route::get('logout', 'logout');
     Route::get('login/login2', 'login2')->name('login2');
-    Route::get('student/main', 'studentpage');
-    Route::get('/signup', 'signup');
+    Route::get('student/main', 'studentpage');    
 });
 //END LOGIN PROCESS
+Route::controller(SignupController::class)->group(function () {
+    Route::get('/signup', 'signup');
+    Route::post('/session','session');
+
+});
+
 
 
 
 Route::group(['middleware'=> ['auth','CheckUser:admin']],function(){
 //PARAMETERS
-Route::get('/', [LayoutController::class, 'index'])->middleware('auth');
-Route::get('/home', [LayoutController::class, 'index'])->middleware('auth');
+Route::get('/', [LayoutController::class, 'index']);
+Route::get('/home', [LayoutController::class, 'index'])->name('home');
 // Jawatan
 Route::get('/jawatan', [App\Http\Controllers\TblProfilJawatanController::class, 'index']);
 Route::resource('jawatan', App\Http\Controllers\TblProfilJawatanController::class);
@@ -148,9 +155,9 @@ Route::resource('try', App\Http\Controllers\TblTrysController::class);
 //     }
 // );
 
-Route::get('/student',[\App\Http\Controllers\TblStudentController::class,'index']);
+Route::get('/student',[\App\Http\Controllers\TblStudentController::class,'index'])->name('student');
 
-//SENARAI PELAJAR
+//SENARAI PELAJAR admin
 
 Route::get('/senaraipelajar',[\App\Http\Controllers\SenaraiPelajarController::class,'index']);
 Route::get('/show/{id}',[\App\Http\Controllers\SenaraiPelajarController::class,'show'])->name('showstudent');
@@ -160,3 +167,8 @@ Route::get('/transkrip',[\App\Http\Controllers\TblStudentController::class,'tran
 Route::get('/studentform',[\App\Http\Controllers\TblStudentController::class,'multiform']);
 Route::resource('simpan',App\Http\Controllers\TblStudentController::class);
 Route::get('/minitranskrip',[\App\Http\Controllers\TblStudentController::class,'output'])->name('output');
+Route::get('/profil',[\App\Http\Controllers\TblStudentController::class,'profilstudent']);
+Route::get('/editprofil',[\App\Http\Controllers\TblStudentController::class,'editprofil']);
+Route::patch('/updatestudent',[\App\Http\Controllers\TblStudentController::class,'updateprofil']);
+Route::get('/semakan',[\App\Http\Controllers\TblStudentController::class,'semakantranskrip']);
+

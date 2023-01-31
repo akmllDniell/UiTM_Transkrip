@@ -28,42 +28,78 @@ class LoginController extends Controller
     }
 
     public function loginproses(Request $req){
-        $req->validate([
+        $input = $req->all();
+     
+        $this->validate($req, 
+        [
             'username' => 'required',
-            'password' => 'required'
+            'password' => 'required',
         ],
         [
             'username.required' => 'username perlu diisi',
             'password.required' => 'password perlu diisi'
-        ]
-    );
-
-    $betulketak = $req->only('username','password');
-
-    if(Auth::attempt($betulketak)){
-        $req->session()->regenerate();
-
-        $user = Auth::user();
-        // if($user -> level == '1'){
-        //     return redirect()->intended('admin');
-        // }
-        // elseif($user -> level == '2'){
-        //     return redirect()->intended('seller');
-        // }
-        
-        if($user->username=="admin"){
-            return redirect()->intended('home');
-        }
-        else 
+        ]);
+     
+        if(auth()->attempt(array('username' => $input['username'] , 'password' => $input['password'])))
         {
-            return redirect()->intended('/student');
-        }        
+            if (auth::user()->role == '1') 
+            {
+              return redirect()->route('home');
+            }
+            else if (auth::user()->role == '2') 
+            {
+              return redirect()->route('student');
+            }
+            else
+            {
+                return back()->withErrors([
+                    'username'=> 'Salah code'
+                ])->onlyInput('username');
+            }
+        }
+        else
+        {
+            return back()->withErrors([
+                        'username'=> 'Maaf username atau password salah'
+                    ])->onlyInput('username');
+        }
     }
+    //     $req->validate([
+    //         'username' => 'required',
+    //         'password' => 'required'
+    //     ],
+    //     [
+    //         'username.required' => 'username perlu diisi',
+    //         'password.required' => 'password perlu diisi'
+    //     ]
+    // );
 
-        return back()->withErrors([
-            'username'=> 'Maaf username atau password salah'
-        ])->onlyInput('username');
-    }
+    // $betulketak = $req->only('username','password');
+
+    // if(Auth::attempt($betulketak)){
+    //     $req->session()->regenerate();
+
+    //     $user = Auth::user();
+    //     // if($user -> level == '1'){
+    //     //     return redirect()->intended('admin');
+    //     // }
+    //     // elseif($user -> level == '2'){
+    //     //     return redirect()->intended('seller');
+    //     // }
+        
+    //     if($user->role=="admin"){
+    //         return redirect()->intended('home');
+    //     }
+    //     else 
+    //     {
+    //         return redirect()->intended('/student');
+    //     }        
+    // }
+
+    //     return back()->withErrors([
+    //         'username'=> 'Maaf username atau password salah'
+    //     ])->onlyInput('username');
+    // }
 
     public function logout(Request $request)
 {
@@ -82,10 +118,6 @@ public function login2(){
 
 public function studentpage(){
     return View('student.main');
-}
-
-public function signup(){
-    return view('login.signup');
 }
 
 }

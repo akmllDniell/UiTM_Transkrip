@@ -83,9 +83,9 @@ class CreateTblTrysTable extends Migration
             $table->foreign('idprogramtertentu')->references('id')->on('tbl_program_tertentus')->onDelete('cascade');
             //8.program tertentu
 
-
-            
             $table->timestamps();
+        
+            $table->string('status')->default("ongoing");
         });
     }
 

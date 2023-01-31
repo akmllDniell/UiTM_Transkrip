@@ -91,14 +91,20 @@
         <div class="container">
           <div class="row">
             <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
-              <div class="card card-plain mt-8">
+              <div class="card card-plain mt-6">
                 <div class="card-header pb-0 text-left bg-transparent">
                   <h3 class="font-weight-bolder text-info text-gradient">Welcome, <br> To new student</h3>
                   <p class="mb-0">Create your new account here<br></p>
                   <p class="mb-0"></p>
                 </div>
                 <div class="card-body">
-                  <form role="form" method="POST" action="/session">
+                  <form  method="POST" action="/session">
+                    @csrf
+                    <input  type="text" class="form-control" name="role" id="role" value="2" aria-label="name" hidden >
+                    <label>Student ID</label>
+                    <div class="mb-3">
+                      <input  type="text" class="form-control" name="id" id="id" placeholder="Student Number" aria-label="name" >
+                    </div>
                     <label>Name</label>
                     <div class="mb-3">
                       <input  type="text" class="form-control" name="name" id="name" placeholder="Full Name" aria-label="name" >
