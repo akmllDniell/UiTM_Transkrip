@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\TblSijilDt;
 use Illuminate\Database\Seeder;
 
 class TblSijilDtSeeder extends Seeder
@@ -13,6 +14,49 @@ class TblSijilDtSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $user = [
+            [
+                'id' => '1',
+                'idTP'=>'1',
+                'idmarkah'=>'2',
+            ],
+            [
+                'id' => '2',
+                'idTP'=>'2',
+                'idmarkah'=>'3',
+            ],
+            [
+                'id' => '3',
+                'idTP'=>'3',
+                'idmarkah'=>'4',
+            ],
+            [
+                'id' => '4',
+                'idTP'=>'4',
+                'idmarkah'=>'5',
+            ],
+            [
+                'id' => '5',
+                'idTP'=>'5',
+                'idmarkah'=>'6',
+            ],
+            [
+                'id' => '6',
+                'idTP'=>'6',
+                'idmarkah'=>'7',
+            ],
+            [
+                'id' => '7',
+                'idTP'=>'7',
+                'idmarkah'=>'8',
+            ],
+            
+        ];
+            
+            foreach($user as $key => $value)
+            {
+                TblSijilDt::create($value);                
+            };
+
     }
 }

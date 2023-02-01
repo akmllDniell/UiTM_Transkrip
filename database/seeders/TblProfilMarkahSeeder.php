@@ -17,30 +17,34 @@ class TblProfilMarkahSeeder extends Seeder
         $user = [
             [
                 'id' => '1',
-                'markah'=>'2.0',
+                'markah'=>'1.67',
             ],
             [
                 'id' => '2',
-                'markah'=>'2.33',
+                'markah'=>'2.0',
             ],
             [
                 'id' => '3',
-                'markah'=>'2.67',
+                'markah'=>'2.33',
             ],
             [
                 'id' => '4',
-                'markah'=>'3.0',
+                'markah'=>'2.67',
             ],
             [
                 'id' => '5',
-                'markah'=>'3.33',
+                'markah'=>'3.0',
             ],
             [
                 'id' => '6',
-                'markah'=>'3.67',
+                'markah'=>'3.33',
             ],
             [
                 'id' => '7',
+                'markah'=>'3.67',
+            ],
+            [
+                'id' => '8',
                 'markah'=>'4.0',
             ],
         ];

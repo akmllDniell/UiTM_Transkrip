@@ -19,33 +19,58 @@ class TblProfilJawatanSeeder extends Seeder
         $data = [
             [
                 'id'=>'1',
-                'jawatan'=>'Ahli Aktif',
-                'singkatan'=>'Ahli Aktif',
+                'jawatan'=>'AHLI AKTIF',
+                'singkatan'=>'AHLI AKTIF',
             ],
             [
                 'id'=>'2',
-                'jawatan'=>'Exco',
-                'singkatan'=>'Exco',
+                'jawatan'=>'EXCO',
+                'singkatan'=>'EXCO',
             ],
             [
                 'id'=>'3',
-                'jawatan'=>'Bendahari',
-                'singkatan'=>'Bend.',
+                'jawatan'=>'BENDAHARI',
+                'singkatan'=>'BEND.',
             ],
             [
                 'id'=>'4',
-                'jawatan'=>'Setiausaha',
-                'singkatan'=>'S/Usaha',
+                'jawatan'=>'SETIAUSAHA',
+                'singkatan'=>'S/USAHA',
             ],
             [
                 'id'=>'5',
-                'jawatan'=>'Naik Yang Dipertua',
+                'jawatan'=>'NAIK YANG DIPERTUA',
                 'singkatan'=>'NYDP',
             ],
             [
                 'id'=>'6',
-                'jawatan'=>'Yang Di Pertua',
+                'jawatan'=>'YANG DI PERTUA',
                 'singkatan'=>'YDP',          
+            ],
+            [
+                'id'=>'7',
+                'jawatan'=>'KETUA EDITOR',
+                'singkatan'=>'K. EDIT',          
+            ],
+            [
+                'id'=>'8',
+                'jawatan'=>'EDITOR',
+                'singkatan'=>'EDIT',          
+            ],
+            [
+                'id'=>'9',
+                'jawatan'=>'SETIAUSAHA',
+                'singkatan'=>'SU',          
+            ],
+            [
+                'id'=>'10',
+                'jawatan'=>'PENULIS ARTIKEL',
+                'singkatan'=>'P. ARTIKEL',          
+            ],
+            [
+                'id'=>'11',
+                'jawatan'=>'AHLI JAWATANKUASA',
+                'singkatan'=>'AJK',          
             ],
             ];
 
