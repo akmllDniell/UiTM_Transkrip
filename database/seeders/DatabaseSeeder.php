@@ -42,5 +42,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(TblPenerbitanSeeder::class);
         $this->call(TblPenerbitanDtSeeder::class);
+
+        $this->call(TblProgramTertentuSeeder::class);
+        $this->call(TblProgramTertentuDtSeeder::class);
     }
 }
