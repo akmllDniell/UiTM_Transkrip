@@ -40,6 +40,11 @@ Tahap Pencapaian
                 <p>{{ $message }}</p>
                 </div>
             @endif
+            @if ($message = Session::get('warning'))
+                <div class="alert alert-warning">
+                <p>{{ $message }}</p>
+                </div>
+            @endif
             <table id="dttahappencapaian" class="table table-bordered table-striped table-sm">
                 <thead>
                 <tr>

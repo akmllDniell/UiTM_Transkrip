@@ -16,11 +16,9 @@ class CheckUser
      */
     public function handle(Request $request, Closure $next, ...$status)
     {
-        if (in_array($request->user()->username,$status)){
+        if (in_array($request->user()->role,$status)){
             return $next($request);
         }
-        return back()->withErrors([
-            'username'=> 'Maaf username atau password salah'
-        ])->onlyInput('username');
+        return back()->with('noaccess','student succesfully updated');
     }
 }

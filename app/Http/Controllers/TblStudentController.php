@@ -35,7 +35,14 @@ class TblStudentController extends Controller
      */
     public function index()
     {
-        return view('student.main');
+        if (Auth::user()->faculty == null && Auth::user()->course == null )
+        {
+            return view('student.main')->with('lengkapprofil','lengkapkan profile pelajar terlebih dahulu');
+        }
+        else{
+            return view('student.main');
+        }
+       
     }
 
     /**
@@ -55,7 +62,7 @@ class TblStudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {    
         TblTrys::create([
 
             'idsukandt' => $request->input('idsukandt'),
@@ -77,6 +84,12 @@ class TblStudentController extends Controller
             'userid' => $request->input('userid')
          ]);
          //redirect routes
+         $id = Auth::user()->id;
+         $count = Auth::user()->countreq + 1;
+         // $date = TblTrys::find($id)->userid;
+         User::find($id)->update([
+            'countreq' => $count]);
+         
          return redirect('/minitranskrip');
     }
 
@@ -127,7 +140,14 @@ class TblStudentController extends Controller
 
     public function transkrip()
     {
-        return view('student.transkrip');
+        if (Auth::user()->faculty == null && Auth::user()->course == null )
+        {
+            return redirect('/editprofil')->with('lengkapprofil','lengkapkan profile pelajar terlebih dahulu sebelum memohon transkrip');
+        }
+        else{
+            return view('student.transkrip');
+        }
+        
     }
 
     public function multiform()
@@ -238,6 +258,8 @@ class TblStudentController extends Controller
     public function output()
     {
         return view('student.minitranskrip');
+
+        
     }
 
     public function profilstudent()
@@ -251,7 +273,8 @@ class TblStudentController extends Controller
         $years = Carbon::parse($dateOfBirth)->age;
     }
 
-        return view('student.profilstudent')->with(compact('years'));
+        return view('student.profilstudent')
+        ->with(compact('years'));
     }
 
     public function editprofil()
@@ -281,7 +304,8 @@ class TblStudentController extends Controller
                 'faculty' => [''],
                 'phone' => [''],
                 'address' => [''],
-                'email' => [''],                
+                'email' => [''], 
+                'date' => [''],               
             ],
         );
 
@@ -293,6 +317,7 @@ class TblStudentController extends Controller
             'phone' => $req->input('phone'),
             'address' => $req->input('address'),
             'email' => $req->input('email'),
+            'BOD' => $req->input('date')
         ]);
         
         return redirect('/profil')->with('message','student succesfully updated');
@@ -303,11 +328,33 @@ class TblStudentController extends Controller
         $id = Auth::user()->id;
         // $date = TblTrys::find($id)->userid;
         $data= DB::table('tbl_trys')         
-        ->select('*')
+        ->select('*','tbl_trys.userid as userid')
         ->where('tbl_trys.userid','=',$id) 
         ->first();
 
         
         return view('student.semaktranskrip')->with(compact('data'));
+    }
+
+    public function tolakpermohonan(Request $req, $id)
+    {
+        $nama =$req->nama;   
+
+        TblTrys::find($id)->update([
+            'status' => "rejected"
+        ]);
+
+        return redirect('/senaraipelajar')->with('decline',"Permohonan Telah Ditolak untuk $nama");
+    }
+
+    public function terimapermohonan(Request $req, $id)
+    {
+        $nama =$req->nama;    
+
+        TblTrys::find($id)->update([
+            'status' => "completed"
+        ]);
+
+        return redirect('/senaraipelajar')->with('accept',"Permohonan Telah Diterima $nama");
     }
 }

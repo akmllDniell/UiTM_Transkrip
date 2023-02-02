@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->string('passwordbackup')->nullable();
+            $table->Integer('countreq')->default('0');
         });
     }
 

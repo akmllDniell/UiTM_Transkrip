@@ -180,19 +180,7 @@
                   <p>Jawatan Badan Beruniform</p>
                 </a>
               </li>
-            </ul>
-
-            <ul class="nav nav-treeview">
-              <li class="nav-item ">
-                <a href="/try" class="nav-link {{ request()->is('*try*') ? 'active' : '' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>try</p>
-                </a>
-              </li>
-            </ul>
-        
-            
-      
+            </ul>                  
        </li> 
 
        {{-- //Pelajar --}}

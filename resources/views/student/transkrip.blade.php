@@ -30,8 +30,7 @@ Transkrip
               <i class="ni ni-html5 text-danger text-gradient"></i>
             </span>
             <div class="timeline-content">
-              <h6 class="text-dark text-sm font-weight-bold mb-0">Pelajar Perlu memilih aktiviti dengan Tahap Pencapaian tertinggi</h6>
-              <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">21 DEC 11 PM</p>
+              <h6 class="text-dark text-sm font-weight-bold mb-0">Pelajar Perlu memilih aktiviti dengan Tahap Pencapaian tertinggi</h6>            
             </div>
           </div>
           <div class="timeline-block mb-3">
@@ -39,8 +38,8 @@ Transkrip
               <i class="ni ni-cart text-info text-gradient"></i>
             </span>
             <div class="timeline-content">
-              <h6 class="text-dark text-sm font-weight-bold mb-0">Server payments for April</h6>
-              <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">21 DEC 9:34 PM</p>
+              <h6 class="text-dark text-sm font-weight-bold mb-0">Menunggu kelulusan transkrip daripada admin</h6>
+              <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">2 hingga 3 hari bekerja</p>
             </div>
           </div>
           <div class="timeline-block mb-3">
@@ -48,8 +47,8 @@ Transkrip
               <i class="ni ni-credit-card text-warning text-gradient"></i>
             </span>
             <div class="timeline-content">
-              <h6 class="text-dark text-sm font-weight-bold mb-0">New card added for order #4395133</h6>
-              <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">20 DEC 2:20 AM</p>
+              <h6 class="text-dark text-sm font-weight-bold mb-0">Pelajar boleh mencetak transkrip selepas mendapat kelulusan</h6>
+              <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">sekiranya permohonan gagal/ditolak sila contact admin</p>
             </div>
           </div>
         </div>
@@ -68,10 +67,18 @@ Transkrip
                     + top + ', left=' + left);
         }
     </script>
+    @if (Auth::user()->countreq >= '1' )
+  <div style="margin-top: 5%">
+    <a href="/studentform" target="popout" onclick="createPopupWin('/studentform','studentform','width=600,height=600'); return false;" class="btn btn-primary btn-md active px-5 text-white disabled" target="_blank" role="button" aria-pressed="true">
+        Mohon Transkrip</a>
+        <p>***Anda telah memohon transkrip, sila contact admin jika terdapat sebarang kesilapan</p>
+  </div>
+  @else
   <div style="margin-top: 5%">
     <a href="/studentform" target="popout" onclick="createPopupWin('/studentform','studentform','width=600,height=600'); return false;" class="btn btn-primary btn-md active px-5 text-white" target="_blank" role="button" aria-pressed="true">
         Mohon Transkrip</a>
   </div>
+  @endif
 </center>
 
 @endsection

@@ -18,7 +18,7 @@ class SenaraiPelajarController extends Controller
             //data
             $data = DB::table('tbl_trys')
             ->join('users','tbl_trys.userid', '=', 'users.id')
-            ->select('*','tbl_trys.id as tryid')
+            ->select('*','tbl_trys.id as tryid','tbl_trys.created_at as tarikh')
             ->get();
           
         
@@ -39,6 +39,7 @@ class SenaraiPelajarController extends Controller
         $user = DB::table('tbl_trys')
         ->join('users','tbl_trys.userid', '=', 'users.id')
         ->where('tbl_trys.userid','=',$id) 
+        ->select('*','tbl_trys.id as tryid')
         ->first();
         //user
 

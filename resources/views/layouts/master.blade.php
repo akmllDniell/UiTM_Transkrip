@@ -7,7 +7,11 @@
     <title>@yield('title')</title>
     @include('layouts.headcss')
 </head>
-<body class="hold-transition sidebar-mini">
+@if ($message = Session::get('noaccess'))
+    <body class="hold-transition sidebar-mini" onload="showAlert()">
+@else
+    <body class="hold-transition sidebar-mini">
+@endif
     <!-- Site wrapper -->
     <div class="wrapper">
     @include('layouts.topbar')
@@ -16,5 +20,10 @@
     </div>
 
     @include('layouts.scripts')
+         <script>
+  function showAlert() {
+    alert ("Role anda tiada access untuk ke page ini");
+  }
+  </script>  
 </body>
 </html>

@@ -28,7 +28,9 @@ class User extends Authenticatable
         'faculty',
         'phone',
         'course',
-        'address'
+        'address',
+        'countreq',
+        'BOD',
     ];
 
     /**

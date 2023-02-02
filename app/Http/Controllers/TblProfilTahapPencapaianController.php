@@ -116,6 +116,6 @@ class TblProfilTahapPencapaianController extends Controller
     {
         TblProfilTahapPencapaian::find($id)->delete();
         return redirect()->route('tahappencapaian.index')
-            ->with('success', 'User deleted successfully');
+            ->with('warning', 'User deleted successfully');
     }
 }

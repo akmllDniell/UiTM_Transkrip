@@ -60,8 +60,13 @@ Edit Profil
              </div>
           </div>
        </div>
-    </div>
+    </div>    
     <div class="container-fluid py-4">
+      @if ($message = Session::get('lengkapprofil'))
+          <div class="alert alert-danger">
+            <center><p style="color: #000000;"><b>{{$message}}</b></p></center>
+          </div>
+          @endif  
        <div class="card">
           <div class="card-header pb-0 px-3">
              <h6 class="mb-0">Profile Information</h6>
@@ -134,12 +139,16 @@ Edit Profil
                       </div>
                    </div>
                 </div>
-                <div class="form-group">
-                   <label for="about">About Me</label>
-                   <div class="">
-                      <textarea class="form-control" id="about" rows="3" placeholder="Say something about yourself" name="about_me"></textarea>
-                   </div>
-                </div>
+                <center>
+                <div class="col-md-6">
+                  <div class="form-group">
+                     <label for="user.location" class="form-control-label">Birth of date</label>
+                     <div class="">
+                        <center><input class="form-control" placeholder="Birth of date" value="{{ Auth::user()->BOD }}" type="date" id="date" name="date" onfocus="focused(this)" onfocusout="defocused(this)">
+                     </div>
+                  </div>
+               </div>
+            </center>
                 <div class="d-flex justify-content-end">
                    <button type="submit" class="btn bg-gradient-dark btn-md mt-4 mb-4">Update Profile</button>
                 </div>

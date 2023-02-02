@@ -41,7 +41,7 @@ class SignupController extends Controller
             ]);
             //redirect routes          
          
-        return redirect("/login")->with('success', 'da sign in ');
+        return redirect("/login")->with('success', 'Daftar telah berjaya, sila Sign In');
     }
 
     /**

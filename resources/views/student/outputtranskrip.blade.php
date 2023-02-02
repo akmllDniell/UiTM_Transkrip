@@ -25,7 +25,7 @@
           background-color: #dddddd;
         }
 
-        .button-88 
+        .button-succes 
         {
             display: flex;
             align-items: center;
@@ -43,19 +43,86 @@
             cursor: pointer;
             user-select: none;
             -webkit-user-select: none;
-            touch-action: manipulation;
-            margin-left: 25%
+            touch-action: manipulation;            
         }
 
-        .button-88:hover 
+        .button-succes:hover 
         {
             box-shadow: 0 0.5em 1.5em -0.5em #000c0498;
         }
 
-        .button-88:active 
+        .button-succes:active 
         {
             box-shadow: 0 0.3em 1em -0.5em #000c0498;
         }
+
+        .button-danger 
+        {
+            display: flex;
+            align-items: center;
+            font-family: inherit;
+            font-weight: 500;
+            font-size: 15px;
+            padding: 0.7em 1.4em 0.7em 1.1em;
+            color: white;
+            /* background: #ad5389; */
+            background: linear-gradient(0deg, rgb(163, 147, 5) 0%, rgb(238, 255, 4) 100%);
+            border: none;
+            box-shadow: 0 0.7em 1.5em -0.5em #a5a71498;
+            letter-spacing: 0.05em;
+            border-radius: 20em;
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;            
+        }
+
+        .button-danger:hover 
+        {
+            box-shadow: 0 0.5em 1.5em -0.5em #000c0498;
+        }
+
+        .button-danger:active 
+        {
+            box-shadow: 0 0.3em 1em -0.5em #000c0498;
+        }
+
+        .button-warning 
+        {
+            display: flex;
+            align-items: center;
+            font-family: inherit;
+            font-weight: 500;
+            font-size: 15px;
+            padding: 0.7em 1.4em 0.7em 1.1em;
+            color: white;
+            /* background: #ad5389; */
+            background: linear-gradient(0deg, rgb(163, 5, 5) 0%, rgb(255, 4, 4) 100%);
+            border: none;
+            box-shadow: 0 0.7em 1.5em -0.5em #a7141498;
+            letter-spacing: 0.05em;
+            border-radius: 20em;
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;            
+        }
+
+        .button-warning:hover 
+        {
+            box-shadow: 0 0.5em 1.5em -0.5em #000c0498;
+        }
+
+        .button-warning:active 
+        {
+            box-shadow: 0 0.3em 1em -0.5em #000c0498;
+        }
+
+        @media print {
+  #printPageButton {
+    display: none;
+  }
+}
         </style>
 
         
@@ -79,8 +146,8 @@
             <thead>
               <tr >
                 <th><center> NAMA: {{$user->name}} </center></th>
-                <th><center> NO. MATRIK: {{$user->userid}} </center></th>
-                <th><center> FAKULTI: {{$user->email}} </center></th>
+                <th><center> NO. MATRIK: {{$user->username}} </center></th>
+                <th><center> FAKULTI: {{$user->faculty}} </center></th>
                 <th><center>&nbsp;</center></th>
                 {{-- <th><center>&nbsp;</center></th> --}}
               </tr>
@@ -282,20 +349,40 @@
             </tr>
             {{-- merit --}}
             {{-- print --}}
-            <table class="try" >
-            
-                <thead>
-                  <tr >
-                    <th colspan="5">
-                        <center><button class="button-88" onclick="window.print()">Print this page</button></center>
-                    </th>
-                  </tr>
-                </thead>
-              </table>
+
             {{-- print --}}
           </tbody>
 
           </table>
+          @if ( Auth::user()->role == '2')
+          <td colspan="5" >
+            <center><button id="printPageButton" class="button-succes" onclick="window.print()">Print this page</button></center>
+            <center><button id="printPageButton" class="button-succes" style="margin-top:2%" onclick="history.back()">Back to previous page</button></a></center>
+        </td>
+          @else
+          <td colspan="5" >
+            <center><button id="printPageButton" class="button-succes" onclick="window.print()">Print this page</button></center>
+            <center><button id="printPageButton" class="button-succes" style="margin-top:2%" onclick="history.back()">Back to previous page</button></a></center>
+        </td>
+          <td >
+            <form action="/terimapermohonan/{{$user->tryid}}" method="post">
+                @csrf
+                @method('PATCH') 
+                <input name="nama" id="nama" type="text" value="{{$user->name}}" hidden>
+            <div class="form-group" style="width:50%; float: left;  ">
+                <center><button id="printPageButton" class="button-danger" style="margin-top:2%" >Terima Permohonan</button></a></center>
+            </div>
+            </form>
+            <form action="/tolakpermohonan/{{$user->tryid}}" method="post">
+                <input name="nama" id="nama" type="text" value="{{$user->name}}" hidden>
+                @csrf
+                @method('PATCH') 
+            <div class="form-group" style="width:50%; float: left;   ">
+                <center><button type="submit" id="printPageButton" class="button-warning" style="margin-top:2%" >Tolak permohonan</button></a></center>
+            </div>
+            </form>
+        </td>
+        @endif
         </div>
       </div>
 

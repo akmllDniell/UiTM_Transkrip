@@ -117,12 +117,16 @@
     <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalToggleLabel2">Ikut la nak isi apa</h5>
+         <center><div class="modal-header">
+           <h5 class="modal-title" id="exampleModalToggleLabel2" style="color: #ff0505">Peringatan Penting</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
+          </div></center>
           <div class="modal-body">
-            z
+            <li>Sila pastikan semua makumat yang dimasukkan adalah betul</li>
+            <br>
+            <li>pelajar akan dikenakan tindakan tatatertib sekiranya terdapat maklumat yang tidak betul</li>
+            <br>
+            <li>Jika tahap pencapaian, jenis dan jawatan aktiviti yang anda peroleh tiada didalam sistem sila contact admin untuk menambah maklumat aktiviti tersebut</li>
           </div>
           <div class="modal-footer">            
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -130,7 +134,7 @@
         </div>
       </div>
     </div>    
-<div class="card">
+   <div class="card">
    <div class="card-header">
       <div class="card">
          <!-- /.card-header -->
@@ -154,7 +158,7 @@
                   <h1>SUKAN :</h1>
                   <label>JENIS SUKAN ANDA:</label><br>
                   <select id="idsukan" name="idsukan"  style="width: 100%;" oninput="this.className = ''" >
-                     <option value="" ></option>
+                     <option value="" ></option>                  
                      @foreach($idsukan as $a)
                      <option value="{{$a->id}}" >{{$a->jenissukan}}</option>
                      @endforeach

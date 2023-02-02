@@ -52,8 +52,8 @@ Route::controller(SignupController::class)->group(function () {
 
 
 
-
-Route::group(['middleware'=> ['auth','CheckUser:admin']],function(){
+//Auth Checkuser 1 is for admin role and 2 is for student role
+Route::group(['middleware'=> ['auth','CheckUser:1']],function(){
 //PARAMETERS
 Route::get('/', [LayoutController::class, 'index']);
 Route::get('/home', [LayoutController::class, 'index'])->name('home');
@@ -82,12 +82,6 @@ Route::get('/jawatanuniform', [App\Http\Controllers\TblProfilJawatanUniformContr
 Route::resource('jawatanuniform', App\Http\Controllers\TblProfilJawatanUniformController::class);
 // End Badan Beruniform
 //END PARAMETERS
-
-
-
-
-
-
 
 //jawatan uniform
 Route::get('/uniform',[\App\Http\Controllers\TblUniformController::class,'index']);
@@ -136,33 +130,13 @@ Route::get('/penerbitan',[\App\Http\Controllers\TblPenerbitanDtController::class
 Route::resource('penerbitan', App\Http\Controllers\TblPenerbitanDtController::class);
 Route::get('/jenispenerbitan', [App\Http\Controllers\TblPenerbitanController::class, 'index']);
 Route::resource('jenispenerbitan', App\Http\Controllers\TblPenerbitanController::class);
-});
-//try and error (mostly error)
-// Route::get
-// (
-//     '/try', 
-//     function () 
-//     {
-//         return view('student.try.try');
-//     }
-// );
-Route::get('/try', [App\Http\Controllers\TblTrysController::class, 'index']);
-Route::resource('try', App\Http\Controllers\TblTrysController::class);
-
-// Route::get('/finduniform', function () 
-//     {
-//         return view('student.try.try');
-//     }
-// );
-
-Route::get('/student',[\App\Http\Controllers\TblStudentController::class,'index'])->name('student');
-
 //SENARAI PELAJAR admin
-
-Route::get('/senaraipelajar',[\App\Http\Controllers\SenaraiPelajarController::class,'index']);
-Route::get('/show/{id}',[\App\Http\Controllers\SenaraiPelajarController::class,'show'])->name('showstudent');
 //SENARAI PELAJAR
+});
 
+
+Route::group(['middleware'=> ['auth','CheckUser:2']],function(){
+Route::get('/student',[\App\Http\Controllers\TblStudentController::class,'index'])->name('student');
 Route::get('/transkrip',[\App\Http\Controllers\TblStudentController::class,'transkrip']);
 Route::get('/studentform',[\App\Http\Controllers\TblStudentController::class,'multiform']);
 Route::resource('simpan',App\Http\Controllers\TblStudentController::class);
@@ -171,4 +145,11 @@ Route::get('/profil',[\App\Http\Controllers\TblStudentController::class,'profils
 Route::get('/editprofil',[\App\Http\Controllers\TblStudentController::class,'editprofil']);
 Route::patch('/updatestudent',[\App\Http\Controllers\TblStudentController::class,'updateprofil']);
 Route::get('/semakan',[\App\Http\Controllers\TblStudentController::class,'semakantranskrip']);
+});
 
+
+//both role need this url
+Route::get('/show/{id}',[\App\Http\Controllers\SenaraiPelajarController::class,'show'])->name('showstudent');
+Route::get('/senaraipelajar',[\App\Http\Controllers\SenaraiPelajarController::class,'index']);
+Route::patch('/tolakpermohonan/{id}',[\App\Http\Controllers\TblStudentController::class,'tolakpermohonan']);
+Route::patch('/terimapermohonan/{id}',[\App\Http\Controllers\TblStudentController::class,'terimapermohonan']);
