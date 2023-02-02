@@ -209,7 +209,36 @@ class TblPenerbitanDtSeeder extends Seeder
             ],
 
             //NEGARA
-           
+            [
+                'id' => '31',
+                'idTP'=>'7',
+                'jawatanid'=>'11',
+                'idmarkah'=>'6',
+            ],
+            [
+                'id' => '32',
+                'idTP'=>'7',
+                'jawatanid'=>'10',
+                'idmarkah'=>'7',
+            ],
+            [
+                'id' => '33',
+                'idTP'=>'7',
+                'jawatanid'=>'9',
+                'idmarkah'=>'7',
+            ],
+            [
+                'id' => '34',
+                'idTP'=>'7',
+                'jawatanid'=>'8',
+                'idmarkah'=>'7',
+            ],
+            [
+                'id' => '35',
+                'idTP'=>'7',
+                'jawatanid'=>'7',
+                'idmarkah'=>'8',
+            ],
 
         ];
             
