@@ -17,23 +17,23 @@ class TblPenerbitanSeeder extends Seeder
         $user = [
             [
                 'id' => '1',
-                'jenispenerbitan'=>'Majalah Harian UiTM',
+                'jenispenerbitan'=>'MAJALAH HARIAN UiTM',
             ],
             [
                 'id' => '2',
-                'jenispenerbitan'=>'penerbit buku usahawan',
+                'jenispenerbitan'=>'PENERBIT BUKU USAHAWAN',
             ],
             [
                 'id' => '3',
-                'jenispenerbitan'=>'Majalah Sukan UiTM',
+                'jenispenerbitan'=>'MAJALAH SUKAN UiTM',
             ],
             [
                 'id' => '4',
-                'jenispenerbitan'=>'penerbit E-Book HTML',
+                'jenispenerbitan'=>'PENERBIT E-BOOK HTML',
             ],
             [
                 'id' => '5',
-                'jenispenerbitan'=>'Majalah Ekonomi Malaysia',
+                'jenispenerbitan'=>'MAJALAH EKONOMI MALAYSIA',
             ],
             
         ];
