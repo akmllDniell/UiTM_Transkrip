@@ -139,6 +139,8 @@ Route::group(['middleware'=> ['auth','CheckUser:2']],function(){
 Route::get('/student',[\App\Http\Controllers\TblStudentController::class,'index'])->name('student');
 Route::get('/transkrip',[\App\Http\Controllers\TblStudentController::class,'transkrip']);
 Route::get('/studentform',[\App\Http\Controllers\TblStudentController::class,'multiform']);
+Route::get('get-uniform', [\App\Http\Controllers\TblStudentController::class, 'getUniform'])->name('getUniform');
+Route::get('get-markah', [\App\Http\Controllers\TblStudentController::class, 'getmarkah'])->name('getmarkah');
 Route::resource('simpan',App\Http\Controllers\TblStudentController::class);
 Route::get('/minitranskrip',[\App\Http\Controllers\TblStudentController::class,'output'])->name('output');
 Route::get('/profil',[\App\Http\Controllers\TblStudentController::class,'profilstudent']);

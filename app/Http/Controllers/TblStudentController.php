@@ -63,15 +63,15 @@ class TblStudentController extends Controller
      */
     public function store(Request $request)
     {    
+        $jenisuniform = $request->unifomjeni; 
         TblTrys::create([
-
             'idsukandt' => $request->input('idsukandt'),
             'idsukan' => $request->input('idsukan'),
             'idkelab' => $request->input('idkelab'),
             'idkelabdt' => $request->input('idkelabdt'), 
             'idkebudayaan' => $request->input('idkebudayaan'),
             'idkebudayaandt' => $request->input('idkebudayaandt'),
-             // 'iduniform' => $request->input('idberuniform'),
+             'idberuniform' =>  $request->input('unifomjeni'),
          //    'idjenisuniform' => $request->input('idjenisuniform'),
             'idsijildt' => $request->input('idsijildt'),
             'idsijil' => $request->input('idsijil'),
@@ -183,12 +183,8 @@ class TblStudentController extends Controller
 
        //uniform
        // $idberuniform = TblUniform::all();
-       $iduniform = DB::table('tbl_uniforms')
-       ->leftJoin('tbl_profil_badan_beruniforms', 'tbl_uniforms.bdnuni', '=', 'tbl_profil_badan_beruniforms.id')
-       ->leftJoin('tbl_profil_jawatans', 'tbl_uniforms.jwtuni', '=', 'tbl_profil_jawatans.id')
+       $badanuniform = DB::table('tbl_profil_badan_beruniforms')
        ->get();
-
-       $idjenisuniform = TblProfilBadanBeruniform::all();
        //uniform
 
        //sijil
@@ -241,8 +237,7 @@ class TblStudentController extends Controller
        ->with(compact('idkelabdt'))
        ->with(compact('idkebudayaan'))
        ->with(compact('idkebudayaandt'))
-       ->with(compact('iduniform'))
-       ->with(compact('idjenisuniform'))
+       ->with(compact('badanuniform'))       
        ->with(compact('idsijildt'))
        ->with(compact('idsijil'))
        ->with(compact('idpenerbitandt'))
@@ -253,6 +248,46 @@ class TblStudentController extends Controller
        ->with(compact('idprogramtertentu'))
        ->with(compact('userid'))
        ;
+    }
+
+    /**`
+     * return states list.
+     *
+     * @return json
+     */
+    public function getUniform(Request $request)
+    {
+        $states = DB::table('tbl_uniforms')
+            ->join('tbl_profil_jawatan_uniforms','tbl_profil_jawatan_uniforms.id','=','tbl_uniforms.jwtuni')          
+            ->where('bdnuni', $request->bdnuni)
+            ->select('*')
+            ->get();
+        
+        if (count($states) > 0) {
+            return response()->json($states);
+        }
+    }
+
+    /**
+     * return cities list
+     *
+     * @return json
+     */
+    public function getmarkah(Request $request)
+    {
+        $cities= DB::table('tbl_uniforms')
+        ->join('tbl_profil_markahs','tbl_profil_markahs.id','=','tbl_uniforms.idmarkah')     
+        ->select('*','tbl_uniforms.id as uniid')     
+        ->where('jwtuni', $request->jwt_id)
+        ->get();
+        
+       
+        if (count($cities) > 0) {
+            return response()->json($cities);
+        }
+       
+
+
     }
 
     public function output()

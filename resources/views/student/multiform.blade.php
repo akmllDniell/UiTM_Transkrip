@@ -219,48 +219,84 @@
                   </select>
                </div>
                {{-- KEBUDAYAAN --}}
-               {{-- BERUNIFORM --}}
-{{--                
+               {{-- BERUNIFORM  --}}
+               
                <div class="tab">
                   <h1>BERUNIFORM :</h1>
                   <label>JENIS BERUNIFORM:</label><br>
-                  <select id="iduniform" name="iduniform"  style="width: 100%;" oninput="this.className = ''" onchange="change()">
-                     <option value="" ></option>
-                     @foreach($iduniform as $g)
-                     <option value="{{$g->id}}" >{{$g->id}}</option>
+                  <select class="form-select form-select-lg mb-3" id="uniform">
+                     <option selected disabled>Select Uniform</option>
+                     @foreach ($badanuniform as $uni)
+                     <option value="{{ $uni->id }}">{{ $uni->badanuniform }}({{$uni->singkatan}})</option>
                      @endforeach
-                  </select>
+                 </select>                 
+                  <label>TAHAP PENGLIBATAN & MARKAH:</label><br>
+                  <select  class="form-select form-select-lg mb-3" id="state">                     
+                  </select>                  
+                  <div >
+                     <p ></p>     
+                     <label for="markah">markah</label>
+                     <input id="markah" name="markah" type="text" readonly>                     
+                     <input  id="unifomjeni" name="unifomjeni" type="text" readonly hidden>       
+                 </div>    
                </div>
-               --}}
-               {{-- 
-               <p id="demo"></p>
-               --}}
-               <script>
-                  // function change() 
-                  // {
-                  // var x = document.getElementById("idjenisuniform").value;
-                  
-                  // if(x == "2")
-                  // {
-                  // <?php
-                     // sssss
-                     // ?>
-                  // }
-                  
-                  // }
-                   
-               </script>
-               {{-- <br><br> --}}
-               {{-- 
-               <label>TAHAP PENGLIBATAN & MARKAH:</label><br>
-               <select id="idkebudayaandt" name="idkebudayaandt"  style="width: 100%;" oninput="this.className = ''" >
-                  <option value="" ></option>
-                  @foreach($idkebudayaandt as $f)
-                  <option value="{{$f->id}}" >{{$f->pencapaian}} - ({{$f->markah}} Markah)</option>
-                  @endforeach
-                  </option> 
-               </select>
-               --}}
+               <script type="text/javascript">
+                  $(document).ready(function () {
+                      $('#uniform').on('change', function () {
+                          var uniformID = this.value;
+                          $('#state').html('');
+                          $.ajax({
+                              url: '{{ route('getUniform') }}?bdnuni='+uniformID,
+                              type: 'get',
+                              success: function (res) {
+                                  $('#state').html('<option value="">Select State</option>');
+                                  $.each(res, function (key, value) {
+                                      $('#state').append('<option value="' + value
+                                          .jwtuni + '">' + value.jawatanuniform + '</option>');
+                                  });
+                                  $('#city').html('<option value="">Select City</option>');
+                              }
+                          });
+                      });
+                      // $('#state').on('change', function () {
+                      //     var jwtid = this.value;
+                      //     $('#city').html('');
+                      //     $.ajax({
+                      //         url: '{{ route('getmarkah') }}?jwt_id='+jwtid,
+                      //         type: 'get',
+                      //         success: function (res) {    
+                      //             $.each(res, function (key, value) {
+                      //                 $('#city').append('<input type="text" value="' + value
+                      //                     .markah + '">');
+                      //             });
+                      //         }
+                      //     });
+                      // });
+                      $('#state').on('change', function () {
+                          var jwtid = this.value;
+                          $('#niha').html('');
+                          $.ajax({
+                              url: '{{ route('getmarkah') }}?jwt_id='+jwtid,
+                              type: 'get',
+                              success: function (res) {                       
+                                  $.each(res, function (key, value) {
+                                      var uniformmid = value.uniid;
+                                      var markah = value.markah;
+                                      document.getElementById("unifomjeni").value = uniformmid;
+                                      document.getElementById("markah").value = markah;
+                                      // $("#niha").append('<input class="form-control" name="new_gallery" value="' + value.markah + '" readonly/>');
+                                      // $("#niha").append('<input class="form-control" id="uniuni" name="uniuni" value="' + value.uniid + '" readonly/>');
+                                      // $('#city').append('<option value="" disabled selected>' + value.markah + '</option>');
+                                  });
+                              }
+                          });
+                      });           
+                  });
+              </script>
+              
+               
+               
+           
                {{-- BERUNIFORM --}}
                {{-- SIJIL --}}
                <div class="tab">
@@ -372,6 +408,7 @@
                </div>
                <!-- Circles which indicates the steps of the form: -->
                <div style="text-align:center;margin-top:40px;">
+                  <span class="step"></span>
                   <span class="step"></span>
                   <span class="step"></span>
                   <span class="step"></span>

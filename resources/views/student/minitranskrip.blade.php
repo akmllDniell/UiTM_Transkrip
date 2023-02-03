@@ -442,9 +442,9 @@ header .container{
   <header>
     <div class='container'>
       <div class='logo'>
-        <div class='cx'>Time</div>
-        <div class='cd'>to</div>
-        <div class='cc'>exam</div>
+        <div class='cx'>Terima</div>
+        <div class='cd' style="opacity: 0%"> h</div>
+        <div class='cc'>Kasih</div>
         <div class='line'>
           <div class='days' id='lDays'></div>
         </div>
@@ -466,29 +466,29 @@ header .container{
     <div class='container'>
       <div class='counter-box'>
         <div class='message'>
-          <span>Dear students</span>
+          <span>Kepada Pelajar</span>
         </div>
-        <div id='counter'>
+        <div id='counter' style="height: 2px">
           <div class='day'>
             <div class='time' id='cDays'></div>
-            <span class='call'>days</span>
+            <span class='call' style="opacity: 0%">days</span>
           </div>
           <div class='hou'>
             <div class='time' id='cHours'></div>
-            <span class='call'>houres</span>
+            <span class='call'style="opacity: 0%">AREPP EDIT NI JADI MINI TRANSKRIP</span>
           </div>
           <div class='min'>
             <div class='time' id='cMinutes'></div>
-            <span class='call'>minutes</span>
+            <span class='call' style="opacity: 0%">minutes</span>
           </div>
           <div class='sec'>
             <div class='time' id='cSeconds'></div>
-            <span class='call'>seconds</span>
+            <span class='call' style="opacity: 0%">seconds</span>
           </div>
         </div>
         <div class='message'>
           <span>
-            AREPP EDIT NI JADI MINI TRANSKRIP
+            Permohonan anda telah direkodkan
           </span>
         </div>        
       </div>
@@ -496,9 +496,9 @@ header .container{
     <footer>
       <div class='container'>
         
-        <span>Kat view student Mini transkrip</span>
+        <span>Sila tunggu pengesahan dari admin</span>
         <i class='fa fa-heart pulse'></i>
-        <span>by Daniel sayunk</span>
+        <span>Pelajar diminta untuk tutup page ini dan refresh page pelajar</span>
       </div>
     </footer>
   </main>

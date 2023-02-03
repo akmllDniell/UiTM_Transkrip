@@ -63,12 +63,8 @@ class TblTrysController extends Controller
 
         //uniform
         // $idberuniform = TblUniform::all();
-        $iduniform = DB::table('tbl_uniforms')
-        ->leftJoin('tbl_profil_badan_beruniforms', 'tbl_uniforms.bdnuni', '=', 'tbl_profil_badan_beruniforms.id')
-        ->leftJoin('tbl_profil_jawatans', 'tbl_uniforms.jwtuni', '=', 'tbl_profil_jawatans.id')
-        ->get();
-
-        $idjenisuniform = TblProfilBadanBeruniform::all();
+      
+        
         //uniform
 
         //sijil

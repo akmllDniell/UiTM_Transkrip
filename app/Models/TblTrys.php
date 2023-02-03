@@ -16,6 +16,7 @@ class TblTrys extends Model
         'idkelab',
         'idkebudayaandt',        
         'idkebudayaan',
+        'idberuniform',
         'idsijildt',        
         'idsijil',
         'idpenerbitandt',        
