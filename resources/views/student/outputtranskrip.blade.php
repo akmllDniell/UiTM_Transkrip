@@ -166,41 +166,100 @@
               </tr>
             </thead>
 
-            <tbody>
-            <tr>
-                <td>
-                    <center><b>Sukan</b> <br> Markah = <b><u>{{$sukan->markah}}</u></b> X 60%</center>
-                </td> 
-                <td>
-                    <center>{{$sukan->markah}} MARKAH</center>
-                </td>
-                <td>
-                    <center>{{$sukan->jenissukan}}</center>
-                </td>
-                <td>
-                    <center>{{$sukan->pencapaian}}</center>
-                </td>
-                <td>
-                    
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <center><b>Persatuan/Kelab</b> <br> Markah = <b><u>{{$kelab->markah}}</u></b> X 60%</center>
-                </td>
-                <td>
-                    <center>{{$kelab->markah}} MARKAH</center>
-                </td>
-                <td>
-                    <center>{{$kelab->jeniskelab}}</center>
-                </td>
-                <td>
-                    <center>{{$kelab->pencapaian}} <br> ({{$kelab->jawatan}}) </center>
-                </td>
-                <td>
-                    
-                </td>
-            </tr>
+            <tbody>             
+                @if ($sukan->idsukandt === null)
+                <tr>
+                    <td>
+                        <center><b>Sukan</b> <br> Markah = <b><u>0</u></b> X 60%</center>
+                    </td> 
+                    <td>
+                        <center>0 MARKAH</center>
+                    </td>
+                    <td>
+                        <center></center>
+                    </td>
+                    <td>
+                        <center></center>
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                @else
+                <tr>
+                    <td>
+                        <center><b>Sukan</b> <br> Markah = <b><u>{{$sukan->markah}}</u></b> X 60%</center>
+                    </td> 
+                    <td>
+                        <center>{{$sukan->markah}} MARKAH</center>
+                    </td>
+                    <td>
+                        <center>{{$sukan->jenissukan}}</center>
+                    </td>
+                    <td>
+                        <center>{{$sukan->pencapaian}}</center>
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                @endif
+                @if ($kelab->idkelabdt === null)
+                <tr>
+                    <td>
+                        <center><b>Persatuan/Kelab</b> <br> Markah = <b><u>0</u></b> X 60%</center>
+                    </td> 
+                    <td>
+                        <center>0 MARKAH</center>
+                    </td>
+                    <td>
+                        <center></center>
+                    </td>
+                    <td>
+                        <center></center>
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                @else
+                <tr>
+                    <td>
+                        <center><b>Persatuan/Kelab</b> <br> Markah = <b><u>{{$kelab->markah}}</u></b> X 60%</center>
+                    </td>
+                    <td>
+                        <center>{{$kelab->markah}} MARKAH</center>
+                    </td>
+                    <td>
+                        <center>{{$kelab->jeniskelab}}</center>
+                    </td>
+                    <td>
+                        <center>{{$kelab->pencapaian}} <br> ({{$kelab->jawatan}}) </center>
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                @endif 
+                @if ($kebudayaan->idkebudayaandt === null)
+                <tr>
+                    <td>
+                        <center><b>Kebudayaan/Kerohanian</b> <br> Markah = <b><u>0</u></b> X 60%</center>
+                    </td> 
+                    <td>
+                        <center>0 MARKAH</center>
+                    </td>
+                    <td>
+                        <center></center>
+                    </td>
+                    <td>
+                        <center></center>
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                @else        
             <tr>
                 <td>
                     <center><b>Kebudayaan/Kerohanian</b> <br> Markah = <b><u>{{$kebudayaan->markah}}</u></b> X 60%</center>
@@ -218,6 +277,26 @@
                     
                 </td>
             </tr>
+            @endif
+            @if ($beruniform->idberuniform === null)
+            <tr>
+                <td>
+                    <center><b>Beruniform</b> <br> Markah = <b><u>0</u></b> X 60%</center>
+                </td> 
+                <td>
+                    <center>0 MARKAH</center>
+                </td>
+                <td>
+                    <center></center>
+                </td>
+                <td>
+                    <center></center>
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+            @else      
             <tr>
                 <td>
                     <center><b>Beruniform</b> <br> Markah = <b><u>{{$beruniform->markah}}</u></b> X 60%</center>
@@ -235,6 +314,26 @@
                     
                 </td>
             </tr>
+            @endif
+            @if ($sijil->idsijildt === null)
+            <tr>
+                <td>
+                    <center><b>Anugerah/Sijil/Pingat</b> <br> Markah = <b><u>0</u></b> X 20%</center>
+                </td> 
+                <td>
+                    <center>0 MARKAH</center>
+                </td>
+                <td>
+                    <center></center>
+                </td>
+                <td>
+                    <center></center>
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+            @else   
             <tr>
                 <td>
                     <center><b>Anugerah/Sijil/Pingat</b> <br> Markah = <b><u>{{$sijil->markah}}</u></b> X 20%</center>
@@ -252,6 +351,26 @@
                     
                 </td>
             </tr>
+            @endif
+            @if ($penerbitan->idpenerbitandt === null)
+            <tr>
+                <td>
+                    <center><b>Penerbitan/Majalah</b> <br> Markah = <b><u>0</u></b> X 20%</center>
+                </td> 
+                <td>
+                    <center>0 MARKAH</center>
+                </td>
+                <td>
+                    <center></center>
+                </td>
+                <td>
+                    <center></center>
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+            @else   
             <tr>
                 <td>
                     <center><b>Penerbitan/Majalah</b> <br> Markah = <b><u>{{$penerbitan->markah}}</u></b> X 20%</center>
@@ -269,6 +388,26 @@
                     
                 </td>
             </tr>
+            @endif
+            @if ($padu->idpadudt === null)
+            <tr>
+                <td>
+                    <center><b>PenProgram Khas HEP Modul LPPLP</b> <br> Markah = <b><u>0</u></b> X 20%</center>
+                </td> 
+                <td>
+                    <center>0 MARKAH</center>
+                </td>
+                <td>
+                    <center></center>
+                </td>
+                <td>
+                    <center></center>
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+            @else 
             <tr>
                 <td>
                     <center><b>Program Khas HEP Modul LPPLP</b> <br> Markah = <b><u>{{$padu->markah}}</u></b> X 20%</center>
@@ -280,12 +419,32 @@
                     <center>{{$padu->padu}}</center>
                 </td>
                 <td>
-                    <center>{{$padu->hep}} <br> ({{$penerbitan->jawatan}}) </center>
+                    <center>{{$padu->hep}} </center>
+                </td>
+                <td>
+                    
+                </td>
+            </tr>  
+            @endif  
+            @if ($programtertentu->idprogramtertentudt === null)
+            <tr>
+                <td>
+                    <center><b>Projek Tertentu</b> <br> Markah = <b><u>0</u></b> X 60%</center>
+                </td> 
+                <td>
+                    <center>0 MARKAH</center>
+                </td>
+                <td>
+                    <center></center>
+                </td>
+                <td>
+                    <center></center>
                 </td>
                 <td>
                     
                 </td>
             </tr>
+            @else 
             <tr>
                 <td>
                     <center><b>Projek Tertentu</b> <br> Markah = <b><u>{{$programtertentu->markah}}</u></b> X 60%</center>
@@ -303,13 +462,14 @@
                     
                 </td>
             </tr>
+            @endif
             {{-- jumlah --}}
             <tr>
                 <td>
                     <center><b>JUMLAH (J)</center>
                 </td>
                 <td>
-                    
+                    <center>{{$sum}}</center>
                 </td>
                 <td>
                     
@@ -324,10 +484,13 @@
             {{-- jumlah --}}
             {{-- merit --}}
             <tr>
-                <td>
+                <td>                    
                     <center><b>MERIT = JUMLAH = (J) <u> *TOTAL MARKAH* </u></b></center>
                     <center>MERIT DENGAN BONUS</center>
                     <center><b>BERUNIFROM = (J) + 10 *TOTAL MARKAH* / 100 </b></center>
+                    <br><br>
+                    <center><b>MERIT PELAJAR = {{$totaltwonum}}</b></center>
+
                 </td>
                 <td>
                     

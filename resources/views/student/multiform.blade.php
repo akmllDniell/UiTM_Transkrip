@@ -158,19 +158,21 @@
                   <h1>SUKAN :</h1>
                   <label>JENIS SUKAN ANDA:</label><br>
                   <select id="idsukan" name="idsukan"  style="width: 100%;" oninput="this.className = ''" >
-                     <option value="" ></option>                  
+                     <option value="0" ></option>                  
                      @foreach($idsukan as $a)
                      <option value="{{$a->id}}" >{{$a->jenissukan}}</option>
                      @endforeach
+                     <option value="">Tiada</option>
                      </option>
                   </select>
                   <br><br>
                   <label>TAHAP PENCAPAIAN & MARKAH:</label><br>
                   <select id="idsukandt" name="idsukandt"  style="width: 100%;" oninput="this.className = ''" >
-                     <option value="" ></option>
+                     <option value="0" ></option>
                      @foreach($idsukandt as $b)
                      <option value="{{$b->id}}" >{{$b->pencapaian}} - ({{$b->markah}} Markah)</option>
                      @endforeach
+                     <option value="">Tiada</option>
                      </option> 
                   </select>
                </div>
@@ -180,20 +182,22 @@
                   <h1>PERSATUAN/KELAB :</h1>
                   <label>JENIS PERSATUAN/KELAB ANDA:</label><br>
                   <select id="idkelab" name="idkelab"  style="width: 100%;" oninput="this.className = ''" >
-                     <option value="" ></option>
+                     <option value="0" ></option>
                      @foreach($idkelab as $c)
                      <option value="{{$c->id}}" >{{$c->jeniskelab}}</option>
                      @endforeach
                      </option>
+                     <option value="">Tiada</option>
                   </select>
                   <br><br>
                   <label>TAHAP PENGLIBATAN & JAWATAN DISANDANG:</label><br>
                   <select id="idkelabdt" name="idkelabdt"  style="width: 100%;" oninput="this.className = ''" >
-                     <option value="" ></option>
+                     <option value="0" ></option>
                      @foreach($idkelabdt as $d)
                      <option value="{{$d->id}}" >{{$d->pencapaian}} - ({{$d->jawatan}}) </option>
                      @endforeach
                      </option> 
+                     <option value="">Tiada</option>
                   </select>
                </div>
                {{-- KELAB --}}
@@ -202,20 +206,22 @@
                   <h1>KEBUDAYAAN/KEROHANIAN :</h1>
                   <label>JENIS KEBUDAYAAN/KEROHANIAN ANDA:</label><br>
                   <select id="idkebudayaan" name="idkebudayaan"  style="width: 100%;" oninput="this.className = ''" >
-                     <option value="" ></option>
+                     <option value="0" ></option>
                      @foreach($idkebudayaan as $e)
                      <option value="{{$e->id}}" >{{$e->jeniskebudayaan}}</option>
                      @endforeach
                      </option>
+                     <option value="">Tiada</option>
                   </select>
                   <br><br>
                   <label>TAHAP PENGLIBATAN & MARKAH:</label><br>
                   <select id="idkebudayaandt" name="idkebudayaandt"  style="width: 100%;" oninput="this.className = ''" >
-                     <option value="" ></option>
+                     <option value="0" ></option>
                      @foreach($idkebudayaandt as $f)
                      <option value="{{$f->id}}" >{{$f->pencapaian}} - ({{$f->markah}} Markah)</option>
                      @endforeach
                      </option> 
+                     <option value="">Tiada</option>
                   </select>
                </div>
                {{-- KEBUDAYAAN --}}
@@ -229,6 +235,7 @@
                      @foreach ($badanuniform as $uni)
                      <option value="{{ $uni->id }}">{{ $uni->badanuniform }}({{$uni->singkatan}})</option>
                      @endforeach
+                     <option value="">Tiada</option>
                  </select>                 
                   <label>TAHAP PENGLIBATAN & MARKAH:</label><br>
                   <select  class="form-select form-select-lg mb-3" id="state">                     
@@ -249,12 +256,13 @@
                               url: '{{ route('getUniform') }}?bdnuni='+uniformID,
                               type: 'get',
                               success: function (res) {
-                                  $('#state').html('<option value="">Pilih Tahap</option>');
+                                  $('#state').html('<option value="">Pilih Jawatan</option>');
+                                  
                                   $.each(res, function (key, value) {
                                       $('#state').append('<option value="' + value
                                           .jwtuni + '">' + value.jawatanuniform + '</option>');
                                   });
-                                  $('#city').html('<option value="">Select City</option>');
+                                  $('#city').html('<option value="">Pilih Jawatan</option>');
                               }
                           });
                       });
@@ -303,20 +311,22 @@
                   <h1>ANUGERAH/SIJIL/PINGAT :</h1>
                   <label>JENIS ANUGERAH/SIJIL/PINGAT ANDA:</label><br>
                   <select id="idsijil" name="idsijil"  style="width: 100%;" oninput="this.className = ''" >
-                     <option value="" ></option>
+                     <option value="0" ></option>
                      @foreach($idsijil as $h)
                      <option value="{{$h->id}}" >{{$h->sijil}}</option>
                      @endforeach
                      </option>
+                     <option value="">Tiada</option>
                   </select>
                   <br><br>
                   <label>JAWATAN DISANDANG & MARKAH:</label><br>
                   <select id="idsijildt" name="idsijildt"  style="width: 100%;" oninput="this.className = ''" >
-                     <option value="" ></option>
+                     <option value="0" ></option>
                      @foreach($idsijildt as $i)
                      <option value="{{$i->id}}" >{{$i->pencapaian}} - ({{$i->markah}} Markah)</option>
                      @endforeach
                      </option> 
+                     <option value="">Tiada</option>
                   </select>
                </div>
                {{-- SIJIL --}}
@@ -325,20 +335,22 @@
                   <h1>PENERBITAN/MAJALAH :</h1>
                   <label>JENIS PENERBITAN/MAJALAH ANDA:</label><br>
                   <select id="idpenerbitan" name="idpenerbitan"  style="width: 100%;" oninput="this.className = ''" >
-                     <option value="" ></option>
+                     <option value="0" ></option>
                      @foreach($idpenerbitan as $j)
                      <option value="{{$j->id}}" >{{$j->jenispenerbitan}}</option>
                      @endforeach
                      </option>
+                     <option value="">Tiada</option>
                   </select>
                   <br><br>
                   <label>TAHAP EDARAN & JAWATAN/PERANAN:</label><br>
                   <select id="idpenerbitandt" name="idpenerbitandt"  style="width: 100%;" oninput="this.className = ''" >
-                     <option value="" ></option>
+                     <option value="0" ></option>
                      @foreach($idpenerbitandt as $k)
                      <option value="{{$k->penerbitanid}}" >{{$k->pencapaian}} - ({{$k->jawatan}}) </option>
                      @endforeach
                      </option> 
+                     <option value="">Tiada</option>
                   </select>
                </div>
                {{-- PENERBITAN --}}
@@ -348,20 +360,22 @@
                   <h1>PROGRAM KHAS HEP:</h1>
                   <label>JENIS PROGRAM PADU ANDA:</label><br>
                   <select id="idpadu" name="idpadu"  style="width: 100%;" oninput="this.className = ''" >
-                     <option value="" ></option>
+                     <option value="0" ></option>
                      @foreach($idpadu as $l)
                      <option value="{{$l->id}}" >{{$l->padu}}</option>
                      @endforeach
                      </option>
+                     <option value="">Tiada</option>
                   </select>
                   <br><br>
                   <label>TAHAP MODUL & MARKAH:</label><br>
                   <select id="idpadudt" name="idpadudt"  style="width: 100%;" oninput="this.className = ''" >
-                     <option value="" ></option>
+                     <option value="0" ></option>
                      @foreach($idpadudt as $m)
                      <option value="{{$m->paduid}}" >{{$m->hep}} - ({{$m->markah}} Markah)</option>
                      @endforeach
                      </option> 
+                     <option value="">Tiada</option>
                   </select>
                </div>
               
@@ -372,7 +386,7 @@
                   <h1>PROGRAM TERTENTU:</h1>
                   <label>JENIS PROGRAM TERTENTU ANDA:</label><br>
                   <select id="idprogramtertentu" name="idprogramtertentu"  style="width: 100%;" oninput="this.className = ''" >
-                     <option value="" ></option>
+                     <option value="0" ></option>
                      @foreach($idprogramtertentu as $n)
                      <option value="{{$n->id}}" >{{$n->programtertentu}}</option>
                      @endforeach
@@ -381,7 +395,7 @@
                   <br><br>
                   <label>TAHAP PENCAPAIAN & MARKAH:</label><br>
                   <select id="idprogramtertentudt" name="idprogramtertentudt"  style="width: 100%;" oninput="this.className = ''" >
-                     <option value="" ></option>
+                     <option value="0" ></option>
                      @foreach($idprogramtertentudt as $o)
                      <option value="{{$o->tertentuid}}" >{{$o->pencapaian}} - ({{$o->markah}} Markah)</option>
                      @endforeach
@@ -474,7 +488,7 @@
      // A loop that checks every input field in the current tab:
      for (i = 0; i < y.length; i++) {
        // If a field is empty...
-       if (y[i].value == "") {
+       if (y[i].value == "0") {
          // add an "invalid" class to the field:
          y[i].className += " invalid";
          // and set the current valid status to false

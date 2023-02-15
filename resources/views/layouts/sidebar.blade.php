@@ -111,7 +111,7 @@
               <li class="nav-item">
                 <a href="/uniform" class="nav-link {{ request()->is('*uniform*') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>UNIFORM (TEST)</p>
+                  <p>UNIFORM</p>
                 </a>
               </li>
             </ul>

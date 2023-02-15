@@ -131,6 +131,9 @@ Route::resource('penerbitan', App\Http\Controllers\TblPenerbitanDtController::cl
 Route::get('/jenispenerbitan', [App\Http\Controllers\TblPenerbitanController::class, 'index']);
 Route::resource('jenispenerbitan', App\Http\Controllers\TblPenerbitanController::class);
 //SENARAI PELAJAR admin
+Route::get('/senaraipelajar',[\App\Http\Controllers\SenaraiPelajarController::class,'index']);
+Route::patch('/tolakpermohonan/{id}',[\App\Http\Controllers\TblStudentController::class,'tolakpermohonan']);
+Route::patch('/terimapermohonan/{id}',[\App\Http\Controllers\TblStudentController::class,'terimapermohonan']);
 //SENARAI PELAJAR
 });
 
@@ -149,9 +152,7 @@ Route::patch('/updatestudent',[\App\Http\Controllers\TblStudentController::class
 Route::get('/semakan',[\App\Http\Controllers\TblStudentController::class,'semakantranskrip']);
 });
 
-
+Route::group(['middleware'=> ['auth','CheckUser:1,2']],function(){
 //both role need this url
 Route::get('/show/{id}',[\App\Http\Controllers\SenaraiPelajarController::class,'show'])->name('showstudent');
-Route::get('/senaraipelajar',[\App\Http\Controllers\SenaraiPelajarController::class,'index']);
-Route::patch('/tolakpermohonan/{id}',[\App\Http\Controllers\TblStudentController::class,'tolakpermohonan']);
-Route::patch('/terimapermohonan/{id}',[\App\Http\Controllers\TblStudentController::class,'terimapermohonan']);
+});

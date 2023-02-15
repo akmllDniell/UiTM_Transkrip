@@ -113,7 +113,7 @@ Main Page
                 <!-- small box -->
                 <div class="small-box bg-success">
                   <div class="inner">
-                    <center><h2><b>9696</b></h2></center>
+                    <center><h2><b>{{$studentcount}}</b></h2></center>
     
                     <p><center>JUMLAH PELAJAR DAFTAR</center></p>
                   </div>
@@ -130,14 +130,14 @@ Main Page
                 <!-- small box -->
                 <div class="small-box bg-warning">
                   <div class="inner">
-                    <h3><center><H2><b>420</b></H2></center></h3>
+                    <h3><center><H2><b>{{$uniform}} </b></H2></center></h3>
     
-                    <p><center>JUMLAH USER</center></p>
+                    <p><center>JUMLAH BADAN UNIFORM </center></p>
                   </div>
                   <div class="icon">
                     <i class="ion ion-person-add"></i>
                   </div>
-                  <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  <a href="/badanuniform" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
               {{-- KETIGA HABIS --}}
@@ -147,14 +147,14 @@ Main Page
                 <!-- small box -->
                 <div class="small-box bg-danger">
                   <div class="inner">
-                    <h3><center><H2><b>8</b></H2></center></h3>
+                    <h3><center><H2><b>{{$sukan}}</b></H2></center></h3>
     
-                    <p><center>JUMLAH AKTIVITI</center></p>
+                    <p><center>JUMLAH SUKAN</center></p>
                   </div>
                   <div class="icon">
                     <i class="ion ion-pie-graph"></i>
                   </div>
-                  <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  <a href="/sukan" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
               {{-- KEEMPAT HABIS --}}

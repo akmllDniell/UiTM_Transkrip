@@ -24,27 +24,27 @@ class UserData extends Seeder
 
             ],
             [
-                'name' => 'penjual',
-                'username'=>'seller',
+                'name' => 'Ismi Aiman',
+                'username'=>'2020493849',
                 'password'=>bcrypt('246810'),
                 'role' => '2',
-                'email' => 'seller@gmail.com'
+                'email' => 'ismiaiman@gmail.com'
 
             ],
             [
-                'name' => 'Pembeli',
-                'username'=>'user',
+                'name' => 'Fared Syahmi',
+                'username'=>'20220',
                 'password'=>bcrypt('112233'),
                 'role' => '2',
-                'email' => 'user@gmail.com'
+                'email' => 'fared@gmail.com'
 
             ],
             [                
-                'name' => 'Akmal Daniel',
-                'username'=>'2020478518',
+                'name' => 'Arif Asyraf',
+                'username'=>'202029328',
                 'password'=>bcrypt('222333'),
                 'role' => '2',
-                'email' => 'daniel@gmail.com'
+                'email' => 'arif@gmail.com'
 
             ],           
             ];

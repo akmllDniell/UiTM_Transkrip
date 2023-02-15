@@ -48,5 +48,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(TblProgramTertentuSeeder::class);
         $this->call(TblProgramTertentuDtSeeder::class);
+        $this->call(TblUniformSeeder::class);
     }
 }

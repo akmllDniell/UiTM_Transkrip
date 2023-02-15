@@ -157,6 +157,10 @@ class SenaraiPelajarController extends Controller
         ->first();
         //program tertentu
 
+        $sum = $sukan->markah + $kelab->markah + $programtertentu->markah + $padu->markah + $penerbitan->markah + $sijil->markah + $beruniform->markah + $kebudayaan->markah;
+        $total = ($sum / 32) * 4;
+
+        $totaltwonum = round($total, 2);    // 5.0
         return view('student.outputtranskrip')
         -> with(compact('user'))
         -> with(compact('sukan'))
@@ -167,8 +171,8 @@ class SenaraiPelajarController extends Controller
         -> with(compact('penerbitan'))
         -> with(compact('padu'))
         -> with(compact('programtertentu'))
-
-        ;
+        -> with(compact('totaltwonum'))
+        -> with(compact('sum'));
     }
 
     /**

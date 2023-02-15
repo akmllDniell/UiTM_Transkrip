@@ -149,6 +149,16 @@ Edit Profil
                   </div>
                </div>
             </center>
+            <center>
+               <div class="col-md-6">
+                 <div class="form-group">
+                    <label for="user.location" class="form-control-label">image</label>
+                    <div class="">
+                       <center><input class="form-control" placeholder="Birth of date" value="{{ Auth::user()->BOD }}" type="file" id="img" name="img" onfocus="focused(this)" onfocusout="defocused(this)">
+                    </div>
+                 </div>
+              </div>
+           </center>
                 <div class="d-flex justify-content-end">
                    <button type="submit" class="btn bg-gradient-dark btn-md mt-4 mb-4">Update Profile</button>
                 </div>
