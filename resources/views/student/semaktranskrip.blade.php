@@ -28,9 +28,7 @@
                   <tr>
                     <td>
                       <div class="d-flex px-2 py-1">
-                        <div>
-                          <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
-                        </div>
+                        
                         <div class="d-flex flex-column justify-content-center">
                           <h6 class="mb-0 text-sm">{{Auth::user()->name}}</h6>
                           <p class="text-xs text-secondary mb-0">{{Auth::user()->email}}</p>

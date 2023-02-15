@@ -69,7 +69,7 @@ Edit Profil
           @endif  
        <div class="card">
           <div class="card-header pb-0 px-3">
-             <h6 class="mb-0">Profile Information</h6>
+             <h6 class="mb-0">Maklumat Profil</h6>
           </div>
           <div class="card-body pt-4 p-3">
         <form action="/updatestudent" method="post">

@@ -451,13 +451,13 @@ header .container{
       </div>
       <div class='social'>
         <a href='#'>
-          <i class='fa fa-facebook'></i>
+         
         </a>
         <a href='#'>
-          <i class='fa fa-twitter'></i>
+         
         </a>
         <a href='#'>
-          <i class='fa fa-youtube'></i>
+         
         </a>
       </div>
     </div>
@@ -468,37 +468,19 @@ header .container{
         <div class='message'>
           <span>Kepada Pelajar</span>
         </div>
-        <div id='counter' style="height: 2px">
-          <div class='day'>
-            <div class='time' id='cDays'></div>
-            <span class='call' style="opacity: 0%">days</span>
-          </div>
-          <div class='hou'>
-            <div class='time' id='cHours'></div>
-            <span class='call'style="opacity: 0%">AREPP EDIT NI JADI MINI TRANSKRIP</span>
-          </div>
-          <div class='min'>
-            <div class='time' id='cMinutes'></div>
-            <span class='call' style="opacity: 0%">minutes</span>
-          </div>
-          <div class='sec'>
-            <div class='time' id='cSeconds'></div>
-            <span class='call' style="opacity: 0%">seconds</span>
-          </div>
-        </div>
+
+        <br><br><br>
         <div class='message'>
           <span>
-            Permohonan anda telah direkodkan
+            <center> Permohonan anda telah direkodkan</center>
           </span>
         </div>        
       </div>
     </div>
     <footer>
       <div class='container'>
-        
-        <span>Sila tunggu pengesahan dari admin</span>
-        <i class='fa fa-heart pulse'></i>
-        <span>Pelajar diminta untuk tutup page ini dan refresh page pelajar</span>
+
+        <center><span><b>SILA TUNGGU PENGESAHAN DARI ADMIN, PELAJAR DIMINTA UNTUK TUTUP PAGE INI DAN REFRESH SEMULA PAGE PELAJAR</b></span></center>
       </div>
     </footer>
   </main>

@@ -249,7 +249,7 @@
                               url: '{{ route('getUniform') }}?bdnuni='+uniformID,
                               type: 'get',
                               success: function (res) {
-                                  $('#state').html('<option value="">Select State</option>');
+                                  $('#state').html('<option value="">Pilih Tahap</option>');
                                   $.each(res, function (key, value) {
                                       $('#state').append('<option value="' + value
                                           .jwtuni + '">' + value.jawatanuniform + '</option>');
@@ -374,7 +374,7 @@
                   <select id="idprogramtertentu" name="idprogramtertentu"  style="width: 100%;" oninput="this.className = ''" >
                      <option value="" ></option>
                      @foreach($idprogramtertentu as $n)
-                     <option value="{{$n->id}}" >{{$n->id}}{{$n->programtertentu}}</option>
+                     <option value="{{$n->id}}" >{{$n->programtertentu}}</option>
                      @endforeach
                      </option>
                   </select>
@@ -383,7 +383,7 @@
                   <select id="idprogramtertentudt" name="idprogramtertentudt"  style="width: 100%;" oninput="this.className = ''" >
                      <option value="" ></option>
                      @foreach($idprogramtertentudt as $o)
-                     <option value="{{$o->tertentuid}}" >{{$o->tertentuid}}{{$o->pencapaian}} - ({{$o->markah}} Markah)</option>
+                     <option value="{{$o->tertentuid}}" >{{$o->pencapaian}} - ({{$o->markah}} Markah)</option>
                      @endforeach
                      </option> 
                   </select>
